@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPosts, getPostBySlug } from '../../lib/feishu';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+
+const { p } = Astro.props;
+const title = `${p.title} | TechArt`;
+---
+<BaseLayout title={title} description={p.summary ?? ''} ogImage={p.coverUrl ?? '/og-cover.jpg'}>
+  <article class="pt-28 pb-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+      <header class="mb-8">
+        <h1 class="text-3xl md:text-4xl font-extrabold">{p.title}</h1>
+        <div class="mt-4 flex items-center gap-4 text-slate-600">
+          {p.authorAvatarUrl && <img src={p.authorAvatarUrl} alt={p.author} class="w-10 h-10 rounded-full" />}
+          <div>
+            <div class="font-medium">{p.author}</div>
+            <div class="text-sm">{p.publishedAt?.slice(0,10)}</div>
+          </div>
+        </div>
+        {p.coverUrl && <img src={p.coverUrl} alt={p.title} class="mt-6 rounded-xl" />}
+      </header>
+
+      {p.contentHtml ? (
+        <div class="prose prose-slate max-w-none" set:html={p.contentHtml} />
+      ) : (
+        <p class="text-slate-500">（正文为空：请在 Bitable 的「正文HTML」列粘贴内容）</p>
+      )}
+    </div>
+  </article>
+</BaseLayout>

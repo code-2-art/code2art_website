@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getActivities, type Activity } from '../../lib/feishuActivities';
+
+const url = Astro.url;
+const pageParam = Number(url.searchParams.get('page') ?? '1');
+const page = Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1;
+
+const PAGE_SIZE = 9;
+
+let all: Activity[] = [];
+try {
+  all = await getActivities(); // 已按日期倒序
+} catch (e) {
+  console.warn('getActivities failed in /activities:', e);
+}
+
+const total = all.length;
+const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+const current = Math.min(page, totalPages);
+const start = (current - 1) * PAGE_SIZE;
+const items = all.slice(start, start + PAGE_SIZE);
+
+const makePageHref = (p: number) => (p <= 1 ? '/activities' : `/activities?page=${p}`);
+---
+
+<BaseLayout title="全部活动 - TechArt" description="TechArt 社群活动列表">
+  <section class="py-20 md:py-24">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mx-auto text-center mb-12">
+        <h1 class="text-3xl md:text-4xl font-bold">全部活动</h1>
+        <p class="text-gray-600 mt-3">共 {total} 条活动</p>
+      </header>
+
+      {items.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {items.map((a) => (
+            <article class="rounded-2xl overflow-hidden shadow hover:shadow-lg transition-all duration-300">
+              <div class="relative">
+                {a.coverUrl ? (
+                  <a href={`/activities/${a.slug}`}>
+                    <img src={a.coverUrl} alt={a.title} class="w-full h-56 object-cover" loading="lazy" />
+                  </a>
+                ) : (
+                  <div class="w-full h-56 bg-gradient-to-br from-primary/10 to-secondary/10" />
+                )}
+                <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm">活动</div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center text-gray-500 text-sm mb-2">
+                  {a.date && <span>📅 {a.date.slice(0,10)}</span>}
+                  {a.author && <span class="ml-auto">{a.author}</span>}
+                </div>
+                <h2 class="text-lg font-bold mb-2">
+                  <a href={`/activities/${a.slug}`} class="hover:text-primary transition-colors">{a.title}</a>
+                </h2>
+                {a.summary && <p class="text-gray-600 line-clamp-3">{a.summary}</p>}
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center text-slate-500">（暂无活动或未配置飞书活动表）</div>
+      )}
+
+      {totalPages > 1 && (
+        <nav class="mt-12 flex items-center justify-center gap-2">
+          <a
+            href={makePageHref(Math.max(1, current - 1))}
+            class={`px-4 py-2 rounded-full border text-sm ${current === 1 ? 'pointer-events-none opacity-40' : 'hover:bg-gray-50'}`}
+            aria-disabled={current === 1}
+          >
+            ← 上一页
+          </a>
+
+          <div class="hidden sm:flex items-center gap-1">
+            {Array.from({ length: totalPages }).map((_, i) => {
+              const p = i + 1;
+              const active = p === current;
+              return (
+                <a
+                  href={makePageHref(p)}
+                  class={`px-3 py-2 rounded-full text-sm ${active ? 'bg-primary text-white' : 'border hover:bg-gray-50'}`}
+                >
+                  {p}
+                </a>
+              );
+            })}
+          </div>
+
+          <a
+            href={makePageHref(Math.min(totalPages, current + 1))}
+            class={`px-4 py-2 rounded-full border text-sm ${current === totalPages ? 'pointer-events-none opacity-40' : 'hover:bg-gray-50'}`}
+            aria-disabled={current === totalPages}
+          >
+            下一页 →
+          </a>
+        </nav>
+      )}
+    </div>
+  </section>
+</BaseLayout>

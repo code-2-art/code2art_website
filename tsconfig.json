@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "target": "ES2022",
+    "jsx": "preserve",
+    "jsxImportSource": "astro",
+    "strict": true,
+    "skipLibCheck": true,
+    "types": ["astro/client"]
+  }
+}
