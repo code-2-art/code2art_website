@@ -82,6 +82,19 @@ function toArrayMaybe(v: any): string[] | undefined {
   return undefined;
 }
 
+function toLinkMaybe(v: any): string | undefined {
+  if (!v) return undefined;
+  if (typeof v === 'string') return v;
+  if (Array.isArray(v)) {
+    const first = v[0];
+    if (!first) return undefined;
+    if (typeof first === 'string') return first;
+    return first.link ?? first.url ?? first.href ?? undefined;
+  }
+  if (typeof v === 'object') return (v as any).link ?? (v as any).url ?? (v as any).href ?? undefined;
+  return undefined;
+}
+
 function mapRecordToActivity(rec: any): Activity {
   const f = rec.fields || rec;
   const slug = (f[FIELD.slug] as string) || rec.record_id;
@@ -96,6 +109,7 @@ function mapRecordToActivity(rec: any): Activity {
     author: f[FIELD.author],
     authorAvatarUrl: f[FIELD.authorAvatarUrl],
     date: f[FIELD.publishedAt], // 未来可以换成独立的“活动时间”字段
+    docUrl: toLinkMaybe(f[FIELD.docUrl]),
   };
 }
 

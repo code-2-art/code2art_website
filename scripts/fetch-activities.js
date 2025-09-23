@@ -58,6 +58,19 @@ function arr(v) {
   return undefined;
 }
 
+function toLinkMaybe(v) {
+  if (!v) return undefined;
+  if (typeof v === 'string') return v;
+  if (Array.isArray(v)) {
+    const first = v[0];
+    if (!first) return undefined;
+    if (typeof first === 'string') return first;
+    return first.link ?? first.url ?? first.href ?? undefined;
+  }
+  if (typeof v === 'object') return v.link ?? v.url ?? v.href ?? undefined;
+  return undefined;
+}
+
 async function enrichContentHtmlFromDocIfNeeded(item, token) {
   const f = item.fields || item;
   const currentHtml = f[FIELD.contentHtml];
@@ -103,6 +116,7 @@ function mapRecord(rec, contentHtmlResolved) {
     summary: f[FIELD.summary] ?? undefined,
     contentHtml: contentHtmlResolved ?? f[FIELD.contentHtml] ?? undefined,
     coverUrl: f[FIELD.coverUrl] ?? undefined,
+    docUrl: toLinkMaybe(f[FIELD.docUrl]) ?? undefined,
     tags: arr(f[FIELD.tags]),
     author: f[FIELD.author] ?? undefined,
     authorAvatarUrl: f[FIELD.authorAvatarUrl] ?? undefined,

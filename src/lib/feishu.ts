@@ -84,6 +84,19 @@ function toArrayMaybe(v: any): string[] | undefined {
   return undefined;
 }
 
+function toLinkMaybe(v: any): string | undefined {
+  if (!v) return undefined;
+  if (typeof v === 'string') return v;
+  if (Array.isArray(v)) {
+    const first = v[0];
+    if (!first) return undefined;
+    if (typeof first === 'string') return first;
+    return (first as any).link ?? (first as any).url ?? (first as any).href ?? undefined;
+  }
+  if (typeof v === 'object') return (v as any).link ?? (v as any).url ?? (v as any).href ?? undefined;
+  return undefined;
+}
+
 function mapRecordToPost(rec: any): Post {
   const f = rec.fields || rec;
   const slug = (f[FIELD.slug] as string) || rec.record_id;
@@ -98,6 +111,7 @@ function mapRecordToPost(rec: any): Post {
     author: f[FIELD.author] as string | undefined,
     authorAvatarUrl: f[FIELD.authorAvatarUrl] as string | undefined,
     publishedAt: f[FIELD.publishedAt] as string | undefined,
+    docUrl: toLinkMaybe(f[FIELD.docUrl]),
   };
 }
 

@@ -59,6 +59,19 @@ function arr(v) {
   return undefined;
 }
 
+function toUrlMaybe(v) {
+  if (!v) return undefined;
+  if (typeof v === 'string') return v;
+  if (Array.isArray(v)) {
+    const first = v[0];
+    if (!first) return undefined;
+    if (typeof first === 'string') return first;
+    return first.url ?? first.link ?? first.href ?? first.src ?? undefined;
+  }
+  if (typeof v === 'object') return v.url ?? v.link ?? v.href ?? v.src ?? undefined;
+  return undefined;
+}
+
 async function enrichContentHtmlFromDocIfNeeded(item, token) {
   const f = item.fields || item;
   const currentHtml = f[FIELD.contentHtml];
@@ -104,10 +117,11 @@ function mapRecord(rec, contentHtmlResolved) {
     title: f[FIELD.title] ?? '',
     summary: f[FIELD.summary] ?? undefined,
     contentHtml: contentHtmlResolved ?? f[FIELD.contentHtml] ?? undefined,
-    coverUrl: f[FIELD.coverUrl] ?? undefined,
+    coverUrl: toUrlMaybe(f[FIELD.coverUrl]) ?? undefined,
+    docUrl: toUrlMaybe(f[FIELD.docUrl]) ?? undefined,
     tags: arr(f[FIELD.tags]),
     author: f[FIELD.author] ?? undefined,
-    authorAvatarUrl: f[FIELD.authorAvatarUrl] ?? undefined,
+    authorAvatarUrl: toUrlMaybe(f[FIELD.authorAvatarUrl]) ?? undefined,
     publishedAt: f[FIELD.publishedAt] ?? undefined,
   };
 }
@@ -130,10 +144,10 @@ async function main() {
 
   if (DOWNLOAD_ASSETS) {
     for (const p of posts) {
-      if (p.coverUrl?.startsWith('http')) {
+      if (typeof p.coverUrl === 'string' && p.coverUrl.startsWith('http')) {
         try { p.coverUrl = await download(p.coverUrl, ASSET_DIR); } catch (e) { console.warn('cover download failed:', p.coverUrl, e.message); }
       }
-      if (p.authorAvatarUrl?.startsWith('http')) {
+      if (typeof p.authorAvatarUrl === 'string' && p.authorAvatarUrl.startsWith('http')) {
         try { p.authorAvatarUrl = await download(p.authorAvatarUrl, ASSET_DIR); } catch (e) { console.warn('avatar download failed:', p.authorAvatarUrl, e.message); }
       }
     }
