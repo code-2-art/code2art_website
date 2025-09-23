@@ -108,6 +108,29 @@ async function download(url, destDir) {
   return file.replace(/^public\//, '/');
 }
 
+async function localizeHtmlImages(html) {
+  if (!html || !DOWNLOAD_ASSETS) return html;
+  const re = /<img\b[^>]*?src=["']([^"']+)["'][^>]*?>/gi;
+  const replacements = [];
+  let m;
+  while ((m = re.exec(html)) !== null) {
+    const src = m[1];
+    if (typeof src !== 'string') continue;
+    if (!/^https?:\/\//i.test(src)) continue;
+    try {
+      const local = await download(src, ASSET_DIR);
+      replacements.push({ from: src, to: local });
+    } catch (e) {
+      console.warn('embed image download failed:', src, e.message);
+    }
+  }
+  let out = html;
+  for (const r of replacements) {
+    out = out.split(r.from).join(r.to);
+  }
+  return out;
+}
+
 function mapRecord(rec, contentHtmlResolved) {
   const f = rec.fields || rec;
   const slug = f[FIELD.slug] || rec.record_id;
@@ -136,7 +159,10 @@ async function main() {
 
   const posts = [];
   for (const it of items) {
-    const html = await enrichContentHtmlFromDocIfNeeded(it, token);
+    let html = await enrichContentHtmlFromDocIfNeeded(it, token);
+    if (DOWNLOAD_ASSETS) {
+      html = await localizeHtmlImages(html);
+    }
     posts.push(mapRecord(it, html));
   }
 
