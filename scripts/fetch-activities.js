@@ -71,6 +71,19 @@ function toLinkMaybe(v) {
   return undefined;
 }
 
+function toUrlMaybe(v) {
+  if (!v) return undefined;
+  if (typeof v === 'string') return v;
+  if (Array.isArray(v)) {
+    const first = v[0];
+    if (!first) return undefined;
+    if (typeof first === 'string') return first;
+    return first.url ?? first.link ?? first.href ?? first.src ?? undefined;
+  }
+  if (typeof v === 'object') return v.url ?? v.link ?? v.href ?? v.src ?? undefined;
+  return undefined;
+}
+
 async function enrichContentHtmlFromDocIfNeeded(item, token) {
   const f = item.fields || item;
   const currentHtml = f[FIELD.contentHtml];
@@ -115,11 +128,11 @@ function mapRecord(rec, contentHtmlResolved) {
     title: f[FIELD.title] ?? '',
     summary: f[FIELD.summary] ?? undefined,
     contentHtml: contentHtmlResolved ?? f[FIELD.contentHtml] ?? undefined,
-    coverUrl: f[FIELD.coverUrl] ?? undefined,
+    coverUrl: toUrlMaybe(f[FIELD.coverUrl]) ?? undefined,
     docUrl: toLinkMaybe(f[FIELD.docUrl]) ?? undefined,
     tags: arr(f[FIELD.tags]),
     author: f[FIELD.author] ?? undefined,
-    authorAvatarUrl: f[FIELD.authorAvatarUrl] ?? undefined,
+    authorAvatarUrl: toUrlMaybe(f[FIELD.authorAvatarUrl]) ?? undefined,
     date: f[FIELD.publishedAt] ?? undefined, // 你也可以单独新增 “活动时间” 列替换这里
   };
 }

@@ -95,6 +95,19 @@ function toLinkMaybe(v: any): string | undefined {
   return undefined;
 }
 
+function toUrlMaybe(v: any): string | undefined {
+  if (!v) return undefined;
+  if (typeof v === 'string') return v;
+  if (Array.isArray(v)) {
+    const first = v[0];
+    if (!first) return undefined;
+    if (typeof first === 'string') return first;
+    return (first as any).url ?? (first as any).link ?? (first as any).href ?? (first as any).src ?? undefined;
+  }
+  if (typeof v === 'object') return (v as any).url ?? (v as any).link ?? (v as any).href ?? (v as any).src ?? undefined;
+  return undefined;
+}
+
 function mapRecordToActivity(rec: any): Activity {
   const f = rec.fields || rec;
   const slug = (f[FIELD.slug] as string) || rec.record_id;
@@ -104,10 +117,10 @@ function mapRecordToActivity(rec: any): Activity {
     title: f[FIELD.title] ?? '',
     summary: f[FIELD.summary],
     contentHtml: f[FIELD.contentHtml],
-    coverUrl: f[FIELD.coverUrl],
+    coverUrl: toUrlMaybe(f[FIELD.coverUrl]),
     tags: toArrayMaybe(f[FIELD.tags]),
     author: f[FIELD.author],
-    authorAvatarUrl: f[FIELD.authorAvatarUrl],
+    authorAvatarUrl: toUrlMaybe(f[FIELD.authorAvatarUrl]),
     date: f[FIELD.publishedAt], // 未来可以换成独立的“活动时间”字段
     docUrl: toLinkMaybe(f[FIELD.docUrl]),
   };
