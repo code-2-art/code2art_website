@@ -1,5 +1,13 @@
 [
   {
+    "id": "rec9nng3BD",
+    "slug": "act2",
+    "title": "首届红树林AI艺术万人展暨今日未来馆AI艺术特展",
+    "coverUrl": "public\\uploads\\Snipaste_2025-09-23_18-21-00.jpg",
+    "docUrl": "https://mp.weixin.qq.com/s/fDnxg7hhGnj5baJ7tXbQ3Q",
+    "author": "Contra"
+  },
+  {
     "id": "recSdusFCP",
     "slug": "act1",
     "title": "超级明星AI艺术作品展",
@@ -10,22 +18,12 @@
     "author": "Contra"
   },
   {
-    "id": "rec9nng3BD",
-    "slug": "rec9nng3BD",
-    "title": "活动2"
-  },
-  {
     "id": "recUvTGPvi",
-    "slug": "non-blender-1.1",
-    "title": "NatureOfNode Blender实现-1.1 向量",
-    "summary": "用Blender的节点方式来实现代码本色",
+    "slug": "c2a-beijing",
+    "title": "实验编程Code2Art线下交流会北京站",
     "contentHtml": "正文1",
-    "coverUrl": "public\\uploads\\non-1.1-435bc4ef7c8b93ebb942e997b268dbd3.jpg",
-    "docUrl": "https://code2art.feishu.cn/wiki/Xvdtwk57ailL8fkf5FpcLvZ2nHh",
-    "tags": [
-      "节点本色",
-      "Blender"
-    ],
+    "coverUrl": "public\\uploads\\640%20%2817%29.png",
+    "docUrl": "https://mp.weixin.qq.com/s/YpKJYWNCxsyLYAm_bMlcIA",
     "author": "Contra"
   },
   {

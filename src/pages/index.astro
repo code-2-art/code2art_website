@@ -188,7 +188,7 @@ try {
               <div class="relative">
                 {a.coverUrl ? (
                   // <a href={`/activities/${a.slug}`}>
-                  <a href={`${a.docUrl}/`}>
+                  <a href={`${a.docUrl}`}>
                     <img src={a.coverUrl} alt={a.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </a>
                 ) : (
@@ -200,7 +200,7 @@ try {
                 <div class="flex items-center text-gray-500 mb-3">📅<span class="ml-2">{a.publishedAt?.slice(0,10) ?? ''}</span></div>
                 <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
                   {/* <a href={`/activities/${a.slug}`}>{a.title}</a> */}
-                  <a href={`${a.docUrl}/`}>{a.title}</a>
+                  <a href={`${a.docUrl}`}>{a.title}</a>
                 </h3>
                 {/* {a.summary && <p class="text-gray-600 mb-4 line-clamp-3">{a.summary}</p>} */}
                 {/* <a href={`/activities/${a.slug}`} class="inline-flex items-center text-primary font-medium hover:underline">了解详情 →</a> */}
@@ -235,7 +235,7 @@ try {
               <div class="relative">
                 {post.coverUrl ? (
                   // <a href={`/blog/${post.slug}`}>
-                  <a href={`${post.docUrl}/`}>
+                  <a href={`${post.docUrl}`}>
                     <img src={post.coverUrl} alt={post.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </a>
                 ) : (
@@ -254,7 +254,7 @@ try {
                 </div>
                 <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors">
                   {/* <a href={`/blog/${post.slug}/`}>{post.title}</a> */}
-                  <a href={`${post.docUrl}/`}>{post.title}</a> 
+                  <a href={`${post.docUrl}`}>{post.title}</a> 
                 </h3>
                 {post.summary && <p class="text-gray-600 mb-4 line-clamp-3">{post.summary}</p>} 
               </div>
