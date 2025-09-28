@@ -31,11 +31,11 @@ try {
         <span class="text-xl font-bold">实验编程</span>
       </a>
       <div class="hidden md:flex items-center space-x-8">
-        <a href="#about" class="font-medium hover:text-primary transition-colors">关于社群</a>
+        <a href="#home" class="font-medium hover:text-primary transition-colors">关于社群</a>
         <a href="#activities" class="font-medium hover:text-primary transition-colors">活动</a>
         <a href="#blog" class="font-medium hover:text-primary transition-colors">博客</a>
-        <a href="#contact" class="font-medium hover:text-primary transition-colors">联系我们</a>
-        <a href="#feishu" class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-2 rounded-full font-medium hover:shadow-lg hover:shadow-primary/20 transition-all">飞书加入</a>
+        <!-- <a href="#contact" class="font-medium hover:text-primary transition-colors">联系我们</a> -->
+        <a href="#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-2 rounded-full font-medium hover:shadow-lg hover:shadow-primary/20 transition-all">联系我们</a>
       </div>
       <button id="menu-toggle" class="md:hidden text-2xl" aria-label="打开菜单">☰</button>
     </nav>
@@ -43,11 +43,11 @@ try {
     <!-- Mobile menu -->
     <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t">
       <div class="container mx-auto px-4 py-4 flex flex-col">
-        <a href="#about" class="py-3 font-medium hover:text-primary">关于社群</a>
+        <a href="#home" class="py-3 font-medium hover:text-primary">关于社群</a>
         <a href="#activities" class="py-3 font-medium hover:text-primary">活动</a>
         <a href="#blog" class="py-3 font-medium hover:text-primary">博客</a>
-        <a href="#contact" class="py-3 font-medium hover:text-primary">联系我们</a>
-        <a href="#feishu" class="mt-2 bg-gradient-to-r from-primary to-secondary text-white px-5 py-3 rounded-full font-medium text-center hover:shadow-lg hover:shadow-primary/20">飞书加入</a>
+        <!-- <a href="#contact" class="py-3 font-medium hover:text-primary">联系我们</a> -->
+        <a href="#contact" class="mt-2 bg-gradient-to-r from-primary to-secondary text-white px-5 py-3 rounded-full font-medium text-center hover:shadow-lg hover:shadow-primary/20">联系我们</a>
       </div>
     </div>
 
@@ -88,13 +88,13 @@ try {
           在实验编程学习过交互媒体技术、算法生成艺术和生成式AI的伙伴遍布全球顶级院校和机构。
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#feishu" class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full font-medium text-center hover:shadow-lg hover:shadow-primary/20 transition-all transform hover:-translate-y-1">加入社群</a>
-          <a href="#about" class="border-2 border-primary text-primary px-8 py-4 rounded-full font-medium text-center hover:bg-primary/5 transition-all transform hover:-translate-y-1">了解更多</a>
+          <a href="#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full font-medium text-center hover:shadow-lg hover:shadow-primary/20 transition-all transform hover:-translate-y-1">加入社群</a>
+          <a href="https://mp.weixin.qq.com/s/3z-tmlSkV0mlTrWAPXgoUw" class="border-2 border-primary text-primary px-8 py-4 rounded-full font-medium text-center hover:bg-primary/5 transition-all transform hover:-translate-y-1">了解更多</a>
         </div>
       </div>
       <div class="relative">
         <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl transform rotate-3 scale-95"></div>
-        <img src="https://picsum.photos/id/1/600/600" alt="科技艺术融合" class="relative z-10 rounded-3xl shadow-xl animate-float" />
+        <img src="public/assets/fluid.jpg" width="600" height="600" alt="科技艺术融合" class="relative z-10 rounded-3xl shadow-xl animate-float" />
       </div>
     </div>
   </section>
@@ -209,7 +209,9 @@ try {
           ))}
         </div>
       ) : (
-        <div class="text-center text-slate-500">（暂无活动数据：待填写 FEISHU_ACTIVITIES_* 环境变量）</div>
+        // <div class="text-center text-slate-500">（暂无活动数据：待填写 FEISHU_ACTIVITIES_* 环境变量）</div>
+        <div class="text-center text-slate-500">（暂无活动数据）</div>
+
       )}
     </div>
   </section>
@@ -262,7 +264,7 @@ try {
           ))}
         </div>
       ) : (
-        <div class="text-center text-slate-500">（暂无文章或未配置主表的 FEISHU_* 环境变量）</div>
+        <div class="text-center text-slate-500">（暂无文章）</div>
       )}
 
       <div class="text-center mt-12">
@@ -272,24 +274,24 @@ try {
   </section>
 
   <!-- Contact / Footer（略，保持不变） -->
-  <!-- <section id="contact" class="py-20 md:py-32">
+  <section id="contact" class="py-20 md:py-32">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
         <div class="grid grid-cols-1 lg:grid-cols-2">
           <div class="p-10">
             <h3 class="text-2xl font-bold mb-6">加入社群</h3>
-            <p class="text-gray-600 mb-6">点击下方按钮跳转至飞书表单，提交你的基本信息，我们会尽快邀请你入群。</p>
-            <a href="#" class="inline-flex items-center bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full font-medium">填写飞书表单</a>
+            <p class="text-gray-600 mb-6">点击下方按钮，我们会邀请您加入社群。</p>
+            <a href="https://work.weixin.qq.com/ca/cawcde0b98ca073c6d" class="inline-flex items-center bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full font-medium">添加企业微信</a>
           </div>
           <div class="bg-gradient-to-br from-primary/10 to-secondary/10 p-10">
             <h4 class="font-semibold mb-4">联系我们</h4>
-            <p class="text-gray-600">Email: team@techart.org</p>
-            <p class="text-gray-600">Feishu: 搜索“TechArt 社群”</p>
+            <p class="text-gray-600">公众号/B站/抖音: 实验编程</p>
+
           </div>
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
 
     <!-- Footer -->
   <footer class="bg-dark text-white pt-16 pb-8">
