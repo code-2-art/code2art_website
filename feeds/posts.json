@@ -1,0 +1,40 @@
+[
+  {
+    "id": "recSdusFCP",
+    "slug": "non-blender-1.1",
+    "title": "NatureOfNode Blender实现-1.1 向量",
+    "summary": "用Blender的节点方式来实现代码本色",
+    "contentHtml": "正文1",
+    "coverUrl": "https://float.intplusplus.cn/code2art/assets/list/non-1.1-435bc4ef7c8b93ebb942e997b268dbd3.jpg",
+    "docUrl": "https://code2art.feishu.cn/wiki/Xvdtwk57ailL8fkf5FpcLvZ2nHh",
+    "tags": [
+      "节点本色",
+      "Blender"
+    ],
+    "author": "Contra"
+  },
+  {
+    "id": "rec9nng3BD",
+    "slug": "rec9nng3BD",
+    "title": "末日技能：新媒体艺术家如何在末世AI来临时用MaxMSP收听广播",
+    "summary": "用MaxMSP实现\"软件定义无线电\"，从而收听广播",
+    "coverUrl": "https://float.intplusplus.cn/code2art/assets/list/maxmsp-pd-sdr-8.2-d706cfd3b329ee54e5802c189e8224cb.jpg",
+    "docUrl": "https://mp.weixin.qq.com/s/SRRhpPWnM3ulbN3JpGskLw?token=1984808302&lang=zh_CN",
+    "tags": [
+      "MaxMSP"
+    ],
+    "author": "Contra"
+  },
+  {
+    "id": "recUvTGPvi",
+    "slug": "recUvTGPvi",
+    "title": "Blender Python傅里叶级数可视化",
+    "summary": "在Blender里用Python脚本画画，实现傅里叶级数可视化效果",
+    "coverUrl": "https://float.intplusplus.cn/code2art/assets/list/fs-blender-short-a859f26cd3de0e1894428e90c69b42ec.gif",
+    "docUrl": "https://mp.weixin.qq.com/s/PDobcmyoQNvHBZVFLh-rQQ",
+    "tags": [
+      "Blender"
+    ],
+    "author": "Contra"
+  }
+]
