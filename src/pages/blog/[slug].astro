@@ -7,10 +7,31 @@ export async function getStaticPaths() {
   return posts.map((p) => ({ params: { slug: p.slug }, props: { p } }));
 }
 
+const SITE = 'https://code2art.com';
 const { p } = Astro.props;
 const title = `${p.title} | TechArt`;
+
+const blogPostingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: p.title,
+  description: p.summary ?? '',
+  image: p.coverUrl ? (p.coverUrl.startsWith('http') ? p.coverUrl : `${SITE}${p.coverUrl}`) : undefined,
+  datePublished: p.publishedAt ?? undefined,
+  author: p.author ? { '@type': 'Person', name: p.author } : undefined,
+  publisher: {
+    '@type': 'Organization',
+    name: '实验编程 Experimental Programming',
+    logo: { '@type': 'ImageObject', url: `${SITE}/favicon.jpg` },
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `${SITE}/blog/${p.slug}`,
+  },
+  keywords: p.tags?.join(', ') ?? undefined,
+};
 ---
-<BaseLayout title={title} description={p.summary ?? ''} ogImage={p.coverUrl ?? '/og-cover.jpg'}>
+<BaseLayout title={title} description={p.summary ?? ''} ogImage={p.coverUrl ?? '/og-cover.jpg'} jsonLd={blogPostingSchema}>
   <article class="pt-28 pb-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
       <header class="mb-8">

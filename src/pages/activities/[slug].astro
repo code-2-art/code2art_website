@@ -7,6 +7,7 @@ export async function getStaticPaths() {
   return posts.map((p) => ({ params: { slug: p.slug }, props: { p } }));
 }
 
+const SITE = 'https://code2art.com';
 const { slug } = Astro.params;
 
 let activity: Activity | null = null;
@@ -20,9 +21,25 @@ try {
 if (!activity) {
   throw new Error(`Activity not found: ${slug}`);
 }
+
+const eventSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: activity.title,
+  description: activity.summary ?? '',
+  startDate: activity.date ?? undefined,
+  image: activity.coverUrl ? (activity.coverUrl.startsWith('http') ? activity.coverUrl : `${SITE}${activity.coverUrl}`) : undefined,
+  organizer: {
+    '@type': 'Organization',
+    name: '实验编程 Experimental Programming',
+    url: SITE,
+  },
+  eventAttendanceMode: 'https://schema.org/MixedEventAttendanceMode',
+  eventStatus: 'https://schema.org/EventScheduled',
+};
 ---
 
-<BaseLayout title={activity.title} description={activity.summary ?? ''}>
+<BaseLayout title={activity.title} description={activity.summary ?? ''} jsonLd={eventSchema}>
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <header class="mb-8">
       <h1 class="text-3xl md:text-4xl font-bold mb-4">{activity.title}</h1>

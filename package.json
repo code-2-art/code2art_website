@@ -13,6 +13,8 @@
     "assets:activities": "node scripts/feishu-assets.js public/feeds/activities.json"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
     "astro": "^5.13.10",
     "dotenv": "^17.2.2",
     "dotevn": "0.0.1-security"
