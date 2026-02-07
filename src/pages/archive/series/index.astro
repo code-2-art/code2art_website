@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navbar from '../../../components/Navbar.astro';
+---
+
+<BaseLayout title="Series 系列 | 实验编程 Archive" description="训练营课程系列、讲座系列、年度系列">
+  <Navbar />
+
+  <main class="pt-32 pb-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <a href="/archive/" class="text-primary hover:underline">← 返回 Archive</a>
+      </div>
+
+      <div class="text-center max-w-4xl mx-auto mb-16">
+        <span class="text-primary font-semibold text-lg">内容系列</span>
+        <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold mt-4 mb-6">Series 系列</h1>
+        <p class="text-xl text-gray-600">按系列组织的课程与内容</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-6">
+            <i class="fa fa-graduation-cap text-white text-2xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold mb-4">训练营系列</h2>
+          <p class="text-gray-600 mb-6">系统化的训练营课程，从基础到进阶</p>
+          <ul class="space-y-2 text-gray-600">
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>生成艺术训练营</li>
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>交互媒体训练营</li>
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>AI创作训练营</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center mb-6">
+            <i class="fa fa-microphone text-white text-2xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold mb-4">讲座系列</h2>
+          <p class="text-gray-600 mb-6">专家讲座与主题分享</p>
+          <ul class="space-y-2 text-gray-600">
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>科技艺术讲座</li>
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>创作者访谈</li>
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>技术分享会</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 md:col-span-2">
+          <div class="flex items-start">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mr-6 flex-shrink-0">
+              <i class="fa fa-calendar text-white text-2xl"></i>
+            </div>
+            <div>
+              <h2 class="text-2xl font-bold mb-4">年度系列</h2>
+              <p class="text-gray-600 mb-4">按年份整理的内容归档</p>
+              <div class="flex flex-wrap gap-3">
+                <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full">2016-2020</span>
+                <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full">2021-2023</span>
+                <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full">2024-2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white pt-16 pb-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="border-t border-white/10 pt-8">
+        <p class="text-gray-500 text-sm text-center">© 2016-{new Date().getFullYear()} 实验编程</p>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>

@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navbar from '../../../components/Navbar.astro';
+
+// 术语数据
+const terms = [
+  { term: '生成艺术', definition: '利用算法、计算机程序或自然系统自动生成的艺术作品。', category: '艺术形式' },
+  { term: '交互媒体', definition: '观众可以参与并影响作品的媒体艺术形式。', category: '艺术形式' },
+  { term: 'TouchDesigner', definition: '基于节点可视化编程的实时开发平台，用于创建交互媒体。', category: '工具' },
+  { term: 'Processing', definition: '为视觉艺术设计的编程语言和开发环境。', category: '工具' },
+  { term: '计算机视觉', definition: '让计算机"看懂"图像和视频的技术领域。', category: '技术' },
+  { term: '生成式AI', definition: '能够自动生成新内容（文本、图像、音频等）的人工智能系统。', category: '技术' },
+  { term: '装置艺术', definition: '三维空间中的艺术作品，观众可以进入并体验。', category: '艺术形式' },
+  { term: '创意编程', definition: '将编程作为创造性表达的媒介。', category: '方法论' },
+];
+---
+
+<BaseLayout title="Glossary 术语表 | 实验编程 Archive" description="专业术语定义与解释">
+  <Navbar />
+
+  <main class="pt-32 pb-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <a href="/archive/" class="text-primary hover:underline">← 返回 Archive</a>
+      </div>
+
+      <div class="text-center max-w-4xl mx-auto mb-16">
+        <span class="text-primary font-semibold text-lg">专业术语</span>
+        <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold mt-4 mb-6">Glossary 术语表</h1>
+        <p class="text-xl text-gray-600">科技艺术领域的专业术语定义</p>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {terms.map((item) => (
+            <div class="bg-white rounded-xl p-6 shadow-md border border-gray-100">
+              <div class="flex items-start justify-between mb-3">
+                <h3 class="text-xl font-bold">{item.term}</h3>
+                <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">{item.category}</span>
+              </div>
+              <p class="text-gray-600">{item.definition}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white pt-16 pb-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="border-t border-white/10 pt-8">
+        <p class="text-gray-500 text-sm text-center">© 2016-{new Date().getFullYear()} 实验编程</p>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>

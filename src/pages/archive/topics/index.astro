@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navbar from '../../../components/Navbar.astro';
+---
+
+<BaseLayout title="Topics 主题 | 实验编程 Archive" description="按知识域聚合的主题：AI影像、生成艺术、交互、工具链、理论等">
+  <Navbar />
+
+  <main class="pt-32 pb-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Breadcrumb -->
+      <div class="mb-8">
+        <a href="/archive/" class="text-primary hover:underline">← 返回 Archive</a>
+      </div>
+
+      <!-- Header -->
+      <div class="text-center max-w-4xl mx-auto mb-16">
+        <span class="text-primary font-semibold text-lg">知识领域</span>
+        <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold mt-4 mb-6">Topics 主题</h1>
+        <p class="text-xl text-gray-600">按知识域聚合的内容索引</p>
+      </div>
+
+      <!-- Topics Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <a href="/blog/?tag=AI影像" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-100">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mr-4">
+              <i class="fa fa-eye text-blue-600 text-xl"></i>
+            </div>
+            <h2 class="text-xl font-bold group-hover:text-primary transition-colors">AI影像</h2>
+          </div>
+          <p class="text-gray-600 text-sm">生成式图像、视频、计算机视觉应用</p>
+        </a>
+
+        <a href="/blog/?tag=生成艺术" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-100">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center mr-4">
+              <i class="fa fa-paint-brush text-purple-600 text-xl"></i>
+            </div>
+            <h2 class="text-xl font-bold group-hover:text-primary transition-colors">生成艺术</h2>
+          </div>
+          <p class="text-gray-600 text-sm">算法艺术、创意编程、视觉生成</p>
+        </a>
+
+        <a href="/blog/?tag=交互" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-100">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center mr-4">
+              <i class="fa fa-hand-pointer text-green-600 text-xl"></i>
+            </div>
+            <h2 class="text-xl font-bold group-hover:text-primary transition-colors">交互媒体</h2>
+          </div>
+          <p class="text-gray-600 text-sm">交互设计、新媒体艺术、装置</p>
+        </a>
+
+        <a href="/blog/?tag=工具链" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-100">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center mr-4">
+              <i class="fa fa-wrench text-orange-600 text-xl"></i>
+            </div>
+            <h2 class="text-xl font-bold group-hover:text-primary transition-colors">工具链</h2>
+          </div>
+          <p class="text-gray-600 text-sm">开发工具、框架、工作流</p>
+        </a>
+
+        <a href="/blog/?tag=理论" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-100">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-xl bg-pink-100 flex items-center justify-center mr-4">
+              <i class="fa fa-graduation-cap text-pink-600 text-xl"></i>
+            </div>
+            <h2 class="text-xl font-bold group-hover:text-primary transition-colors">理论研究</h2>
+          </div>
+          <p class="text-gray-600 text-sm">美学、方法论、批评与反思</p>
+        </a>
+
+        <a href="/blog/?tag=教学" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all border border-gray-100">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center mr-4">
+              <i class="fa fa-university text-indigo-600 text-xl"></i>
+            </div>
+            <h2 class="text-xl font-bold group-hover:text-primary transition-colors">教学资源</h2>
+          </div>
+          <p class="text-gray-600 text-sm">课程、工作坊、教学案例</p>
+        </a>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white pt-16 pb-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="border-t border-white/10 pt-8">
+        <p class="text-gray-500 text-sm text-center">© 2016-{new Date().getFullYear()} 实验编程</p>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>

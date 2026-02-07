@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+---
+
+<BaseLayout title="Lab 实验室 | 实验编程" description="实验编程实验室：开放实验、项目协作、知识探索">
+  <Navbar />
+
+  <main class="pt-32 pb-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center max-w-4xl mx-auto mb-16">
+        <span class="text-primary font-semibold text-lg">开放实验室</span>
+        <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold mt-4 mb-6">Lab 实验室</h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          实验编程的开放实验室，在这里我们进行创作实验、项目协作和知识探索。
+          <br />
+          欢迎加入我们的实验，一起探索科技与艺术的边界。
+        </p>
+      </div>
+
+      <!-- Lab Philosophy -->
+      <div class="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl p-8 md:p-12 mb-16">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold mb-6 text-center">实验室定位</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+              <div class="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mx-auto mb-4">
+                <i class="fa fa-flask text-white text-2xl"></i>
+              </div>
+              <h3 class="font-bold mb-2">实践导向</h3>
+              <p class="text-gray-600 text-sm">通过动手实验深化理解</p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center mx-auto mb-4">
+                <i class="fa fa-users text-white text-2xl"></i>
+              </div>
+              <h3 class="font-bold mb-2">开放协作</h3>
+              <p class="text-gray-600 text-sm">欢迎任何人参与贡献</p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-r from-primary to-secondary flex items-center justify-center mx-auto mb-4">
+                <i class="fa fa-lightbulb-o text-white text-2xl"></i>
+              </div>
+              <h3 class="font-bold mb-2">知识共享</h3>
+              <p class="text-gray-600 text-sm">所有成果开源公开</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects Section -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold mb-8 text-center">实验项目</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- Project Card 1 -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all border border-gray-100 group">
+            <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute bottom-4 left-4 text-white">
+                <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-sm">进行中</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">生成式AI艺术实验</h3>
+              <p class="text-gray-600 mb-4">探索最新AI模型在艺术创作中的应用</p>
+              <a href="https://github.com/code-2-art" class="text-primary font-medium hover:underline">了解详情 →</a>
+            </div>
+          </div>
+
+          <!-- Project Card 2 -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all border border-gray-100 group">
+            <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 relative overflow-hidden">
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute bottom-4 left-4 text-white">
+                <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-sm">招募中</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">交互装置工作坊</h3>
+              <p class="text-gray-600 mb-4">开发低成本交互艺术装置方案</p>
+              <a href="https://github.com/code-2-art" class="text-primary font-medium hover:underline">了解详情 →</a>
+            </div>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all border border-gray-100 group">
+            <div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 relative overflow-hidden">
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute bottom-4 left-4 text-white">
+                <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-sm">计划中</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">开源工具链</h3>
+              <p class="text-gray-600 mb-4">构建科技艺术创作的开源工具生态</p>
+              <a href="https://github.com/code-2-art" class="text-primary font-medium hover:underline">了解详情 →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- How to Participate -->
+      <div class="bg-white rounded-2xl p-8 md:p-12 shadow-lg border border-gray-100">
+        <h2 class="text-3xl font-bold mb-8 text-center">如何参与</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+          <div class="flex items-start">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+              <span class="text-primary font-bold text-xl">1</span>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">加入社群</h3>
+              <p class="text-gray-600">添加企业微信，加入实验编程社群</p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+              <span class="text-primary font-bold text-xl">2</span>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">选择项目</h3>
+              <p class="text-gray-600">浏览开放项目，找到感兴趣的实验方向</p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+              <span class="text-primary font-bold text-xl">3</span>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">参与协作</h3>
+              <p class="text-gray-600">参与讨论、贡献代码或文档</p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+              <span class="text-primary font-bold text-xl">4</span>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">分享成果</h3>
+              <p class="text-gray-600">在社群展示你的作品，获得反馈</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="text-center mt-10">
+          <a href="https://work.weixin.qq.com/ca/cawcde0b98ca073c6d" class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full font-medium hover:shadow-lg hover:shadow-primary/20 transition-all">
+            立即加入实验室
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white pt-16 pb-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="border-t border-white/10 pt-8">
+        <p class="text-gray-500 text-sm text-center">© 2016-{new Date().getFullYear()} 实验编程</p>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>

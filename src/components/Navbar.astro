@@ -1,0 +1,53 @@
+---
+---
+
+<header id="navbar" class="fixed w-full z-50 transition-all duration-300">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+    <a href="/" class="flex items-center space-x-2">
+      <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+        <img src="https://float.intplusplus.cn/code2art/favicon.jpg" alt="实验编程" class="w-10 h-10 rounded-lg" />
+      </div>
+      <span class="text-xl font-bold">实验编程</span>
+    </a>
+    <div class="hidden md:flex items-center space-x-8">
+      <a href="/" class="font-medium hover:text-primary transition-colors">Home</a>
+      <a href="/archive/" class="font-medium hover:text-primary transition-colors">Archive</a>
+      <a href="/lab/" class="font-medium hover:text-primary transition-colors">Lab</a>
+      <a href="/project/" class="font-medium hover:text-primary transition-colors">Project</a>
+      <a href="/news/" class="font-medium hover:text-primary transition-colors">News</a>
+      <a href="/about/" class="font-medium hover:text-primary transition-colors">About</a>
+    </div>
+    <button id="menu-toggle" class="md:hidden text-2xl" aria-label="打开菜单">☰</button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t">
+    <div class="container mx-auto px-4 py-4 flex flex-col">
+      <a href="/" class="py-3 font-medium hover:text-primary">Home</a>
+      <a href="/archive/" class="py-3 font-medium hover:text-primary">Archive</a>
+      <a href="/lab/" class="py-3 font-medium hover:text-primary">Lab</a>
+      <a href="/project/" class="py-3 font-medium hover:text-primary">Project</a>
+      <a href="/news/" class="py-3 font-medium hover:text-primary">News</a>
+      <a href="/about/" class="py-3 font-medium hover:text-primary">About</a>
+    </div>
+  </div>
+
+  <script is:client>
+    const navbar = document.getElementById('navbar');
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    function onScroll(){
+      if (window.scrollY > 10) {
+        navbar?.classList.add('bg-white/80','backdrop-blur','shadow');
+      } else {
+        navbar?.classList.remove('bg-white/80','backdrop-blur','shadow');
+      }
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+    document.querySelectorAll('#mobile-menu a').forEach(a=>{
+      a.addEventListener('click', ()=> menu?.classList.add('hidden'));
+    });
+  </script>
+</header>

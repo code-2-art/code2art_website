@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+---
+
+<BaseLayout title="Archive 文档库 | 实验编程" description="实验编程文档库：主题、系列、文稿、资源、术语表和年表">
+  <Navbar />
+
+  <main class="pt-32 pb-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center max-w-4xl mx-auto mb-16">
+        <span class="text-primary font-semibold text-lg">知识库</span>
+        <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold mt-4 mb-6">Archive 文档库</h1>
+        <p class="text-xl text-gray-600">
+          探索科技与艺术的交叉领域，收录我们的知识积累与实践经验
+        </p>
+      </div>
+
+      <!-- Archive Sections Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Topics -->
+        <a href="/archive/topics/" class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa fa-folder-open text-white text-2xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Topics 主题</h2>
+          <p class="text-gray-600">按知识域聚合：AI影像、生成艺术、交互、工具链、理论等</p>
+        </a>
+
+        <!-- Series -->
+        <a href="/archive/series/" class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa fa-list-ol text-white text-2xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Series 系列</h2>
+          <p class="text-gray-600">训练营课程系列、讲座系列、年度系列</p>
+        </a>
+
+        <!-- Notes -->
+        <a href="/archive/notes/" class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa fa-file-text-o text-white text-2xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Notes 文稿</h2>
+          <p class="text-gray-600">讲义、备忘、教程、方法论</p>
+        </a>
+
+        <!-- Resources -->
+        <a href="/archive/resources/" class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa fa-book text-white text-2xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Resources 资源</h2>
+          <p class="text-gray-600">工具清单、素材、链接、参考书/论文</p>
+        </a>
+
+        <!-- Glossary -->
+        <a href="/archive/glossary/" class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa fa-sort-alpha-asc text-white text-2xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Glossary 术语表</h2>
+          <p class="text-gray-600">专业术语定义与解释，对 SEO 和 LLM 友好</p>
+        </a>
+
+        <!-- Timeline -->
+        <a href="/archive/timeline/" class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa fa-clock-o text-white text-2xl"></i>
+          </div>
+          <h2 class="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Timeline 年表</h2>
+          <p class="text-gray-600">2016-2026：关键节点与内容索引</p>
+        </a>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white pt-16 pb-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="border-t border-white/10 pt-8">
+        <p class="text-gray-500 text-sm text-center">© 2016-{new Date().getFullYear()} 实验编程</p>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>

@@ -1,193 +1,217 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
 import { getPosts, type Post } from '../lib/feishu';
 import { getActivities, type Activity } from '../lib/feishuActivities';
-
-const BASE = import.meta.env.BASE_URL;
 
 
 let blogPosts: Post[] = [];
 let activities: Post[] = [];
 
 try {
-  blogPosts = await getPosts(3);        // 博客前 6 篇
+  blogPosts = await getPosts(3);
 } catch (e) {
   console.warn('getPosts failed:', e);
 }
 try {
-  activities = await getActivities(3);  // 活动表前 6 条
+  activities = await getActivities(3);
 } catch (e) {
   console.warn('getActivities failed:', e);
 }
 ---
 
 <BaseLayout title="实验编程 Experimental Programming" description="实验编程 Experimental Programming, 用实验精神和计算编程进行艺术创作">
-  <!-- Navbar -->
-  <header id="navbar" class="fixed w-full z-50 transition-all duration-300">
-    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-      <a href="#home" class="flex items-center space-x-2">
-        <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
-          <!-- <span class="text-white font-bold text-xl">EP</span> -->
-          <img src="https://float.intplusplus.cn/code2art/favicon.jpg" alt="实验编程" class="w-10 h-10 rounded-lg" />
-        </div>
-        <span class="text-xl font-bold">实验编程</span>
-      </a>
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="#home" class="font-medium hover:text-primary transition-colors">关于社群</a>
-        <a href="#activities" class="font-medium hover:text-primary transition-colors">活动</a>
-        <a href="#blog" class="font-medium hover:text-primary transition-colors">博客</a>
-        <!-- <a href="#contact" class="font-medium hover:text-primary transition-colors">联系我们</a> -->
-        <a href="#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-2 rounded-full font-medium hover:shadow-lg hover:shadow-primary/20 transition-all">联系我们</a>
-      </div>
-      <button id="menu-toggle" class="md:hidden text-2xl" aria-label="打开菜单">☰</button>
-    </nav>
+  <Navbar />
 
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t">
-      <div class="container mx-auto px-4 py-4 flex flex-col">
-        <a href="#home" class="py-3 font-medium hover:text-primary">关于社群</a>
-        <a href="#activities" class="py-3 font-medium hover:text-primary">活动</a>
-        <a href="#blog" class="py-3 font-medium hover:text-primary">博客</a>
-        <!-- <a href="#contact" class="py-3 font-medium hover:text-primary">联系我们</a> -->
-        <a href="#contact" class="mt-2 bg-gradient-to-r from-primary to-secondary text-white px-5 py-3 rounded-full font-medium text-center hover:shadow-lg hover:shadow-primary/20">联系我们</a>
-      </div>
-    </div>
-
-    <script is:client>
-      const navbar = document.getElementById('navbar');
-      const toggle = document.getElementById('menu-toggle');
-      const menu = document.getElementById('mobile-menu');
-      function onScroll(){
-        if (window.scrollY > 10) {
-          navbar?.classList.add('bg-white/80','backdrop-blur','shadow');
-        } else {
-          navbar?.classList.remove('bg-white/80','backdrop-blur','shadow');
-        }
-      }
-      onScroll();
-      window.addEventListener('scroll', onScroll);
-      toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'));
-      document.querySelectorAll('#mobile-menu a').forEach(a=>{
-        a.addEventListener('click', ()=> menu?.classList.add('hidden'));
-      });
-    </script>
-  </header>
-
-  <!-- Hero Section（略） -->
-  <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div>
+        <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+          🎉 2016-2026 十周年
+        </div>
         <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight mb-6">
           艺术是
           <span class="bg-gradient-to-r from-primary to-secondary text-gradient">算法的叛徒</span>
         </h1>
         <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-xl">
           实验编程（2016-2026）是一个围绕科技与艺术的先锋社群与知识平台，连接全球跨界实验者，起源于2010年代国内最活跃的交互媒体艺术论坛HUDOIT。
-          <br/>
           作为前沿创作范式策源地，实验编程长期受邀为多所高校输出教学方案与技术支持（包括央美、同济、清华等），聚焦人工智能、交互媒体与生成艺术的实践探索与知识传播。
-          <br/>
-          <br/>
-          Experimental Programming (2016-2026) is a pioneering community and knowledge platform centered around AI, interactive media, and generative art, connecting cross-disciplinary experimenters worldwide. 
-          As a source of cutting-edge creative paradigms, it has long been invited to provide teaching solutions and technical support to many universities (including the CAFA, Tongji, Tsinghua, etc.).
-
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full font-medium text-center hover:shadow-lg hover:shadow-primary/20 transition-all transform hover:-translate-y-1">加入社群</a>
-          <a href="https://mp.weixin.qq.com/s/3z-tmlSkV0mlTrWAPXgoUw" class="border-2 border-primary text-primary px-8 py-4 rounded-full font-medium text-center hover:bg-primary/5 transition-all transform hover:-translate-y-1">了解更多</a>
+          <a href="https://work.weixin.qq.com/ca/cawcde0b98ca073c6d" class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full font-medium text-center hover:shadow-lg hover:shadow-primary/20 transition-all transform hover:-translate-y-1">
+            加入社群
+          </a>
+          <a href="/about/" class="border-2 border-primary text-primary px-8 py-4 rounded-full font-medium text-center hover:bg-primary/5 transition-all transform hover:-translate-y-1">
+            了解更多
+          </a>
         </div>
       </div>
       <div class="relative">
         <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl transform rotate-3 scale-95"
-        style="background-image: url('https://float.intplusplus.cn/code2art/assets/fluid2.jpg'); background-size: cover; background-position: center;"
-        >
-          <!-- <img src="public/assets/fluid2.jpg" alt="科技艺术融合" class=" w-full h-full object-cover" /> -->
+          style="background-image: url('https://float.intplusplus.cn/code2art/assets/fluid2.jpg'); background-size: cover; background-position: center;">
         </div>
-        
         <img src="https://float.intplusplus.cn/code2art/assets/fluid.jpg" width="600" height="600" alt="科技艺术融合" class="relative z-10 rounded-3xl shadow-xl animate-float" />
       </div>
     </div>
   </section>
 
-  <!-- Social QR Section -->
-  <!-- <section id="social" class="py-20 md:py-28 bg-gray-50">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="text-primary font-semibold">社交平台</span>
-        <h2 class="text-[clamp(1.8rem,3vw,2.2rem)] font-bold mt-2 mb-4">关注我们 · 扫码加入</h2>
-        <p class="text-gray-600">微信、微博/小红书、抖音、哔哩哔哩四大平台同步更新。</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center text-center">
-          <img src={`${BASE}uploads/qr-wechat.jpg`} alt="微信公众号 二维码" class="w-48 h-48 object-cover rounded-lg mb-4 bg-gray-100" loading="lazy" />
-          <h3 class="text-lg font-semibold">微信公众号</h3>
-          <p class="text-gray-500 text-sm mt-1">搜索：实验编程</p>
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center text-center">
-          <img src={`${BASE}uploads/qr-xhs.jpg`} alt="小红书 二维码" class="w-48 h-48 object-cover rounded-lg mb-4 bg-gray-100" loading="lazy" />
-          <h3 class="text-lg font-semibold">小红书</h3>
-          <p class="text-gray-500 text-sm mt-1">搜索：实验编程</p>
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center text-center">
-          <img src={`${BASE}uploads/qr-douyin.jpg`} alt="抖音 二维码" class="w-48 h-48 object-cover rounded-lg mb-4 bg-gray-100" loading="lazy" />
-          <h3 class="text-lg font-semibold">抖音</h3>
-          <p class="text-gray-500 text-sm mt-1">搜索：实验编程</p>
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center text-center">
-          <img src={`${BASE}uploads/qr-bilibili.jpg`} alt="哔哩哔哩 二维码" class="w-48 h-48 object-cover rounded-lg mb-4 bg-gray-100" loading="lazy" />
-          <h3 class="text-lg font-semibold">哔哩哔哩</h3>
-          <p class="text-gray-500 text-sm mt-1">搜索：实验编程</p>
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center text-center">
-          <img src={`${BASE}uploads/qr-join.jpg`} alt="加入社群 二维码" class="w-48 h-48 object-cover rounded-lg mb-4 bg-gray-100" loading="lazy" />
-          <h3 class="text-lg font-semibold">加入社群</h3>
-          <p class="text-gray-500 text-sm mt-1">扫码加入社群</p>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-  <!-- About Section（略） -->
-  <!-- <section id="about" class="py-20 md:py-32">
+  <!-- Three Main Pillars -->
+  <section class="py-20 md:py-32 bg-gray-50">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-primary font-semibold">关于我们</span>
-        <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mt-2 mb-6">科技艺术先锋社群</h2>
-        <p class="text-gray-600 text-lg">
-          实验编程，英文 Experimental Programming，用实验精神和计算编程进行艺术创作。
-          <br/>
-          实验编程自2019年起开展线上科技艺术教学活动。线下与中央美院、同济大学、清华大学等数所知名院校进行长期教学合作。
-          在实验编程学习过交互媒体技术、算法生成艺术和生成式AI的伙伴遍布全球顶级院校和机构。
-        </p>
+        <span class="text-primary font-semibold text-lg">三条主线</span>
+        <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mt-4 mb-6">探索我们的核心板块</h2>
+        <p class="text-xl text-gray-600">Archive 文档库 · Lab 实验室 · Project 作品展</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Archive -->
+        <a href="/archive/" class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all border border-gray-100">
+          <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa fa-archive text-white text-3xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Archive 文档库</h3>
+          <p class="text-gray-600 mb-6">
+            知识沉淀的核心，包含主题、系列、文稿、资源、术语表和年表。
+            可被检索、可被引用的知识体系。
+          </p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>Topics 主题分类</li>
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>Series 系列课程</li>
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>Notes 讲义文稿</li>
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>Glossary 术语表</li>
+          </ul>
+        </a>
+
+        <!-- Lab -->
+        <a href="/lab/" class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all border border-gray-100">
+          <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa fa-flask text-white text-3xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Lab 实验室</h3>
+          <p class="text-gray-600 mb-6">
+            开放的实践空间，进行创作实验、项目协作和知识探索。
+            欢迎任何人参与贡献。
+          </p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>开放实验项目</li>
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>协作创作</li>
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>知识共享</li>
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>参与指南</li>
+          </ul>
+        </a>
+
+        <!-- Project -->
+        <a href="/project/" class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all border border-gray-100">
+          <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa fa-picture-o text-white text-3xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Project 展览</h3>
+          <p class="text-gray-600 mb-6">
+            十周年作品展与线上展厅。
+            收录社群成员的优秀作品，展示实验编程的创造力。
+          </p>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>线上展厅</li>
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>精选作品</li>
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>2026展览计划</li>
+            <li class="flex items-center"><i class="fa fa-angle-right text-primary mr-2"></i>投稿通道</li>
+          </ul>
+        </a>
+
       </div>
     </div>
-  </section> -->
+  </section>
 
-  <!-- Feishu Section（略） -->
-  <!-- <section id="feishu" class="py-20 md:py-32 bg-gradient-to-br from-dark to-primary/90 text-white">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div>
-        <span class="text-white/80 font-semibold">飞书协作平台</span>
-        <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mt-2 mb-6">高效协作，创意无界</h2>
-        <p class="text-white/80 text-lg mb-8">我们使用飞书作为核心协作平台，整合沟通、文档、项目管理和分享。</p>
-      </div>
-      <div class="relative">
-        <img src="https://picsum.photos/id/2/600/600" alt="飞书协作展示" class="relative z-10 rounded-3xl shadow-xl" />
-      </div>
-    </div>
-  </section> -->
-
-  <!-- Activities Section（独立表渲染） -->
-  <section id="activities" class="py-20 md:py-32">
+  <!-- Latest Updates Section -->
+  <section class="py-20 md:py-32">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-primary font-semibold">社群活动</span>
-        <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mt-2 mb-6">探索创意的精彩活动</h2>
-        <p class="text-gray-600 text-lg">定期举办工作坊、讲座、展览和创意马拉松等。</p>
+        <span class="text-primary font-semibold text-lg">最新动态</span>
+        <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mt-2 mb-6">最新更新</h2>
+        <p class="text-gray-600 text-lg">最新的 Archive、公告、活动</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+        <!-- News Preview -->
+        <div class="lg:col-span-1">
+          <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 h-full">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-bold">News 公告</h3>
+              <a href="/news/" class="text-primary text-sm hover:underline">查看全部 →</a>
+            </div>
+            <div class="space-y-4">
+              <div class="pb-4 border-b border-gray-100">
+                <div class="text-sm text-gray-500 mb-1">2026-01-15</div>
+                <a href="/news/" class="font-medium hover:text-primary transition-colors">实验编程十周年系列活动启动</a>
+              </div>
+              <div class="pb-4 border-b border-gray-100">
+                <div class="text-sm text-gray-500 mb-1">2025-12-01</div>
+                <a href="/news/" class="font-medium hover:text-primary transition-colors">2025年12月进展报告</a>
+              </div>
+              <div>
+                <div class="text-sm text-gray-500 mb-1">2025-11-10</div>
+                <a href="/news/" class="font-medium hover:text-primary transition-colors">AI艺术创作工作坊报名开启</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog Preview -->
+        <div class="lg:col-span-2">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-bold">Blog 博客</h3>
+            <a href="/blog/" class="text-primary text-sm hover:underline">查看全部 →</a>
+          </div>
+          {blogPosts.length > 0 ? (
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {blogPosts.map((post) => (
+                <article class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all group">
+                  {post.coverUrl ? (
+                    <a href={post.docUrl}>
+                      <img src={post.coverUrl} alt={post.title} class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                    </a>
+                  ) : (
+                    <div class="w-full h-48 bg-gradient-to-br from-primary/10 to-secondary/10" />
+                  )}
+                  <div class="p-5">
+                    <div class="flex items-center mb-3">
+                      <div class="flex flex-wrap gap-2">
+                        {(post.tags ?? []).slice(0, 3).map((t) => (
+                          <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 hover:text-primary transition-colors">
+                      <a href={post.docUrl}>{post.title}</a>
+                    </h3>
+                    {post.summary && <p class="text-gray-600 text-sm line-clamp-2">{post.summary}</p>}
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div class="text-center text-slate-500 py-12 bg-gray-50 rounded-xl">
+              <i class="fa fa-file-text-o text-4xl mb-3 text-gray-300"></i>
+              <p>（暂无文章）</p>
+            </div>
+          )}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Activities Section -->
+  <section class="py-20 md:py-32 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-primary font-semibold text-lg">社群活动</span>
+        <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mt-2 mb-6">近期活动</h2>
+        <p class="text-gray-600 text-lg">定期举办工作坊、讲座、展览和创意马拉松等</p>
       </div>
 
       {activities.length > 0 ? (
@@ -196,8 +220,7 @@ try {
             <div class="rounded-2xl overflow-hidden shadow-lg group hover:shadow-xl transition-all duration-300">
               <div class="relative">
                 {a.coverUrl ? (
-                  // <a href={`/activities/${a.slug}`}>
-                  <a href={`${a.docUrl}`}>
+                  <a href={a.docUrl}>
                     <img src={a.coverUrl} alt={a.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </a>
                 ) : (
@@ -205,85 +228,32 @@ try {
                 )}
                 <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">活动</div>
               </div>
-              <div class="p-6">
+              <div class="p-6 bg-white">
                 <div class="flex items-center text-gray-500 mb-3">📅<span class="ml-2">{a.publishedAt?.slice(0,10) ?? ''}</span></div>
                 <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                  {/* <a href={`/activities/${a.slug}`}>{a.title}</a> */}
-                  <a href={`${a.docUrl}`}>{a.title}</a>
+                  <a href={a.docUrl}>{a.title}</a>
                 </h3>
-                {/* {a.summary && <p class="text-gray-600 mb-4 line-clamp-3">{a.summary}</p>} */}
-                {/* <a href={`/activities/${a.slug}`} class="inline-flex items-center text-primary font-medium hover:underline">了解详情 →</a> */}
               </div>
             </div>
           ))}
         </div>
       ) : (
-        // <div class="text-center text-slate-500">（暂无活动数据：待填写 FEISHU_ACTIVITIES_* 环境变量）</div>
         <div class="text-center text-slate-500">（暂无活动数据）</div>
-
-      )}
-    </div>
-  </section>
-
-  <!-- Blog Section（主表渲染） -->
-  <section id="blog" class="py-20 md:py-32 bg-gray-50">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-primary font-semibold">团队博客</span>
-        <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mt-2 mb-6">分享创意与洞见</h2>
-        <p class="text-gray-600 text-lg">成员定期发布关于科技、艺术、创意和跨界合作的思考与实践。</p>
-      </div>
-
-      {blogPosts.length > 0 ? (
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
-            <article class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group">
-              {/* {post.coverUrl && (
-                <a href={`/blog/${post.slug}`}>
-                  <img src={post.coverUrl} alt={post.title} class="w-full h-52 object-cover" loading="lazy" />
-                </a>
-              )} */}
-              <div class="relative">
-                {post.coverUrl ? (
-                  // <a href={`/blog/${post.slug}`}>
-                  <a href={`${post.docUrl}`}>
-                    <img src={post.coverUrl} alt={post.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                  </a>
-                ) : (
-                  <div class="w-full h-60 bg-gradient-to-br from-primary/10 to-secondary/10" />
-                )}
-                {/* <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">活动</div> */}
-              </div>
-              <div class="p-6">
-                <div class="flex items-center mb-4">
-                  <div class="flex flex-wrap gap-2">
-                    {(post.tags ?? []).slice(0,4).map((t) => (
-                      <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">{t}</span>
-                    ))}
-                  </div>
-                  <span class="ml-auto text-gray-500 text-sm">{post.publishedAt?.slice(0,10)}</span>
-                </div>
-                <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors">
-                  {/* <a href={`/blog/${post.slug}/`}>{post.title}</a> */}
-                  <a href={`${post.docUrl}`}>{post.title}</a> 
-                </h3>
-                {post.summary && <p class="text-gray-600 mb-4 line-clamp-3">{post.summary}</p>} 
-              </div>
-            </article>
-          ))}
-        </div>
-      ) : (
-        <div class="text-center text-slate-500">（暂无文章）</div>
       )}
 
       <div class="text-center mt-12">
-        <a href={`${BASE}blog/`} class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-full font-medium hover:shadow-lg hover:shadow-primary/20 transition-all">查看更多文章</a>
+        <a href="/activities/" class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-full font-medium hover:shadow-lg hover:shadow-primary/20 transition-all">
+          查看更多活动
+        </a>
+      </div>
+    </div>
+  </section>
       </div>
     </div>
   </section>
 
-  <!-- Contact / Footer（略，保持不变） -->
-  <section id="contact" class="py-20 md:py-32">
+  <!-- Contact CTA -->
+  <section class="py-20 md:py-32">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
         <div class="grid grid-cols-1 lg:grid-cols-2">
@@ -295,112 +265,69 @@ try {
           <div class="bg-gradient-to-br from-primary/10 to-secondary/10 p-10">
             <h4 class="font-semibold mb-4">联系我们</h4>
             <p class="text-gray-600">公众号/B站/抖音: 实验编程</p>
-
           </div>
         </div>
       </div>
     </div>
   </section>
 
-    <!-- Footer -->
+  <!-- Footer -->
   <footer class="bg-dark text-white pt-16 pb-8">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-        <!-- 品牌与简介 -->
         <div>
           <a href={BASE} class="flex items-center space-x-2 mb-6">
             <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
-              <!-- <span class="text-white font-bold text-xl">TA</span> -->
               <img src="https://float.intplusplus.cn/code2art/favicon.jpg" alt="实验编程" class="w-10 h-10 rounded-lg" />
-
             </div>
             <span class="text-xl font-bold">实验编程</span>
           </a>
           <p class="text-gray-400 mb-6">不要慌，真青年是不会慌的。</p>
-
-          <!-- 社交链接（如未引入 Font Awesome，可换成文字或 SVG） -->
-          <!-- <div class="flex space-x-4">
-            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="WeChat">
-              <i class="fa fa-weixin"></i>
-            </a>
-            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="Weibo">
-              <i class="fa fa-weibo"></i>
-            </a>
-            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="Instagram">
-              <i class="fa fa-instagram"></i>
-            </a>
-            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors" aria-label="GitHub">
-              <i class="fa fa-github"></i>
-            </a>
-          </div> -->
         </div>
 
-        <!-- 快速链接 -->
         <div>
-          <!-- <h4 class="text-lg font-bold mb-6">快速链接</h4> -->
-          <ul class="space-y-3">
-      
-            <li><a href="https://mp.weixin.qq.com/s/LIi41bbEyDAqXZmGm_dGrw"
-               class="text-gray-400 hover:text-white transition-colors">公众号</a></li>
-            <li><a href="https://www.xiaohongshu.com/user/profile/5ea438e00000000001009548"
-               class="text-gray-400 hover:text-white transition-colors">小红书</a></li>
-            <li><a href="https://space.bilibili.com/309452713"
-               class="text-gray-400 hover:text-white transition-colors">B站</a></li>
-            <li><a href="https://www.douyin.com/user/MS4wLjABAAAA1zXSsULbkb020lMmhP-kt4toB7wgXv18hpcJA2g96gK6aZb0LNYY4VvH-xezjW9j"
-               class="text-gray-400 hover:text-white transition-colors">抖音</a></li>
-            <!-- <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">加入我们</a></li> -->
+          <h4 class="text-lg font-bold mb-4">快速链接</h4>
+          <ul class="space-y-2">
+            <li><a href="/archive/" class="text-gray-400 hover:text-white transition-colors">Archive 文档库</a></li>
+            <li><a href="/lab/" class="text-gray-400 hover:text-white transition-colors">Lab 实验室</a></li>
+            <li><a href="/project/" class="text-gray-400 hover:text-white transition-colors">Project 展览</a></li>
+            <li><a href="/news/" class="text-gray-400 hover:text-white transition-colors">News 公告</a></li>
           </ul>
         </div>
 
-        <!-- 资源 -->
         <div>
-          <!-- <h4 class="text-lg font-bold mb-6">资源</h4> -->
-          <ul class="space-y-3">
-            <li><a href="https://appn6hiNebL8858.h5.xiaoeknow.com"
-              class="text-gray-400 hover:text-white transition-colors">小鹅通课程</a></li>
-            <li><a href="https://github.com/code-2-art"
-               class="text-gray-400 hover:text-white transition-colors">Github</a></li>
-            <li><a href="https://avantcontra.gumroad.com/"
-               class="text-gray-400 hover:text-white transition-colors">Gumroad</a></li>
-            
-            <li><a href="https://youtube.com/avantcontra"
-               class="text-gray-400 hover:text-white transition-colors">YouTube</a></li>
+          <h4 class="text-lg font-bold mb-4">社交媒体</h4>
+          <ul class="space-y-2">
+            <li><a href="https://mp.weixin.qq.com/s/LIi41bbEyDAqXZmGm_dGrw" class="text-gray-400 hover:text-white transition-colors">公众号</a></li>
+            <li><a href="https://www.xiaohongshu.com/user/profile/5ea438e00000000001009548" class="text-gray-400 hover:text-white transition-colors">小红书</a></li>
+            <li><a href="https://space.bilibili.com/309452713" class="text-gray-400 hover:text-white transition-colors">B站</a></li>
+            <li><a href="https://www.douyin.com/user/MS4wLjABAAAA1zXSsULbkb020lMmhP-kt4toB7wgXv18hpcJA2g96gK6aZb0LNYY4VvH-xezjW9j" class="text-gray-400 hover:text-white transition-colors">抖音</a></li>
           </ul>
         </div>
 
-        <!-- 订阅通讯 -->
-        <!-- <div>
-          <h4 class="text-lg font-bold mb-6">订阅通讯</h4>
-          <p class="text-gray-400 mb-4">订阅我们的电子通讯，获取最新活动和资源信息。</p>
-          <form class="flex" onsubmit="return false">
-            <input type="email" placeholder="你的邮箱地址" class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-dark" />
-            <button type="submit" class="bg-primary hover:bg-primary/90 px-4 py-2 rounded-r-lg transition-colors" aria-label="订阅">
-              <i class="fa fa-paper-plane"></i>
-            </button>
-          </form>
-        </div> -->
+        <div>
+          <h4 class="text-lg font-bold mb-4">资源</h4>
+          <ul class="space-y-2">
+            <li><a href="https://appn6hiNebL8858.h5.xiaoeknow.com" class="text-gray-400 hover:text-white transition-colors">小鹅通课程</a></li>
+            <li><a href="https://github.com/code-2-art" class="text-gray-400 hover:text-white transition-colors">Github</a></li>
+            <li><a href="https://avantcontra.gumroad.com/" class="text-gray-400 hover:text-white transition-colors">Gumroad</a></li>
+            <li><a href="https://youtube.com/avantcontra" class="text-gray-400 hover:text-white transition-colors">YouTube</a></li>
+          </ul>
+        </div>
       </div>
 
-      <!-- 底部条 -->
       <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
         <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2016-{new Date().getFullYear()} 实验编程</p>
-        <!-- <div class="flex space-x-6">
-          <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">隐私政策</a>
-          <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">使用条款</a>
-          <a href="#contact" class="text-gray-500 hover:text-white text-sm transition-colors">联系我们</a>
-        </div> -->
       </div>
     </div>
   </footer>
 
-  <!-- 返回顶部按钮 -->
+  <!-- Back to top button -->
   <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-11 h-11 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all z-50" aria-label="返回顶部">
     <i class="fa fa-arrow-up"></i>
   </button>
 
-  <!-- Footer 脚本：返回顶部、表单兜底 -->
   <script is:client>
-    // 返回顶部显示/隐藏
     const backToTop = document.getElementById('back-to-top');
     function onScrollFooter(){
       if (window.scrollY > 300) {
@@ -416,13 +343,6 @@ try {
 
     backToTop?.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // 订阅表单占位（可替换为真实提交逻辑）
-    const form = document.querySelector('footer form');
-    form?.addEventListener('submit', () => {
-      const input = form.querySelector('input[type="email"]');
-      if (input && input.value) alert('已记录订阅邮箱：' + input.value);
     });
   </script>
 

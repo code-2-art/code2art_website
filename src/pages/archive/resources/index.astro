@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navbar from '../../../components/Navbar.astro';
+---
+
+<BaseLayout title="Resources 资源 | 实验编程 Archive" description="工具清单、素材、链接、参考书/论文">
+  <Navbar />
+
+  <main class="pt-32 pb-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <a href="/archive/" class="text-primary hover:underline">← 返回 Archive</a>
+      </div>
+
+      <div class="text-center max-w-4xl mx-auto mb-16">
+        <span class="text-primary font-semibold text-lg">资源库</span>
+        <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold mt-4 mb-6">Resources 资源</h1>
+        <p class="text-xl text-gray-600">工具清单、素材、链接、参考书/论文</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <h2 class="text-2xl font-bold mb-6 flex items-center">
+            <i class="fa fa-wrench text-primary mr-3"></i>
+            开发工具
+          </h2>
+          <ul class="space-y-3">
+            <li class="flex items-center text-gray-700">
+              <span class="w-2 h-2 rounded-full bg-primary mr-3"></span>
+              <a href="#" class="hover:text-primary">TouchDesigner</a>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="w-2 h-2 rounded-full bg-primary mr-3"></span>
+              <a href="#" class="hover:text-primary">Processing/p5.js</a>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="w-2 h-2 rounded-full bg-primary mr-3"></span>
+              <a href="#" class="hover:text-primary">Max/MSP</a>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="w-2 h-2 rounded-full bg-primary mr-3"></span>
+              <a href="#" class="hover:text-primary">Python AI工具链</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <h2 class="text-2xl font-bold mb-6 flex items-center">
+            <i class="fa fa-book text-primary mr-3"></i>
+            参考书籍
+          </h2>
+          <ul class="space-y-3">
+            <li class="flex items-center text-gray-700">
+              <span class="w-2 h-2 rounded-full bg-primary mr-3"></span>
+              <span>《生成艺术》- Paul Friedlander</span>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="w-2 h-2 rounded-full bg-primary mr-3"></span>
+              <span>《代码本色》- Daniel Shiffman</span>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="w-2 h-2 rounded-full bg-primary mr-3"></span>
+              <span>《艺术中的计算机图形学》</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <h2 class="text-2xl font-bold mb-6 flex items-center">
+            <i class="fa fa-link text-primary mr-3"></i>
+            相关链接
+          </h2>
+          <ul class="space-y-3">
+            <li class="flex items-center text-gray-700">
+              <span class="w-2 h-2 rounded-full bg-primary mr-3"></span>
+              <a href="https://github.com/code-2-art" target="_blank" class="hover:text-primary">GitHub</a>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="w-2 h-2 rounded-full bg-primary mr-3"></span>
+              <a href="https://avantcontra.gumroad.com/" target="_blank" class="hover:text-primary">Gumroad</a>
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="w-2 h-2 rounded-full bg-primary mr-3"></span>
+              <a href="https://youtube.com/avantcontra" target="_blank" class="hover:text-primary">YouTube</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <h2 class="text-2xl font-bold mb-6 flex items-center">
+            <i class="fa fa-file-text text-primary mr-3"></i>
+            论文资源
+          </h2>
+          <p class="text-gray-600">相关学术论文与研究资料，持续更新中...</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white pt-16 pb-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="border-t border-white/10 pt-8">
+        <p class="text-gray-500 text-sm text-center">© 2016-{new Date().getFullYear()} 实验编程</p>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
