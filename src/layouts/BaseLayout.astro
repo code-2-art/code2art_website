@@ -7,6 +7,7 @@ interface Props {
 }
 
 const SITE = 'https://code2art.com';
+const BASE = import.meta.env.BASE_URL;
 
 const {
   title = '实验编程 | 艺术是算法的叛徒',
@@ -68,9 +69,9 @@ const orgSchema = {
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="实验编程 RSS" href={`${SITE}/rss.xml`} />
 
-    <link rel="icon" href="/favicon.jpg" />
+    <link rel="icon" href={`${BASE}favicon.jpg`} />
     <!-- 使用本地托管的Inter字体，提升中国大陆访问速度 -->
-    <link href="/fonts/inter.css" rel="stylesheet" />
+    <link href={`${BASE}fonts/inter.css`} rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
     <!-- JSON-LD: WebSite + Organization -->

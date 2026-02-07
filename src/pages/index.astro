@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getPosts, type Post } from '../lib/feishu';
 import { getActivities, type Activity } from '../lib/feishuActivities';
 
+const BASE = import.meta.env.BASE_URL;
+
 
 let blogPosts: Post[] = [];
 let activities: Post[] = [];
@@ -117,31 +119,31 @@ try {
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center text-center">
-          <img src="/uploads/qr-wechat.jpg" alt="微信公众号 二维码" class="w-48 h-48 object-cover rounded-lg mb-4 bg-gray-100" loading="lazy" />
+          <img src={`${BASE}uploads/qr-wechat.jpg`} alt="微信公众号 二维码" class="w-48 h-48 object-cover rounded-lg mb-4 bg-gray-100" loading="lazy" />
           <h3 class="text-lg font-semibold">微信公众号</h3>
           <p class="text-gray-500 text-sm mt-1">搜索：实验编程</p>
         </div>
 
         <div class="bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center text-center">
-          <img src="/uploads/qr-xhs.jpg" alt="小红书 二维码" class="w-48 h-48 object-cover rounded-lg mb-4 bg-gray-100" loading="lazy" />
+          <img src={`${BASE}uploads/qr-xhs.jpg`} alt="小红书 二维码" class="w-48 h-48 object-cover rounded-lg mb-4 bg-gray-100" loading="lazy" />
           <h3 class="text-lg font-semibold">小红书</h3>
           <p class="text-gray-500 text-sm mt-1">搜索：实验编程</p>
         </div>
 
         <div class="bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center text-center">
-          <img src="/uploads/qr-douyin.jpg" alt="抖音 二维码" class="w-48 h-48 object-cover rounded-lg mb-4 bg-gray-100" loading="lazy" />
+          <img src={`${BASE}uploads/qr-douyin.jpg`} alt="抖音 二维码" class="w-48 h-48 object-cover rounded-lg mb-4 bg-gray-100" loading="lazy" />
           <h3 class="text-lg font-semibold">抖音</h3>
           <p class="text-gray-500 text-sm mt-1">搜索：实验编程</p>
         </div>
 
         <div class="bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center text-center">
-          <img src="/uploads/qr-bilibili.jpg" alt="哔哩哔哩 二维码" class="w-48 h-48 object-cover rounded-lg mb-4 bg-gray-100" loading="lazy" />
+          <img src={`${BASE}uploads/qr-bilibili.jpg`} alt="哔哩哔哩 二维码" class="w-48 h-48 object-cover rounded-lg mb-4 bg-gray-100" loading="lazy" />
           <h3 class="text-lg font-semibold">哔哩哔哩</h3>
           <p class="text-gray-500 text-sm mt-1">搜索：实验编程</p>
         </div>
 
         <div class="bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center text-center">
-          <img src="/uploads/qr-join.jpg" alt="加入社群 二维码" class="w-48 h-48 object-cover rounded-lg mb-4 bg-gray-100" loading="lazy" />
+          <img src={`${BASE}uploads/qr-join.jpg`} alt="加入社群 二维码" class="w-48 h-48 object-cover rounded-lg mb-4 bg-gray-100" loading="lazy" />
           <h3 class="text-lg font-semibold">加入社群</h3>
           <p class="text-gray-500 text-sm mt-1">扫码加入社群</p>
         </div>
@@ -275,7 +277,7 @@ try {
       )}
 
       <div class="text-center mt-12">
-        <a href="/blog/" class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-full font-medium hover:shadow-lg hover:shadow-primary/20 transition-all">查看更多文章</a>
+        <a href={`${BASE}blog/`} class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-full font-medium hover:shadow-lg hover:shadow-primary/20 transition-all">查看更多文章</a>
       </div>
     </div>
   </section>
@@ -306,7 +308,7 @@ try {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
         <!-- 品牌与简介 -->
         <div>
-          <a href="/" class="flex items-center space-x-2 mb-6">
+          <a href={BASE} class="flex items-center space-x-2 mb-6">
             <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
               <!-- <span class="text-white font-bold text-xl">TA</span> -->
               <img src="https://float.intplusplus.cn/code2art/favicon.jpg" alt="实验编程" class="w-10 h-10 rounded-lg" />
