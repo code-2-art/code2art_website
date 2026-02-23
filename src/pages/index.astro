@@ -1,22 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getPosts, type Post } from '../lib/feishu';
-import { getActivities, type Activity } from '../lib/feishuActivities';
+import { getCollection } from 'astro:content';
 
+const allPosts = await getCollection('posts');
+allPosts.sort((a, b) => new Date(b.data.publishedAt ?? 0).getTime() - new Date(a.data.publishedAt ?? 0).getTime());
+const blogPosts = allPosts.slice(0, 3);
 
-let blogPosts: Post[] = [];
-let activities: Activity[] = [];
-
-try {
-  blogPosts = await getPosts(3);        // 博客前 6 篇
-} catch (e) {
-  console.warn('getPosts failed:', e);
-}
-try {
-  activities = await getActivities(3);  // 活动表前 6 条
-} catch (e) {
-  console.warn('getActivities failed:', e);
-}
+const allActivities = await getCollection('activities');
+allActivities.sort((a, b) => new Date(b.data.date ?? 0).getTime() - new Date(a.data.date ?? 0).getTime());
+const activities = allActivities.slice(0, 3);
 ---
 
 <BaseLayout title="实验编程 Experimental Programming" description="实验编程 Experimental Programming, 用实验精神和计算编程进行艺术创作">
@@ -193,10 +185,9 @@ try {
           {activities.map((a) => (
             <div class="rounded-2xl overflow-hidden shadow-lg group hover:shadow-xl transition-all duration-300">
               <div class="relative">
-                {a.coverUrl ? (
-                  // <a href={`/activities/${a.slug}`}>
-                  <a href={`${a.docUrl}`}>
-                    <img src={a.coverUrl} alt={a.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                {a.data.coverUrl ? (
+                  <a href={a.data.docUrl || `/activities/${a.data.slug}`}>
+                    <img src={a.data.coverUrl} alt={a.data.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </a>
                 ) : (
                   <div class="w-full h-60 bg-gradient-to-br from-primary/10 to-secondary/10" />
@@ -204,10 +195,9 @@ try {
                 <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">活动</div>
               </div>
               <div class="p-6">
-                <div class="flex items-center text-gray-500 mb-3">📅<span class="ml-2">{a.date?.slice(0,10) ?? ''}</span></div>
+                <div class="flex items-center text-gray-500 mb-3">📅<span class="ml-2">{a.data.date?.slice(0,10) ?? ''}</span></div>
                 <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                  {/* <a href={`/activities/${a.slug}`}>{a.title}</a> */}
-                  <a href={`${a.docUrl}`}>{a.title}</a>
+                  <a href={a.data.docUrl || `/activities/${a.data.slug}`}>{a.data.title}</a>
                 </h3>
                 {/* {a.summary && <p class="text-gray-600 mb-4 line-clamp-3">{a.summary}</p>} */}
                 {/* <a href={`/activities/${a.slug}`} class="inline-flex items-center text-primary font-medium hover:underline">了解详情 →</a> */}
@@ -242,30 +232,27 @@ try {
                 </a>
               )} */}
               <div class="relative">
-                {post.coverUrl ? (
-                  // <a href={`/blog/${post.slug}`}>
-                  <a href={`${post.docUrl}`}>
-                    <img src={post.coverUrl} alt={post.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                {post.data.coverUrl ? (
+                  <a href={post.data.docUrl || `/blog/${post.data.slug}`}>
+                    <img src={post.data.coverUrl} alt={post.data.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </a>
                 ) : (
                   <div class="w-full h-60 bg-gradient-to-br from-primary/10 to-secondary/10" />
                 )}
-                {/* <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">活动</div> */}
               </div>
               <div class="p-6">
                 <div class="flex items-center mb-4">
                   <div class="flex flex-wrap gap-2">
-                    {(post.tags ?? []).slice(0,4).map((t) => (
+                    {(post.data.tags ?? []).slice(0,4).map((t) => (
                       <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">{t}</span>
                     ))}
                   </div>
-                  <span class="ml-auto text-gray-500 text-sm">{post.publishedAt?.slice(0,10)}</span>
+                  <span class="ml-auto text-gray-500 text-sm">{post.data.publishedAt?.slice(0,10)}</span>
                 </div>
                 <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors">
-                  {/* <a href={`/blog/${post.slug}/`}>{post.title}</a> */}
-                  <a href={`${post.docUrl}`}>{post.title}</a> 
+                  <a href={post.data.docUrl || `/blog/${post.data.slug}`}>{post.data.title}</a>
                 </h3>
-                {post.summary && <p class="text-gray-600 mb-4 line-clamp-3">{post.summary}</p>} 
+                {post.data.summary && <p class="text-gray-600 mb-4 line-clamp-3">{post.data.summary}</p>}
               </div>
             </article>
           ))}

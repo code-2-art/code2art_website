@@ -1,6 +1,6 @@
 // Node 18+ (原生 fetch)
 // 用法：node scripts/fetch-activities.js
-// 从"活动独立表"抓取数据 → 生成 public/feeds/activities.json（可选下载封面/头像）
+// 从"活动独立表"抓取数据 → 生成 src/content/activities/{slug}.md
 import 'dotenv/config';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -9,8 +9,9 @@ import {
   download, enrichContentHtmlFromDocIfNeeded, mapRecordBase,
   getTenantAccessToken,
 } from './feishu-common.js';
+import { htmlToMarkdown, buildMarkdownFile } from './markdown-util.js';
 
-const OUT_DIR = 'public/feeds';
+const OUT_DIR = 'src/content/activities';
 const ASSET_DIR = 'public/uploads';
 const DOWNLOAD_ASSETS = process.env.DOWNLOAD_ASSETS === '1';
 
@@ -52,8 +53,26 @@ async function main() {
   }
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
-  fs.writeFileSync(path.join(OUT_DIR, 'activities.json'), JSON.stringify(acts, null, 2), 'utf-8');
-  console.log(`✅ Wrote ${acts.length} activities → ${path.join(OUT_DIR, 'activities.json')}`);
+
+  for (const a of acts) {
+    const frontmatter = {
+      title: a.title,
+      slug: a.slug,
+      summary: a.summary,
+      coverUrl: a.coverUrl,
+      tags: a.tags,
+      author: a.author,
+      authorAvatarUrl: a.authorAvatarUrl,
+      date: a.date,
+      docUrl: a.docUrl,
+    };
+    const body = htmlToMarkdown(a.contentHtml || '');
+    const md = buildMarkdownFile(frontmatter, body);
+    const filename = `${a.slug}.md`;
+    fs.writeFileSync(path.join(OUT_DIR, filename), md, 'utf-8');
+  }
+
+  console.log(`✅ Wrote ${acts.length} activities → ${OUT_DIR}/`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
