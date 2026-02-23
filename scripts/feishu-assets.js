@@ -67,10 +67,13 @@ async function processMarkdownFile(filePath) {
   }
 
   // 替换 body 中的远程图片 ![alt](http...)
+  // Collect unique remote URLs first, then replace, to avoid mutating body
+  // while iterating with a stateful regex (lastIndex).
   const imgRe = /!\[([^\]]*)\]\((https?:\/\/[^)]+)\)/g;
-  let bodyMatch;
-  while ((bodyMatch = imgRe.exec(body)) !== null) {
-    const remoteUrl = bodyMatch[2];
+  const remoteUrls = new Set();
+  for (const m of body.matchAll(imgRe)) remoteUrls.add(m[2]);
+
+  for (const remoteUrl of remoteUrls) {
     try {
       const localPath = await download(remoteUrl, ASSET_DIR);
       body = body.split(remoteUrl).join(localPath);
