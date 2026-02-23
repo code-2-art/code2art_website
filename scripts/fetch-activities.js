@@ -54,6 +54,7 @@ async function main() {
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
 
+  const writtenFiles = new Set();
   for (const a of acts) {
     const frontmatter = {
       title: a.title,
@@ -70,6 +71,15 @@ async function main() {
     const md = buildMarkdownFile(frontmatter, body);
     const filename = `${a.slug}.md`;
     fs.writeFileSync(path.join(OUT_DIR, filename), md, 'utf-8');
+    writtenFiles.add(filename);
+  }
+
+  // Remove stale .md files that no longer exist upstream
+  for (const f of fs.readdirSync(OUT_DIR)) {
+    if (f.endsWith('.md') && !writtenFiles.has(f)) {
+      fs.unlinkSync(path.join(OUT_DIR, f));
+      console.log(`🗑  Removed stale file: ${f}`);
+    }
   }
 
   console.log(`✅ Wrote ${acts.length} activities → ${OUT_DIR}/`);
