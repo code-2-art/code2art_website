@@ -29,6 +29,10 @@ const title = `${post.data.title} | TechArt`;
       <div class="prose prose-slate max-w-none">
         <Content />
       </div>
+
+      <footer class="mt-12 text-slate-500 border-t pt-6">
+        <p>发布于 {post.data.publishedAt?.slice(0,10) ?? '未知时间'}</p>
+      </footer>
     </div>
   </article>
 </BaseLayout>

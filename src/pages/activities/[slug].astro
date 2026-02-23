@@ -9,24 +9,25 @@ export async function getStaticPaths() {
 
 const { activity } = Astro.props;
 const { Content } = await render(activity);
+const title = `${activity.data.title} | TechArt`;
 ---
 
-<BaseLayout title={activity.data.title} description={activity.data.summary ?? ''}>
+<BaseLayout title={title} description={activity.data.summary ?? ''} ogImage={activity.data.coverUrl ?? '/og-cover.jpg'}>
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <header class="mb-8">
-      <h1 class="text-3xl md:text-4xl font-bold mb-4">{activity.data.title}</h1>
-      <div class="flex items-center text-gray-500 space-x-4">
-        {activity.data.date && (
-          <span class="inline-flex items-center">📅 {activity.data.date.slice(0,10)}</span>
+      <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{activity.data.title}</h1>
+      <div class="mt-4 flex flex-wrap items-center gap-4 text-slate-600">
+        {activity.data.authorAvatarUrl ? (
+          <img src={activity.data.authorAvatarUrl} alt={activity.data.author} class="w-10 h-10 rounded-full" />
+        ) : (
+          <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+            {activity.data.author?.slice(0,1) ?? 'T'}
+          </div>
         )}
-        {activity.data.author && (
-          <span class="inline-flex items-center">
-            {activity.data.authorAvatarUrl && (
-              <img src={activity.data.authorAvatarUrl} alt={activity.data.author} class="w-6 h-6 rounded-full mr-2" />
-            )}
-            {activity.data.author}
-          </span>
-        )}
+        <div>
+          <div class="font-medium">{activity.data.author ?? 'TechArt'}</div>
+          {activity.data.date && <div class="text-sm">{activity.data.date.slice(0,10)}</div>}
+        </div>
       </div>
     </header>
 
