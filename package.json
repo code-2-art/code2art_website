@@ -9,15 +9,17 @@
     "preview": "astro preview --host",
     "fetch:posts": "node scripts/feishu-fetch.js",
     "fetch:activities": "node scripts/fetch-activities.js",
-    "assets:posts": "node scripts/feishu-assets.js public/feeds/posts.json",
-    "assets:activities": "node scripts/feishu-assets.js public/feeds/activities.json"
+    "assets:posts": "node scripts/feishu-assets.js src/content/posts",
+    "assets:activities": "node scripts/feishu-assets.js src/content/activities"
   },
   "dependencies": {
     "astro": "^5.13.10",
-    "dotenv": "^17.2.2"
+    "dotenv": "^17.2.2",
+    "turndown": "^7.2.2"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/react": "^19.1.13",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",

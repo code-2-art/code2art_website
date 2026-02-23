@@ -1,54 +1,46 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getActivities, type Activity } from '../../lib/feishuActivities';
+import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const posts = await getActivities();
-  return posts.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+  const activities = await getCollection('activities');
+  return activities.map((a) => ({ params: { slug: a.data.slug }, props: { activity: a } }));
 }
 
-const { slug } = Astro.params;
-
-let activity: Activity | null = null;
-try {
-  const acts = await getActivities();
-  activity = acts.find(a => a.slug === slug) ?? null;
-} catch (e) {
-  console.warn('Feishu activities fetch failed in [slug].astro:', e);
-}
-
-if (!activity) {
-  throw new Error(`Activity not found: ${slug}`);
-}
+const { activity } = Astro.props;
+const { Content } = await render(activity);
+const title = `${activity.data.title} | TechArt`;
 ---
 
-<BaseLayout title={activity.title} description={activity.summary ?? ''}>
+<BaseLayout title={title} description={activity.data.summary ?? ''} ogImage={activity.data.coverUrl ?? '/og-cover.jpg'}>
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <header class="mb-8">
-      <h1 class="text-3xl md:text-4xl font-bold mb-4">{activity.title}</h1>
-      <div class="flex items-center text-gray-500 space-x-4">
-        {activity.date && (
-          <span class="inline-flex items-center">📅 {activity.date.slice(0,10)}</span>
+      <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{activity.data.title}</h1>
+      <div class="mt-4 flex flex-wrap items-center gap-4 text-slate-600">
+        {activity.data.authorAvatarUrl ? (
+          <img src={activity.data.authorAvatarUrl} alt={activity.data.author} class="w-10 h-10 rounded-full" />
+        ) : (
+          <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+            {activity.data.author?.slice(0,1) ?? 'T'}
+          </div>
         )}
-        {activity.author && (
-          <span class="inline-flex items-center">
-            {activity.authorAvatarUrl && (
-              <img src={activity.authorAvatarUrl} alt={activity.author} class="w-6 h-6 rounded-full mr-2" />
-            )}
-            {activity.author}
-          </span>
-        )}
+        <div>
+          <div class="font-medium">{activity.data.author ?? 'TechArt'}</div>
+          {activity.data.date && <div class="text-sm">{activity.data.date.slice(0,10)}</div>}
+        </div>
       </div>
     </header>
 
-    {activity.coverUrl && (
-      <img src={activity.coverUrl} alt={activity.title} class="w-full rounded-xl shadow mb-8" />
+    {activity.data.coverUrl && (
+      <img src={activity.data.coverUrl} alt={activity.data.title} class="w-full rounded-xl shadow mb-8" />
     )}
 
-    <div class="prose prose-lg max-w-none" set:html={activity.contentHtml ?? ''}></div>
+    <div class="prose prose-lg max-w-none">
+      <Content />
+    </div>
 
     <footer class="mt-12 text-gray-500">
-      <p>发布于 {activity.date?.slice(0,10) ?? '未知时间'}</p>
+      <p>发布于 {activity.data.date?.slice(0,10) ?? '未知时间'}</p>
     </footer>
   </article>
 </BaseLayout>
