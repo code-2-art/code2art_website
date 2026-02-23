@@ -69,6 +69,15 @@ npm run build
 
 ---
 
+## 2026-02-23 21:55 CST — 修复 Markdown 渲染样式
+
+安装并配置 `@tailwindcss/typography` 插件，使页面中已有的 `.prose` 类生效，从而正确渲染 Markdown 正文排版。
+
+### 修改
+- `package.json` — 新增 `@tailwindcss/typography` 依赖
+- `tailwind.config.mjs` — 引入 `typography` 插件
+
+---
 ## 2026-02-23 18:13 CST — fetch 脚本清理上游已删除的 .md 文件
 
 旧的单 JSON 覆写天然不会残留已删除记录，但新的 per-file 模式下，上游删除或 slug 变更后旧 `.md` 文件仍会留存并被 `getCollection` 发布。
