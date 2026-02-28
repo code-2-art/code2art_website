@@ -1,9 +1,13 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { t, getLocalePath } from '../../../i18n/ui';
+import type { Lang } from '../../../i18n/ui';
+
+const lang: Lang = 'zh';
 
 export async function getStaticPaths() {
-  const activities = await getCollection('activities');
+  const activities = await getCollection('activities', ({ data }) => data.lang === 'zh');
   return activities.map((a) => ({ params: { slug: a.data.slug }, props: { activity: a } }));
 }
 
@@ -12,7 +16,7 @@ const { Content } = await render(activity);
 const title = `${activity.data.title} | TechArt`;
 ---
 
-<BaseLayout title={title} description={activity.data.summary ?? ''} ogImage={activity.data.coverUrl ?? '/og-cover.jpg'}>
+<BaseLayout title={title} description={activity.data.summary ?? ''} ogImage={activity.data.coverUrl ?? '/og-cover.jpg'} lang={lang} altPath={`activities/${activity.data.slug}`}>
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <header class="mb-8">
       <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{activity.data.title}</h1>
@@ -40,7 +44,7 @@ const title = `${activity.data.title} | TechArt`;
     </div>
 
     <footer class="mt-12 text-gray-500">
-      <p>发布于 {activity.data.date?.slice(0,10) ?? '未知时间'}</p>
+      <p>{t(lang, 'article.publishedAt')} {activity.data.date?.slice(0,10) ?? t(lang, 'article.unknownTime')}</p>
     </footer>
   </article>
 </BaseLayout>

@@ -4,5 +4,13 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://code2art.com', // 部署后可改
   integrations: [tailwind({ applyBaseStyles: true })],
-  output: 'static'
+  output: 'static',
+  i18n: {
+    defaultLocale: 'zh',
+    locales: ['zh', 'en'],
+    routing: {
+      prefixDefaultLocale: true,
+      redirectToDefaultLocale: true,
+    },
+  },
 });

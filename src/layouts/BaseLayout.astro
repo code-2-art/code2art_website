@@ -1,8 +1,30 @@
 ---
-const { title = '实验编程 | 艺术是算法的叛徒', description = '探索科技 × 艺术的边界', ogImage = '/og-cover.jpg' } = Astro.props;
+import type { Lang } from '../i18n/ui';
+import { t } from '../i18n/ui';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  lang?: Lang;
+  altPath?: string;
+}
+
+const {
+  lang = 'zh',
+  title = t(lang, 'site.title') as string,
+  description = t(lang, 'site.description') as string,
+  ogImage = '/og-cover.jpg',
+  altPath = '',
+} = Astro.props;
+
+const htmlLang = lang === 'zh' ? 'zh-CN' : 'en';
+const site = Astro.site?.origin ?? 'https://code2art.com';
+const zhHref = `${site}/zh/${altPath}`;
+const enHref = `${site}/en/${altPath}`;
 ---
 
-<html lang="zh-CN" class="scroll-smooth">
+<html lang={htmlLang} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,6 +34,9 @@ const { title = '实验编程 | 艺术是算法的叛徒', description = '探索
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <link rel="icon" href="/favicon.jpg" />
+    <link rel="alternate" hreflang="zh" href={zhHref} />
+    <link rel="alternate" hreflang="en" href={enHref} />
+    <link rel="alternate" hreflang="x-default" href={zhHref} />
     <!-- 使用本地托管的Inter字体，提升中国大陆访问速度 -->
     <link href="/fonts/inter.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
