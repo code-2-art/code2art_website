@@ -1,3 +1,43 @@
 ---
-return Astro.redirect('/zh/');
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
+
+<BaseLayout
+  title="Experimental Programming | Language"
+  description="Choose your language"
+  lang="en"
+  altPath=""
+>
+  <main class="min-h-screen flex items-center justify-center bg-light px-6">
+    <section class="w-full max-w-lg rounded-2xl bg-white shadow p-8 text-center">
+      <h1 class="text-2xl font-bold mb-3">Choose Language</h1>
+      <p class="text-gray-600 mb-8">请选择访问语言</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <a
+          href="/en/"
+          data-lang-switch="en"
+          class="inline-flex items-center justify-center rounded-full border border-gray-300 px-5 py-3 font-medium hover:border-primary hover:text-primary transition-colors"
+        >
+          English
+        </a>
+        <a
+          href="/zh/"
+          data-lang-switch="zh"
+          class="inline-flex items-center justify-center rounded-full border border-gray-300 px-5 py-3 font-medium hover:border-primary hover:text-primary transition-colors"
+        >
+          中文
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script is:client>
+    document.querySelectorAll('a[data-lang-switch]').forEach((link) => {
+      link.addEventListener('click', () => {
+        const target = link.getAttribute('data-lang-switch');
+        if (!target) return;
+        document.cookie = `site_lang=${target}; Path=/; Max-Age=15552000; SameSite=Lax`;
+      });
+    });
+  </script>
+</BaseLayout>
