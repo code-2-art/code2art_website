@@ -18,6 +18,11 @@ const formatEventDate = (value?: string | Date) => {
   const date = value instanceof Date ? value : new Date(value);
   return Number.isNaN(date.getTime()) ? '' : date.toISOString().slice(0, 10);
 };
+const resolveListHref = (useDocUrl: boolean | undefined, docUrl: string | undefined, fallbackPath: string) => {
+  if (!useDocUrl) return fallbackPath;
+  const external = docUrl?.trim();
+  return external && external.length > 0 ? external : fallbackPath;
+};
 
 const otherLang = 'zh';
 const switchLabel = '中文';
@@ -127,7 +132,7 @@ const switchHref = getLocalePath(otherLang, '/');
             <div class="rounded-2xl overflow-hidden shadow-lg group hover:shadow-xl transition-all duration-300">
               <div class="relative">
                 {a.data.coverUrl ? (
-                  <a href={getLocalePath(lang, `/events/${a.data.slug}`)}>
+                  <a href={resolveListHref(a.data.useDocUrl, a.data.docUrl, getLocalePath(lang, `/events/${a.data.slug}`))}>
                     <img src={a.data.coverUrl} alt={a.data.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </a>
                 ) : (
@@ -138,7 +143,7 @@ const switchHref = getLocalePath(otherLang, '/');
               <div class="p-6">
                 <div class="flex items-center text-gray-500 mb-3">📅<span class="ml-2">{formatEventDate(a.data.event_date)}</span></div>
                 <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                  <a href={getLocalePath(lang, `/events/${a.data.slug}`)}>{a.data.title}</a>
+                  <a href={resolveListHref(a.data.useDocUrl, a.data.docUrl, getLocalePath(lang, `/events/${a.data.slug}`))}>{a.data.title}</a>
                 </h3>
               </div>
             </div>
@@ -165,7 +170,7 @@ const switchHref = getLocalePath(otherLang, '/');
             <article class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group">
               <div class="relative">
                 {post.data.coverUrl ? (
-                  <a href={getLocalePath(lang, `/tutorials/${post.data.slug}`)}>
+                  <a href={resolveListHref(post.data.useDocUrl, post.data.docUrl, getLocalePath(lang, `/tutorials/${post.data.slug}`))}>
                     <img src={post.data.coverUrl} alt={post.data.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </a>
                 ) : (
@@ -182,7 +187,7 @@ const switchHref = getLocalePath(otherLang, '/');
                   <span class="ml-auto text-gray-500 text-sm">{post.data.publishedAt?.slice(0,10)}</span>
                 </div>
                 <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors">
-                  <a href={getLocalePath(lang, `/tutorials/${post.data.slug}`)}>{post.data.title}</a>
+                  <a href={resolveListHref(post.data.useDocUrl, post.data.docUrl, getLocalePath(lang, `/tutorials/${post.data.slug}`))}>{post.data.title}</a>
                 </h3>
                 {post.data.summary && <p class="text-gray-600 mb-4 line-clamp-3">{post.data.summary}</p>}
               </div>

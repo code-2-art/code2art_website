@@ -41,6 +41,7 @@ const baseSchema = z.object({
   authorAvatarUrl: z.string().optional(),
   publishedAt: z.string().optional(),
   docUrl: z.string().optional(),
+  useDocUrl: z.boolean().optional(),
 });
 
 const tutorials = defineCollection({

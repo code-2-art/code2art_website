@@ -1,9 +1,9 @@
 ---
-id: "event-workshop-touchdesigner-2026-zh"
-concept_id: "workshop-touchdesigner-2026"
+id: "event-250129-aiaia-ai-art-exhibition-zh"
+concept_id: "event-250129-aiaia-ai-art-exhibition"
 type: "event"
-slug: "workshop-touchdesigner-2026"
-title: "Workshop：TouchDesigner 实时视觉创作"
+slug: "event-250129-aiaia-ai-art-exhibition"
+title: "AI艺术作品展"
 lang: "zh"
 
 domains:
@@ -40,14 +40,15 @@ tools:
   - "glsl"
   - "ndi"
 
-coverUrl: "https://float.intplusplus.cn/code2art/assets/fluid2.jpg"
+coverUrl: "https://float.intplusplus.cn/code2art/assets/list/Snipaste_2025-09-23_18-21-00.jpg"
 author: "实验编程"
-publishedAt: "2026-03-15"
-event_date: "2026-03-15"
-end_date: "2026-03-16"
-location: "Zoom（线上）"
-format: "online"
-docUrl: ""
+publishedAt: "2025-01-29"
+event_date: "2025-01-29"
+end_date: "2025-02-28"
+location: "三亚"
+format: "offline"
+docUrl: "https://mp.weixin.qq.com/s/fDnxg7hhGnj5baJ7tXbQ3Q"
+useDocUrl: true
 ---
 
 ## 活动概述
