@@ -1,11 +1,21 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+const contentTypeEnum = z.enum([
+  'tutorial',
+  'project',
+  'glossary',
+  'domain',
+  'resource',
+  'meta',
+  'event',
+]);
+
 /** 所有集合共用的基础字段 */
 const baseSchema = z.object({
   id: z.string().optional(),
   concept_id: z.string().optional(),
-  type: z.string().optional(),
+  type: contentTypeEnum.optional(),
   title: z.string(),
   slug: z.string(),
   lang: z.string().optional(),
@@ -45,6 +55,16 @@ const projects = defineCollection({
   }),
 });
 
+const events = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/events' }),
+  schema: baseSchema.extend({
+    event_date: z.union([z.string(), z.date()]).optional(),
+    end_date: z.union([z.string(), z.date()]).optional(),
+    location: z.string().optional(),
+    format: z.enum(['online', 'offline', 'hybrid']).optional(),
+  }),
+});
+
 const glossary = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/glossary' }),
   schema: baseSchema,
@@ -68,6 +88,7 @@ const meta = defineCollection({
 export const collections = {
   tutorials,
   projects,
+  events,
   glossary,
   domains,
   resources,
