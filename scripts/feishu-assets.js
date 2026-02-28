@@ -1,6 +1,6 @@
 // Node 18+
-// 用法：node scripts/feishu-assets.js src/content/posts
-//       node scripts/feishu-assets.js src/content/activities
+// 用法：node scripts/feishu-assets.js src/content/tutorials/zh
+//       node scripts/feishu-assets.js src/content/projects/zh
 // 二次处理：把 .md frontmatter 里引用的远程图片下载到 public/uploads/ 并回写为本地路径
 import fs from 'node:fs';
 import path from 'node:path';
@@ -107,5 +107,5 @@ async function processDirectory(dirPath) {
   console.log(`✅ Assets localized in ${count}/${files.length} files → ${dirPath}`);
 }
 
-const target = process.argv[2] || 'src/content/posts';
+const target = process.argv[2] || 'src/content/tutorials/zh';
 processDirectory(target).catch((e) => { console.error(e); process.exit(1); });

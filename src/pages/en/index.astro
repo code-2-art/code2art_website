@@ -6,11 +6,11 @@ import type { Lang } from '../../i18n/ui';
 
 const lang: Lang = 'en';
 
-const allPosts = await getCollection('posts', ({ filePath }) => filePath.includes('/en/'));
+const allPosts = await getCollection('tutorials', ({ filePath }) => filePath.includes('/en/'));
 allPosts.sort((a, b) => new Date(b.data.publishedAt ?? 0).getTime() - new Date(a.data.publishedAt ?? 0).getTime());
 const blogPosts = allPosts.slice(0, 3);
 
-const allActivities = await getCollection('activities', ({ filePath }) => filePath.includes('/en/'));
+const allActivities = await getCollection('projects', ({ filePath }) => filePath.includes('/en/'));
 allActivities.sort((a, b) => new Date(b.data.date ?? 0).getTime() - new Date(a.data.date ?? 0).getTime());
 const activities = allActivities.slice(0, 3);
 

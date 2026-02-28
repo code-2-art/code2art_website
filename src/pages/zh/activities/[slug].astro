@@ -7,7 +7,7 @@ import type { Lang } from '../../../i18n/ui';
 const lang: Lang = 'zh';
 
 export async function getStaticPaths() {
-  const activities = await getCollection('activities', ({ filePath }) => filePath.includes('/zh/'));
+  const activities = await getCollection('projects', ({ filePath }) => filePath.includes('/zh/'));
   return activities.map((a) => ({ params: { slug: a.data.slug }, props: { activity: a } }));
 }
 

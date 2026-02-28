@@ -1,7 +1,8 @@
 ## 改动类型
 
-- [ ] 新增文章 (posts)
-- [ ] 新增活动 (activities)
+- [ ] 新增教程 (tutorials)
+- [ ] 新增项目 (projects)
+- [ ] 新增其他内容 (glossary / domains / resources / meta)
 - [ ] 修改已有内容
 
 ## 检查清单
@@ -16,4 +17,4 @@
 
 ---
 
-> 协作者须知：请仅修改 `src/content/posts/` 或 `src/content/activities/` 目录下的 Markdown 文件，不要改动其他代码文件。
+> 协作者须知：请仅修改 `src/content/` 目录下对应集合的 `zh/` 或 `en/` 子目录中的 Markdown 文件，不要改动其他代码文件。

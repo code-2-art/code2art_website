@@ -8,7 +8,7 @@ import type { Lang } from '../../../i18n/ui';
 const lang: Lang = 'en';
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const posts = await getCollection('posts', ({ filePath }) => filePath.includes('/en/'));
+  const posts = await getCollection('tutorials', ({ filePath }) => filePath.includes('/en/'));
   posts.sort((a, b) => new Date(b.data.publishedAt ?? 0).getTime() - new Date(a.data.publishedAt ?? 0).getTime());
   return paginate(posts, { pageSize: 9 });
 }) satisfies GetStaticPaths;

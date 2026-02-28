@@ -6,11 +6,11 @@ import type { Lang } from '../../i18n/ui';
 
 const lang: Lang = 'zh';
 
-const allPosts = await getCollection('posts', ({ filePath }) => filePath.includes('/zh/'));
+const allPosts = await getCollection('tutorials', ({ filePath }) => filePath.includes('/zh/'));
 allPosts.sort((a, b) => new Date(b.data.publishedAt ?? 0).getTime() - new Date(a.data.publishedAt ?? 0).getTime());
 const blogPosts = allPosts.slice(0, 3);
 
-const allActivities = await getCollection('activities', ({ filePath }) => filePath.includes('/zh/'));
+const allActivities = await getCollection('projects', ({ filePath }) => filePath.includes('/zh/'));
 allActivities.sort((a, b) => new Date(b.data.date ?? 0).getTime() - new Date(a.data.date ?? 0).getTime());
 const activities = allActivities.slice(0, 3);
 
