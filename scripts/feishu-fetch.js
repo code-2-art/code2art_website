@@ -1,6 +1,6 @@
 // Node 18+ (原生 fetch)
 // 用法：node scripts/feishu-fetch.js
-// 从「博客主表」抓取数据 → 生成 src/content/posts/{slug}.md
+// 从「博客主表」抓取数据 → 生成 src/content/tutorials/zh/{slug}.md
 import 'dotenv/config';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -11,7 +11,7 @@ import {
 } from './feishu-common.js';
 import { htmlToMarkdown, buildMarkdownFile } from './markdown-util.js';
 
-const OUT_DIR = 'src/content/posts';
+const OUT_DIR = 'src/content/tutorials/zh';
 const ASSET_DIR = 'public/uploads';
 const DOWNLOAD_ASSETS = process.env.DOWNLOAD_ASSETS === '1';
 

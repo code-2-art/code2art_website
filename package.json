@@ -9,8 +9,8 @@
     "preview": "astro preview --host",
     "fetch:posts": "node scripts/feishu-fetch.js",
     "fetch:activities": "node scripts/fetch-activities.js",
-    "assets:posts": "node scripts/feishu-assets.js src/content/posts",
-    "assets:activities": "node scripts/feishu-assets.js src/content/activities"
+    "assets:tutorials": "node scripts/feishu-assets.js src/content/tutorials/zh",
+    "assets:projects": "node scripts/feishu-assets.js src/content/projects/zh"
   },
   "dependencies": {
     "astro": "^5.13.10",

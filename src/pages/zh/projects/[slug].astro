@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { t, getLocalePath } from '../../../i18n/ui';
+import type { Lang } from '../../../i18n/ui';
+
+const lang: Lang = 'zh';
+
+export async function getStaticPaths() {
+  const activities = await getCollection('projects', ({ filePath }) => filePath.includes('/zh/'));
+  return activities.map((a) => ({ params: { slug: a.data.slug }, props: { activity: a } }));
+}
+
+const { activity } = Astro.props;
+const { Content } = await render(activity);
+const title = `${activity.data.title} | TechArt`;
+---
+
+<BaseLayout title={title} description={activity.data.summary ?? ''} ogImage={activity.data.coverUrl ?? '/og-cover.jpg'} lang={lang} altPath={`projects/${activity.data.slug}`}>
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <header class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{activity.data.title}</h1>
+      <div class="mt-4 flex flex-wrap items-center gap-4 text-slate-600">
+        {activity.data.authorAvatarUrl ? (
+          <img src={activity.data.authorAvatarUrl} alt={activity.data.author} class="w-10 h-10 rounded-full" />
+        ) : (
+          <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+            {activity.data.author?.slice(0,1) ?? 'T'}
+          </div>
+        )}
+        <div>
+          <div class="font-medium">{activity.data.author ?? 'TechArt'}</div>
+          {activity.data.date && <div class="text-sm">{activity.data.date.slice(0,10)}</div>}
+        </div>
+      </div>
+    </header>
+
+    {activity.data.coverUrl && (
+      <img src={activity.data.coverUrl} alt={activity.data.title} class="w-full rounded-xl shadow mb-8" />
+    )}
+
+    <div class="prose prose-lg max-w-none">
+      <Content />
+    </div>
+
+    <footer class="mt-12 text-gray-500">
+      <p>{t(lang, 'article.publishedAt')} {activity.data.date?.slice(0,10) ?? t(lang, 'article.unknownTime')}</p>
+    </footer>
+  </article>
+</BaseLayout>

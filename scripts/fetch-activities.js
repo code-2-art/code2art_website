@@ -1,6 +1,6 @@
 // Node 18+ (原生 fetch)
 // 用法：node scripts/fetch-activities.js
-// 从"活动独立表"抓取数据 → 生成 src/content/activities/{slug}.md
+// 从"活动独立表"抓取数据 → 生成 src/content/projects/zh/{slug}.md
 import 'dotenv/config';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -11,7 +11,7 @@ import {
 } from './feishu-common.js';
 import { htmlToMarkdown, buildMarkdownFile } from './markdown-util.js';
 
-const OUT_DIR = 'src/content/activities';
+const OUT_DIR = 'src/content/projects/zh';
 const ASSET_DIR = 'public/uploads';
 const DOWNLOAD_ASSETS = process.env.DOWNLOAD_ASSETS === '1';
 
