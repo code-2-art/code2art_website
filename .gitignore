@@ -12,6 +12,7 @@ node_modules/
 
 # inter docs
 doc/inter_doc/
+changelogs/
 
 # Logs
 npm-debug.log*
@@ -151,3 +152,4 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+

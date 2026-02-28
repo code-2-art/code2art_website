@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-03-01 00:43 CST — i18n 重定向体验与策略优化
+
+根路径 `/` 不再使用 `Redirecting from / to /zh/` 的中间跳转页，改为更友好的语言入口与 Nginx 分流配套方案。
+
+### 变更记录
+- 详见: `changelogs/2026-03-01-i18n-redirect-optimization.md`
+
+---
+
 ## 如何添加 Markdown 文件
 
 ### 方式一：从飞书自动拉取
