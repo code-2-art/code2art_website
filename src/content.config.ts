@@ -3,9 +3,28 @@ import { glob } from 'astro/loaders';
 
 /** 所有集合共用的基础字段 */
 const baseSchema = z.object({
+  id: z.string().optional(),
+  concept_id: z.string().optional(),
+  type: z.string().optional(),
   title: z.string(),
   slug: z.string(),
+  lang: z.string().optional(),
+  domains: z.array(z.string()).optional(),
+  series: z
+    .object({
+      id: z.string(),
+      order: z.number().optional(),
+    })
+    .optional(),
+  related_terms: z.array(z.string()).optional(),
   summary: z.string().optional(),
+  difficulty: z.string().optional(),
+  tools: z.array(z.string()).optional(),
+  status: z.string().optional(),
+  created: z.string().optional(),
+  updated: z.string().optional(),
+  version: z.number().optional(),
+  aliases: z.array(z.string()).optional(),
   coverUrl: z.string().optional(),
   tags: z.array(z.string()).optional(),
   author: z.string().optional(),
