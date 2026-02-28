@@ -8,7 +8,7 @@ export const ui = {
     'nav.brand': '实验编程',
     'nav.about': '关于社群',
     'nav.activities': '活动',
-    'nav.blog': '博客',
+    'nav.blog': '教程',
     'nav.contact': '联系我们',
     'nav.menuLabel': '打开菜单',
 
@@ -75,8 +75,8 @@ export const ui = {
     // Navbar
     'nav.brand': 'Experimental Programming',
     'nav.about': 'About',
-    'nav.activities': 'Activities',
-    'nav.blog': 'Blog',
+    'nav.activities': 'Events',
+    'nav.blog': 'Tutorials',
     'nav.contact': 'Contact',
     'nav.menuLabel': 'Open menu',
 
@@ -118,14 +118,14 @@ export const ui = {
     'footer.backToTop': 'Back to top',
 
     // Blog list page
-    'blogList.title': 'Blog',
+    'blogList.title': 'Tutorials',
     'blogList.count': (n: number) => `${n} article${n !== 1 ? 's' : ''} in total`,
     'blogList.empty': '(No blog posts yet)',
     'blogList.prev': '← Previous',
     'blogList.next': 'Next →',
 
     // Activities list page
-    'activitiesList.title': 'All Activities',
+    'activitiesList.title': 'All Events',
     'activitiesList.count': (n: number) => `${n} activit${n !== 1 ? 'ies' : 'y'} in total`,
     'activitiesList.empty': '(No activities yet)',
     'activitiesList.prev': '← Previous',
