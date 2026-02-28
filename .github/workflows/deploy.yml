@@ -38,4 +38,4 @@ jobs:
           rsync -avz --delete \
             -e "ssh -p ${{ secrets.DEPLOY_PORT }}" \
             dist/ \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/www/wwwroot/code2art.com/
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/www/wwwroot/code2art.com/dist/
