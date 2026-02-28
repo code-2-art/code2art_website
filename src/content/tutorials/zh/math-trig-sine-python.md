@@ -16,11 +16,13 @@ series:
 
 related_terms:
   - "trigonometric-functions"
-  - "python"
+  - "sine-wave"
+  - "mathematical-visualization"
 
 tags:
+  - "trigonometry"
+  - "math-visualization"
   - "python"
-  - "trigonometric-functions"
 
 status: "canonical"
 created: "2019-07-08"

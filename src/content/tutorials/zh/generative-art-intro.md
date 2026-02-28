@@ -1,14 +1,50 @@
 ---
-title: "生成艺术入门：当算法遇见美学"
+id: "tutorial-generative-art-intro-zh"
+concept_id: "generative-art-intro"
+type: "tutorial"
 slug: "generative-art-intro"
-summary: "从零开始了解生成艺术的核心概念、常用工具与创作思路，适合对编程和艺术交叉领域感兴趣的初学者。"
-coverUrl: "https://float.intplusplus.cn/code2art/assets/fluid.jpg"
+title: "生成艺术入门：当算法遇见美学"
+lang: "zh"
+
+domains:
+  - "generative-art"
+  - "computational-creativity"
+
+series:
+  id: "generative-art-foundations"
+  order: 1
+
+related_terms:
+  - "generative-art"
+  - "creative-coding"
+  - "algorithmic-aesthetics"
+
 tags:
-  - "生成艺术"
-  - "Creative Coding"
-  - "入门指南"
+  - "generative-art"
+  - "creative-coding"
+  - "beginner-guide"
+
+status: "canonical"
+created: "2026-02-20"
+updated: "2026-02-20"
+version: 1
+
+aliases:
+  - "生成艺术入门：当算法遇见美学"
+
+summary: "从零开始了解生成艺术的核心概念、常用工具与创作思路，适合对编程和艺术交叉领域感兴趣的初学者。"
+difficulty: "beginner"
+
+tools:
+  - "p5js"
+  - "processing"
+  - "touchdesigner"
+  - "glsl"
+
+coverUrl: "https://float.intplusplus.cn/code2art/assets/fluid.jpg"
 author: "实验编程"
 publishedAt: "2026-02-20"
+docUrl: ""
 ---
 
 ## 什么是生成艺术？

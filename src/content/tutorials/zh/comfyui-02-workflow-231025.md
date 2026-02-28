@@ -11,15 +11,17 @@ domains:
   - "workflow-automation"
 
 series:
-  id: "comfyui-notes"
+  id: "comfyui-learning-path"
   order: 2
 
 related_terms:
   - "comfyui"
-  - "workflow"
+  - "stable-diffusion"
+  - "node-workflow"
 
 tags:
   - "comfyui"
+  - "stable-diffusion"
   - "workflow"
 
 status: "canonical"
@@ -35,6 +37,7 @@ difficulty: "intermediate"
 
 tools:
   - "comfyui"
+  - "stable-diffusion"
 
 coverUrl: "https://avantcontra.github.io/assets/images/paste-comfyui-02-workflow-231025-38b19c8a0eea35af3719a8e2f9feada3.png"
 author: "Contra"

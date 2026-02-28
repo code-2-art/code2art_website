@@ -1,14 +1,50 @@
 ---
-title: "Workshop：TouchDesigner 实时视觉创作"
+id: "project-workshop-touchdesigner-2026-zh"
+concept_id: "workshop-touchdesigner-2026"
+type: "project"
 slug: "workshop-touchdesigner-2026"
-summary: "面向零基础学员的 TouchDesigner 实时视觉工作坊，从节点逻辑到现场演出，两天掌握核心工作流。"
-coverUrl: "https://float.intplusplus.cn/code2art/assets/fluid2.jpg"
+title: "Workshop：TouchDesigner 实时视觉创作"
+lang: "zh"
+
+domains:
+  - "interactive-media"
+  - "real-time-visuals"
+
+series:
+  id: "touchdesigner-workshops"
+  order: 1
+
+related_terms:
+  - "touchdesigner"
+  - "vj"
+  - "real-time-visuals"
+
 tags:
-  - "Workshop"
-  - "TouchDesigner"
-  - "实时视觉"
+  - "touchdesigner"
+  - "workshop"
+  - "live-visuals"
+
+status: "canonical"
+created: "2026-03-15"
+updated: "2026-03-15"
+version: 1
+
+aliases:
+  - "Workshop：TouchDesigner 实时视觉创作"
+
+summary: "面向零基础学员的 TouchDesigner 实时视觉工作坊，从节点逻辑到现场演出，两天掌握核心工作流。"
+difficulty: "beginner"
+
+tools:
+  - "touchdesigner"
+  - "glsl"
+  - "ndi"
+
+coverUrl: "https://float.intplusplus.cn/code2art/assets/fluid2.jpg"
 author: "实验编程"
+publishedAt: "2026-03-15"
 date: "2026-03-15"
+docUrl: ""
 ---
 
 ## 活动概述

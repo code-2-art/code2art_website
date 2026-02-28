@@ -16,11 +16,14 @@ series:
 
 related_terms:
   - "nature-of-code"
-  - "blender"
+  - "vector-math"
+  - "creative-coding"
 
 tags:
-  - "blender"
   - "nature-of-code"
+  - "vector-math"
+  - "blender"
+  - "sverchok"
 
 status: "canonical"
 created: "2020-06-15"
@@ -35,6 +38,7 @@ difficulty: "intermediate"
 
 tools:
   - "blender"
+  - "sverchok"
 
 coverUrl: "https://avantcontra.github.io/assets/images/noc1.3-875129807fbc7b9844552e4cb1fc8508.jpg"
 author: "Contra"

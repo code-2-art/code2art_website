@@ -16,11 +16,13 @@ series:
 
 related_terms:
   - "nature-of-code"
-  - "maxmsp"
+  - "vector-math"
+  - "creative-coding"
 
 tags:
-  - "maxmsp"
   - "nature-of-code"
+  - "vector-math"
+  - "maxmsp"
 
 status: "canonical"
 created: "2020-07-02"

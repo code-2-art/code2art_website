@@ -16,13 +16,14 @@ series:
 
 related_terms:
   - "fourier-series"
-  - "blender"
-  - "python"
+  - "epicycles"
+  - "mathematical-visualization"
 
 tags:
+  - "fourier-series"
+  - "math-visualization"
   - "blender"
   - "python"
-  - "fourier-series"
 
 status: "canonical"
 created: "2019-11-17"

@@ -16,11 +16,14 @@ series:
 
 related_terms:
   - "fourier-series"
-  - "blender"
+  - "epicycles"
+  - "mathematical-visualization"
 
 tags:
-  - "blender"
   - "fourier-series"
+  - "math-visualization"
+  - "blender"
+  - "python"
 
 status: "canonical"
 created: "2019-12-11"
@@ -35,6 +38,7 @@ difficulty: "intermediate"
 
 tools:
   - "blender"
+  - "python"
 
 coverUrl: "https://avantcontra.github.io/assets/images/fs-blender-3d-all-2-ba69690c40aeeb707ec556627d88e780.gif"
 author: "Contra"

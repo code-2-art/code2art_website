@@ -11,14 +11,18 @@ domains:
   - "workflow-automation"
 
 series:
-  id: "comfyui-notes"
+  id: "comfyui-learning-path"
   order: 3
 
 related_terms:
   - "comfyui"
+  - "stable-diffusion"
+  - "node-workflow"
 
 tags:
   - "comfyui"
+  - "stable-diffusion"
+  - "workflow"
 
 status: "canonical"
 created: "2023-10-29"
@@ -29,10 +33,11 @@ aliases:
   - "ComfyUI03 插件安装"
 
 summary: "ComfyUI 插件安装。"
-difficulty: "beginner"
+difficulty: "intermediate"
 
 tools:
   - "comfyui"
+  - "stable-diffusion"
 
 coverUrl: "https://avantcontra.github.io/assets/images/paste-comfyui-03-extension-f8a5334ae314ffb379eab35bf5c0a0a8.png"
 author: "Contra"

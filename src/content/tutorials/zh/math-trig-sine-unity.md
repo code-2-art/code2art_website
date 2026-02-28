@@ -16,11 +16,13 @@ series:
 
 related_terms:
   - "trigonometric-functions"
-  - "unity"
+  - "sine-wave"
+  - "mathematical-visualization"
 
 tags:
+  - "trigonometry"
+  - "math-visualization"
   - "unity"
-  - "trigonometric-functions"
 
 status: "canonical"
 created: "2019-07-10"

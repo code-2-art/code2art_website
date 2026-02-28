@@ -16,11 +16,14 @@ series:
 
 related_terms:
   - "fourier-series"
-  - "javascript"
+  - "epicycles"
+  - "mathematical-visualization"
 
 tags:
-  - "javascript"
   - "fourier-series"
+  - "math-visualization"
+  - "javascript"
+  - "react"
 
 status: "canonical"
 created: "2019-08-31"
@@ -35,6 +38,7 @@ difficulty: "intermediate"
 
 tools:
   - "javascript"
+  - "react"
 
 coverUrl: "https://avantcontra.github.io/assets/images/fs-js-5-834f90695343cd366b48395ac8e6ecbd.gif"
 author: "Contra"

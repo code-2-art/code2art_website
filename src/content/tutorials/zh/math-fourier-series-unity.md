@@ -16,11 +16,13 @@ series:
 
 related_terms:
   - "fourier-series"
-  - "unity"
+  - "epicycles"
+  - "mathematical-visualization"
 
 tags:
-  - "unity"
   - "fourier-series"
+  - "math-visualization"
+  - "unity"
 
 status: "canonical"
 created: "2019-11-03"

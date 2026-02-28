@@ -16,11 +16,13 @@ series:
 
 related_terms:
   - "trigonometric-functions"
-  - "maxmsp"
+  - "sine-wave"
+  - "mathematical-visualization"
 
 tags:
+  - "trigonometry"
+  - "math-visualization"
   - "maxmsp"
-  - "trigonometric-functions"
 
 status: "canonical"
 created: "2019-07-04"

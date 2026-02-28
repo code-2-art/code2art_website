@@ -11,15 +11,19 @@ domains:
   - "audio-computation"
 
 series:
-  id: "interactive-media-notes"
+  id: "interactive-media-practice"
   order: 1
 
 related_terms:
-  - "maxmsp"
-
-tags:
+  - "software-defined-radio"
   - "maxmsp"
   - "puredata"
+
+tags:
+  - "sdr"
+  - "maxmsp"
+  - "puredata"
+  - "radio-art"
 
 status: "canonical"
 created: "2017-03-28"
@@ -35,10 +39,12 @@ difficulty: "intermediate"
 tools:
   - "maxmsp"
   - "puredata"
+  - "rtl-sdr"
 
 coverUrl: "https://avantcontra.github.io/assets/images/maxmsp-pd-sdr-1-813b9665944b5396849524a843933fd0.jpg"
 author: "Contra"
 publishedAt: "2017-03-28"
+date: "2017-03-28"
 docUrl: "https://avantcontra.github.io/interactive-media/maxmsp-puredata-sdr"
 ---
 <p><img loading="lazy" src="https://avantcontra.github.io/assets/images/maxmsp-pd-sdr-1-813b9665944b5396849524a843933fd0.jpg" width="650" height="431" class="img_ev3q"></p><p><em>图自 softcraze.com</em></p><p>从《终结者1》中的“天网”开始，“人工智能”若隐若现了三十多年，终于在今年占领了头条位置。据说霍爷（不是元甲，是霍金）也预言了 “人类未来的敌人就是 AI ”。</p><p>在不远的未来的某一天，当你摆脱智能扫地机器人的阻拦跳出窗外，才发现街上不断涌来的僵尸，空气中弥漫着能使人变异的病毒，无人驾驶的汽车拦在十字路口。微信是不能发了，谁知道另一头接收微信的是人还是狗。急迫想刷微博朋友圈获取最新消息，但互联网已经被天网完全控制。</p><p>是时候学一门末日技能了，在断网的时候能跟外界保持联络。</p><p>可以选择通过 3KHz～300GHz 之间的电磁波来通信，用国语说就是收听广播。</p><p>严格地讲，不是指普通家用或车里收听的那种广播（接收范围有点窄），而是“无线电”。能收到世界某个角落发出的微弱信息，指引着末日仅存的人类。</p><p><img loading="lazy" src="https://avantcontra.github.io/assets/images/maxmsp-pd-sdr-2-9f38170d68b62be078fd7abbc2a809ea.jpg" width="650" height="366" class="img_ev3q"></p><p><em>Citizen Z in Z Nation，图自Pinterest</em></p><p>当然，作为一名新媒体艺术家，身上背个无线电台坐在星巴克喝茶，目标有点大，功能也不太灵活。能否直接用星巴克店机 Mac 笔记本来接收无线电呢？</p><p><img loading="lazy" src="https://avantcontra.github.io/assets/images/maxmsp-pd-sdr-3-b5ea7b870ba39c8a559a6211d48f04bf.jpg" width="400" height="551" class="img_ev3q"></p><p><em>图自58pic.com</em></p><p>用电脑接收无线电（而非通过互联网），背景原理是“软件定义无线电”，简单说是用电脑软件来实现一部分传统电台的硬件电路功能，详情可以搜索<strong>“Software Defined Radio”、“RTL-SDR”</strong>等关键词。</p><p>本文直接上实例，需要以下三样：</p><ul><li>Macbook Pro；</li><li>基于 Max(Cycling ’74) 的 SDR patch（也有 Pure Data 版）；</li><li>Realtek RTL2832U+R820T 电视棒。</li></ul><p>说好的听广播，怎么又变成看电视了？

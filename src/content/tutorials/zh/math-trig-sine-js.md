@@ -16,11 +16,14 @@ series:
 
 related_terms:
   - "trigonometric-functions"
-  - "javascript"
+  - "sine-wave"
+  - "mathematical-visualization"
 
 tags:
+  - "trigonometry"
+  - "math-visualization"
   - "javascript"
-  - "trigonometric-functions"
+  - "react"
 
 status: "canonical"
 created: "2019-07-06"
@@ -35,6 +38,7 @@ difficulty: "intermediate"
 
 tools:
   - "javascript"
+  - "react"
 
 coverUrl: "https://avantcontra.github.io/assets/images/sine-visualization-reactjs-3cacce0dd148dd434025da3c9ccc981d.gif"
 author: "Contra"
