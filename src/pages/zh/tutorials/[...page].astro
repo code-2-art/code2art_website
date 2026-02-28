@@ -37,11 +37,11 @@ const makePageHref = (p: number) => (p <= 1 ? getLocalePath(lang, '/tutorials') 
             <article class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border">
               <div class="relative">
                 {post.data.coverUrl ? (
-                  <a href={post.data.docUrl || getLocalePath(lang, `/tutorials/${post.data.slug}`)}>
+                  <a href={getLocalePath(lang, `/tutorials/${post.data.slug}`)}>
                     <img src={post.data.coverUrl} alt={post.data.title} class="w-full h-44 object-cover" loading="lazy" />
                   </a>
                 ) : (
-                  <a href={post.data.docUrl || getLocalePath(lang, `/tutorials/${post.data.slug}`)}>
+                  <a href={getLocalePath(lang, `/tutorials/${post.data.slug}`)}>
                     <div class="w-full h-44 bg-gradient-to-br from-primary/10 to-secondary/10" />
                   </a>
                 )}
@@ -54,7 +54,7 @@ const makePageHref = (p: number) => (p <= 1 ? getLocalePath(lang, '/tutorials') 
                   <span class="ml-auto text-slate-500 text-sm">{post.data.publishedAt?.slice(0,10)}</span>
                 </div>
                 <h3 class="text-lg font-bold mb-2 hover:text-primary transition-colors">
-                  <a href={post.data.docUrl || getLocalePath(lang, `/tutorials/${post.data.slug}`)}>{post.data.title}</a>
+                  <a href={getLocalePath(lang, `/tutorials/${post.data.slug}`)}>{post.data.title}</a>
                 </h3>
                 {post.data.summary && <p class="text-slate-600 line-clamp-2">{post.data.summary}</p>}
               </div>
