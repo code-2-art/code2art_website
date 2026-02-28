@@ -1,7 +1,7 @@
 ---
-id: "project-workshop-touchdesigner-2026-zh"
+id: "event-workshop-touchdesigner-2026-zh"
 concept_id: "workshop-touchdesigner-2026"
-type: "project"
+type: "event"
 slug: "workshop-touchdesigner-2026"
 title: "Workshop：TouchDesigner 实时视觉创作"
 lang: "zh"
@@ -43,7 +43,10 @@ tools:
 coverUrl: "https://float.intplusplus.cn/code2art/assets/fluid2.jpg"
 author: "实验编程"
 publishedAt: "2026-03-15"
-date: "2026-03-15"
+event_date: "2026-03-15"
+end_date: "2026-03-16"
+location: "Zoom（线上）"
+format: "online"
 docUrl: ""
 ---
 

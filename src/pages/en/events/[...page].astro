@@ -1,0 +1,106 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { t, getLocalePath } from '../../../i18n/ui';
+import type { Lang } from '../../../i18n/ui';
+
+const lang: Lang = 'en';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const all = await getCollection('events', ({ filePath }) => filePath.includes('/en/'));
+  all.sort((a, b) => new Date(b.data.event_date ?? 0).getTime() - new Date(a.data.event_date ?? 0).getTime());
+  return paginate(all, { pageSize: 9 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const items = page.data;
+const total = page.total;
+const totalPages = page.lastPage;
+const current = page.currentPage;
+const formatEventDate = (value?: string | Date) => {
+  if (!value) return '';
+  const date = value instanceof Date ? value : new Date(value);
+  return Number.isNaN(date.getTime()) ? '' : date.toISOString().slice(0, 10);
+};
+
+const countFn = t(lang, 'activitiesList.count') as (n: number) => string;
+const makePageHref = (p: number) => (p <= 1 ? getLocalePath(lang, '/events') : getLocalePath(lang, `/events/${p}`));
+---
+
+<BaseLayout title={`${t(lang, 'activitiesList.title')}${current > 1 ? ` - ${current}` : ''} - TechArt`} description="TechArt community events" lang={lang} altPath={`events${current > 1 ? `/${current}` : ''}`}>
+  <section class="py-20 md:py-24">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mx-auto text-center mb-12">
+        <h1 class="text-3xl md:text-4xl font-bold">{t(lang, 'activitiesList.title')}</h1>
+        <p class="text-gray-600 mt-3">{countFn(total)}</p>
+      </header>
+
+      {items.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {items.map((a) => (
+            <article class="rounded-2xl overflow-hidden shadow hover:shadow-lg transition-all duration-300">
+              <div class="relative">
+                {a.data.coverUrl ? (
+                  <a href={getLocalePath(lang, `/events/${a.data.slug}`)}>
+                    <img src={a.data.coverUrl} alt={a.data.title} class="w-full h-56 object-cover" loading="lazy" />
+                  </a>
+                ) : (
+                  <div class="w-full h-56 bg-gradient-to-br from-primary/10 to-secondary/10" />
+                )}
+                <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm">{t(lang, 'activities.badge')}</div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center text-gray-500 text-sm mb-2">
+                  {a.data.event_date && <span>📅 {formatEventDate(a.data.event_date)}</span>}
+                  {a.data.author && <span class="ml-auto">{a.data.author}</span>}
+                </div>
+                <h2 class="text-lg font-bold mb-2">
+                  <a href={getLocalePath(lang, `/events/${a.data.slug}`)} class="hover:text-primary transition-colors">{a.data.title}</a>
+                </h2>
+                {a.data.summary && <p class="text-gray-600 line-clamp-3">{a.data.summary}</p>}
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center text-slate-500">{t(lang, 'activitiesList.empty')}</div>
+      )}
+
+      {totalPages > 1 && (
+        <nav class="mt-12 flex items-center justify-center gap-2">
+          <a
+            href={page.url.prev ?? '#'}
+            class={`px-4 py-2 rounded-full border text-sm ${!page.url.prev ? 'pointer-events-none opacity-40' : 'hover:bg-gray-50'}`}
+            aria-disabled={!page.url.prev}
+          >
+            {t(lang, 'activitiesList.prev')}
+          </a>
+
+          <div class="hidden sm:flex items-center gap-1">
+            {Array.from({ length: totalPages }).map((_, i) => {
+              const p = i + 1;
+              const active = p === current;
+              return (
+                <a
+                  href={makePageHref(p)}
+                  class={`px-3 py-2 rounded-full text-sm ${active ? 'bg-primary text-white' : 'border hover:bg-gray-50'}`}
+                >
+                  {p}
+                </a>
+              );
+            })}
+          </div>
+
+          <a
+            href={page.url.next ?? '#'}
+            class={`px-4 py-2 rounded-full border text-sm ${!page.url.next ? 'pointer-events-none opacity-40' : 'hover:bg-gray-50'}`}
+            aria-disabled={!page.url.next}
+          >
+            {t(lang, 'activitiesList.next')}
+          </a>
+        </nav>
+      )}
+    </div>
+  </section>
+</BaseLayout>
