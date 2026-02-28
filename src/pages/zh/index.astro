@@ -8,11 +8,11 @@ const lang: Lang = 'zh';
 
 const allPosts = await getCollection('tutorials', ({ filePath }) => filePath.includes('/zh/'));
 allPosts.sort((a, b) => new Date(b.data.publishedAt ?? 0).getTime() - new Date(a.data.publishedAt ?? 0).getTime());
-const blogPosts = allPosts.slice(0, 3);
+const blogPosts = allPosts.slice(0, 6);
 
 const allActivities = await getCollection('events', ({ filePath }) => filePath.includes('/zh/'));
 allActivities.sort((a, b) => new Date(b.data.event_date ?? 0).getTime() - new Date(a.data.event_date ?? 0).getTime());
-const activities = allActivities.slice(0, 3);
+const activities = allActivities.slice(0, 6);
 const formatEventDate = (value?: string | Date) => {
   if (!value) return '';
   const date = value instanceof Date ? value : new Date(value);
