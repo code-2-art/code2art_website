@@ -16,7 +16,7 @@ const { Content } = await render(activity);
 const title = `${activity.data.title} | TechArt`;
 ---
 
-<BaseLayout title={title} description={activity.data.summary ?? ''} ogImage={activity.data.coverUrl ?? '/og-cover.jpg'} lang={lang} altPath={`activities/${activity.data.slug}`}>
+<BaseLayout title={title} description={activity.data.summary ?? ''} ogImage={activity.data.coverUrl ?? '/og-cover.jpg'} lang={lang} altPath={`projects/${activity.data.slug}`}>
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <header class="mb-8">
       <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{activity.data.title}</h1>

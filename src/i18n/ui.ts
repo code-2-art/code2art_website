@@ -150,7 +150,7 @@ export function t(lang: Lang, key: UiKeys): string | ((...args: any[]) => string
 
 /**
  * Build a locale-prefixed path.
- * e.g. getLocalePath('en', '/blog') => '/en/blog'
+ * e.g. getLocalePath('en', '/tutorials') => '/en/tutorials'
  */
 export function getLocalePath(lang: Lang, path: string): string {
   const clean = path.startsWith('/') ? path : `/${path}`;

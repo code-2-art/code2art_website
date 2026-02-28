@@ -5,10 +5,10 @@ import { getCollection } from 'astro:content';
 import { t, getLocalePath } from '../../../i18n/ui';
 import type { Lang } from '../../../i18n/ui';
 
-const lang: Lang = 'zh';
+const lang: Lang = 'en';
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const posts = await getCollection('tutorials', ({ filePath }) => filePath.includes('/zh/'));
+  const posts = await getCollection('tutorials', ({ filePath }) => filePath.includes('/en/'));
   posts.sort((a, b) => new Date(b.data.publishedAt ?? 0).getTime() - new Date(a.data.publishedAt ?? 0).getTime());
   return paginate(posts, { pageSize: 9 });
 }) satisfies GetStaticPaths;
@@ -20,10 +20,10 @@ const totalPages = page.lastPage;
 const current = page.currentPage;
 
 const countFn = t(lang, 'blogList.count') as (n: number) => string;
-const makePageHref = (p: number) => (p <= 1 ? getLocalePath(lang, '/blog') : getLocalePath(lang, `/blog/${p}`));
+const makePageHref = (p: number) => (p <= 1 ? getLocalePath(lang, '/tutorials') : getLocalePath(lang, `/tutorials/${p}`));
 ---
 
-<BaseLayout title={`${t(lang, 'blogList.title')}${current > 1 ? ` - ${current}` : ''} | TechArt`} lang={lang} altPath={`blog${current > 1 ? `/${current}` : ''}`}>
+<BaseLayout title={`${t(lang, 'blogList.title')}${current > 1 ? ` - ${current}` : ''} | TechArt`} lang={lang} altPath={`tutorials${current > 1 ? `/${current}` : ''}`}>
   <section class="pt-28 pb-16 bg-gray-50 min-h-[calc(100vh-80px)]">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <header class="max-w-3xl mx-auto text-center mb-12">
@@ -37,11 +37,11 @@ const makePageHref = (p: number) => (p <= 1 ? getLocalePath(lang, '/blog') : get
             <article class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border">
               <div class="relative">
                 {post.data.coverUrl ? (
-                  <a href={post.data.docUrl || getLocalePath(lang, `/blog/${post.data.slug}`)}>
+                  <a href={post.data.docUrl || getLocalePath(lang, `/tutorials/${post.data.slug}`)}>
                     <img src={post.data.coverUrl} alt={post.data.title} class="w-full h-44 object-cover" loading="lazy" />
                   </a>
                 ) : (
-                  <a href={post.data.docUrl || getLocalePath(lang, `/blog/${post.data.slug}`)}>
+                  <a href={post.data.docUrl || getLocalePath(lang, `/tutorials/${post.data.slug}`)}>
                     <div class="w-full h-44 bg-gradient-to-br from-primary/10 to-secondary/10" />
                   </a>
                 )}
@@ -54,7 +54,7 @@ const makePageHref = (p: number) => (p <= 1 ? getLocalePath(lang, '/blog') : get
                   <span class="ml-auto text-slate-500 text-sm">{post.data.publishedAt?.slice(0,10)}</span>
                 </div>
                 <h3 class="text-lg font-bold mb-2 hover:text-primary transition-colors">
-                  <a href={post.data.docUrl || getLocalePath(lang, `/blog/${post.data.slug}`)}>{post.data.title}</a>
+                  <a href={post.data.docUrl || getLocalePath(lang, `/tutorials/${post.data.slug}`)}>{post.data.title}</a>
                 </h3>
                 {post.data.summary && <p class="text-slate-600 line-clamp-2">{post.data.summary}</p>}
               </div>
