@@ -1,0 +1,3 @@
+P1 Badge Guard language switch against untranslated slug routes
+
+Building switchHref by replacing the locale segment preserves the current slug path even when that route does not exist in the target language. In this repo, slug pages are generated from locale-specific collections (src/pages/en/events/[slug].astro and src/pages/en/tutorials/[slug].astro), and the English collections are currently empty (src/content/events/en/.gitkeep, src/content/tutorials/en/.gitkeep), so switching from many Chinese detail pages now leads to a 404 at /en/.../<slug>. Please add a fallback (for example to the target locale homepage/list page) when a translated route is unavailable.

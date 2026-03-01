@@ -150,16 +150,16 @@ const switchHref = getLocalePath(otherLang, '/');
   <!-- Contact / Footer -->
   <section id="contact" class="py-20 md:py-32">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
-        <div class="grid grid-cols-1 lg:grid-cols-2">
-          <div class="p-10">
-            <h3 class="text-2xl font-bold mb-6">{t(lang, 'contact.heading')}</h3>
-            <p class="text-gray-600 mb-6">{t(lang, 'contact.description')}</p>
-            <a href="https://work.weixin.qq.com/ca/cawcde0b98ca073c6d" class="inline-flex items-center bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full font-medium">{t(lang, 'contact.cta')}</a>
-          </div>
-          <div class="bg-gradient-to-br from-primary/10 to-secondary/10 p-10">
-            <h4 class="font-semibold mb-4">{t(lang, 'contact.infoHeading')}</h4>
-            <p class="text-gray-600">{t(lang, 'contact.infoText')}</p>
+      <div class="max-w-2xl mx-auto bg-white rounded-[2rem] shadow-xl shadow-primary/5 border border-gray-100 overflow-hidden">
+        <div class="p-10 lg:p-14 flex flex-col items-center text-center justify-center">
+          <h3 class="text-3xl font-bold mb-4">{t(lang, 'contact.heading')}</h3>
+          <p class="text-gray-600 mb-8 max-w-sm">{t(lang, 'contact.description')}</p>
+          
+          <div class="flex justify-center w-full">
+            <div class="p-3 bg-white rounded-2xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow duration-300 inline-block">
+              <!-- Using a placeholder API that generates a working QR code or a generic placeholder -->
+              <img src="/assets/contact_me_qr.png" alt="WeChat QR Code" class="w-40 h-40 object-contain" />
+            </div>
           </div>
         </div>
       </div>
