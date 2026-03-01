@@ -26,6 +26,8 @@ const formatEventDate = (value?: string | Date) => {
 
 const countFn = t(lang, 'activitiesList.count') as (n: number) => string;
 const makePageHref = (p: number) => (p <= 1 ? getLocalePath(lang, '/events') : getLocalePath(lang, `/events/${p}`));
+const itemHref = (a: (typeof items)[number]) =>
+  a.data.useDocUrl && a.data.docUrl ? a.data.docUrl : getLocalePath(lang, `/events/${a.data.slug}`);
 ---
 
 <BaseLayout title={`${t(lang, 'activitiesList.title')}${current > 1 ? ` - ${current}` : ''} - TechArt`} description="TechArt community events" lang={lang} altPath={`events${current > 1 ? `/${current}` : ''}`}>
@@ -42,7 +44,7 @@ const makePageHref = (p: number) => (p <= 1 ? getLocalePath(lang, '/events') : g
             <article class="rounded-2xl overflow-hidden shadow hover:shadow-lg transition-all duration-300">
               <div class="relative">
                 {a.data.coverUrl ? (
-                  <a href={getLocalePath(lang, `/events/${a.data.slug}`)}>
+                  <a href={itemHref(a)} {...(a.data.useDocUrl && a.data.docUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                     <img src={a.data.coverUrl} alt={a.data.title} class="w-full h-56 object-cover" loading="lazy" />
                   </a>
                 ) : (
@@ -56,7 +58,7 @@ const makePageHref = (p: number) => (p <= 1 ? getLocalePath(lang, '/events') : g
                   {a.data.author && <span class="ml-auto">{a.data.author}</span>}
                 </div>
                 <h2 class="text-lg font-bold mb-2">
-                  <a href={getLocalePath(lang, `/events/${a.data.slug}`)} class="hover:text-primary transition-colors">{a.data.title}</a>
+                  <a href={itemHref(a)} class="hover:text-primary transition-colors" {...(a.data.useDocUrl && a.data.docUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{a.data.title}</a>
                 </h2>
                 {a.data.summary && <p class="text-gray-600 line-clamp-3">{a.data.summary}</p>}
               </div>

@@ -1,0 +1,72 @@
+---
+import { t, getLocalePath } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<footer class="bg-dark text-white pt-16 pb-8">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div>
+        <a href={getLocalePath(lang, '/')} class="flex items-center space-x-2 mb-6">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+            <img src="https://float.intplusplus.cn/code2art/favicon.jpg" alt={t(lang, 'footer.brand') as string} class="w-10 h-10 rounded-lg" />
+          </div>
+          <span class="text-xl font-bold">{t(lang, 'footer.brand')}</span>
+        </a>
+        <p class="text-gray-400 mb-6">{t(lang, 'footer.slogan')}</p>
+      </div>
+
+      <div>
+        <ul class="space-y-3">
+          <li><a href="https://mp.weixin.qq.com/s/LIi41bbEyDAqXZmGm_dGrw" class="text-gray-400 hover:text-white transition-colors">{lang === 'zh' ? '公众号' : 'WeChat'}</a></li>
+          <li><a href="https://www.xiaohongshu.com/user/profile/5ea438e00000000001009548" class="text-gray-400 hover:text-white transition-colors">{lang === 'zh' ? '小红书' : 'Xiaohongshu'}</a></li>
+          <li><a href="https://space.bilibili.com/309452713" class="text-gray-400 hover:text-white transition-colors">{lang === 'zh' ? 'B站' : 'Bilibili'}</a></li>
+          <li><a href="https://www.douyin.com/user/MS4wLjABAAAA1zXSsULbkb020lMmhP-kt4toB7wgXv18hpcJA2g96gK6aZb0LNYY4VvH-xezjW9j" class="text-gray-400 hover:text-white transition-colors">{lang === 'zh' ? '抖音' : 'Douyin'}</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <ul class="space-y-3">
+          <li><a href="https://appn6hiNebL8858.h5.xiaoeknow.com" class="text-gray-400 hover:text-white transition-colors">{lang === 'zh' ? '小鹅通课程' : 'Courses'}</a></li>
+          <li><a href="https://github.com/code-2-art" class="text-gray-400 hover:text-white transition-colors">Github</a></li>
+          <li><a href="https://avantcontra.gumroad.com/" class="text-gray-400 hover:text-white transition-colors">Gumroad</a></li>
+          <li><a href="https://youtube.com/avantcontra" class="text-gray-400 hover:text-white transition-colors">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2016-{new Date().getFullYear()} {t(lang, 'footer.copyright')}</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-11 h-11 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all z-50" aria-label={t(lang, 'footer.backToTop') as string}>
+  <i class="fa fa-arrow-up"></i>
+</button>
+
+<script is:inline>
+  const backToTop = document.getElementById('back-to-top');
+  function onScrollFooter(){
+    if (window.scrollY > 300) {
+      backToTop?.classList.remove('opacity-0','invisible');
+      backToTop?.classList.add('opacity-100','visible');
+    } else {
+      backToTop?.classList.add('opacity-0','invisible');
+      backToTop?.classList.remove('opacity-100','visible');
+    }
+  }
+  window.addEventListener('scroll', onScrollFooter);
+  setTimeout(onScrollFooter, 100);
+
+  backToTop?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>

@@ -30,63 +30,6 @@ const switchHref = getLocalePath(otherLang, '/');
 ---
 
 <BaseLayout title="实验编程 Experimental Programming" description="实验编程 Experimental Programming, 用实验精神和计算编程进行艺术创作" lang={lang} altPath="">
-  <!-- Navbar -->
-  <header id="navbar" class="fixed w-full z-50 transition-all duration-300">
-    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-      <a href="#home" class="flex items-center space-x-2">
-        <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
-          <img src="https://float.intplusplus.cn/code2art/favicon.jpg" alt={t(lang, 'nav.brand') as string} class="w-10 h-10 rounded-lg" />
-        </div>
-        <span class="text-xl font-bold">{t(lang, 'nav.brand')}</span>
-      </a>
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="#home" class="font-medium hover:text-primary transition-colors">{t(lang, 'nav.about')}</a>
-        <a href="#events" class="font-medium hover:text-primary transition-colors">{t(lang, 'nav.activities')}</a>
-        <a href="#tutorials" class="font-medium hover:text-primary transition-colors">{t(lang, 'nav.blog')}</a>
-        <a href="#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-2 rounded-full font-medium hover:shadow-lg hover:shadow-primary/20 transition-all">{t(lang, 'nav.contact')}</a>
-        <a href={switchHref} data-lang-switch={otherLang} class="font-medium hover:text-primary transition-colors border border-gray-300 px-3 py-1 rounded-full text-sm">{switchLabel}</a>
-      </div>
-      <button id="menu-toggle" class="md:hidden text-2xl" aria-label={t(lang, 'nav.menuLabel') as string}>☰</button>
-    </nav>
-
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t">
-      <div class="container mx-auto px-4 py-4 flex flex-col">
-        <a href="#home" class="py-3 font-medium hover:text-primary">{t(lang, 'nav.about')}</a>
-        <a href="#events" class="py-3 font-medium hover:text-primary">{t(lang, 'nav.activities')}</a>
-        <a href="#tutorials" class="py-3 font-medium hover:text-primary">{t(lang, 'nav.blog')}</a>
-        <a href="#contact" class="mt-2 bg-gradient-to-r from-primary to-secondary text-white px-5 py-3 rounded-full font-medium text-center hover:shadow-lg hover:shadow-primary/20">{t(lang, 'nav.contact')}</a>
-        <a href={switchHref} data-lang-switch={otherLang} class="mt-2 py-3 font-medium hover:text-primary text-center border border-gray-300 rounded-full text-sm">{switchLabel}</a>
-      </div>
-    </div>
-
-    <script is:client>
-      const navbar = document.getElementById('navbar');
-      const toggle = document.getElementById('menu-toggle');
-      const menu = document.getElementById('mobile-menu');
-      function onScroll(){
-        if (window.scrollY > 10) {
-          navbar?.classList.add('bg-white/80','backdrop-blur','shadow');
-        } else {
-          navbar?.classList.remove('bg-white/80','backdrop-blur','shadow');
-        }
-      }
-      onScroll();
-      window.addEventListener('scroll', onScroll);
-      toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'));
-      document.querySelectorAll('#mobile-menu a').forEach(a=>{
-        a.addEventListener('click', ()=> menu?.classList.add('hidden'));
-      });
-      const langLinks = document.querySelectorAll('a[data-lang-switch]');
-      langLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-          const target = link.getAttribute('data-lang-switch');
-          if (!target) return;
-          document.cookie = `site_lang=${target}; Path=/; Max-Age=15552000; SameSite=Lax`;
-        });
-      });
-    </script>
-  </header>
 
   <!-- Hero Section -->
   <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
@@ -100,9 +43,6 @@ const switchHref = getLocalePath(otherLang, '/');
           {t(lang, 'hero.description')}
           <br/>
           {t(lang, 'hero.description2')}
-          <br/>
-          <br/>
-          {t(lang, 'hero.description.en')}
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full font-medium text-center hover:shadow-lg hover:shadow-primary/20 transition-all transform hover:-translate-y-1">{t(lang, 'hero.joinCta')}</a>
@@ -135,7 +75,7 @@ const switchHref = getLocalePath(otherLang, '/');
             <div class="rounded-2xl overflow-hidden shadow-lg group hover:shadow-xl transition-all duration-300">
               <div class="relative">
                 {a.data.coverUrl ? (
-                  <a href={resolveListHref(a.data.useDocUrl, a.data.docUrl, getLocalePath(lang, `/events/${a.data.slug}`))}>
+                  <a href={resolveListHref(a.data.useDocUrl, a.data.docUrl, getLocalePath(lang, `/events/${a.data.slug}`))} {...(a.data.useDocUrl && a.data.docUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                     <img src={a.data.coverUrl} alt={a.data.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </a>
                 ) : (
@@ -146,7 +86,7 @@ const switchHref = getLocalePath(otherLang, '/');
               <div class="p-6">
                 <div class="flex items-center text-gray-500 mb-3">📅<span class="ml-2">{formatEventDate(a.data.event_date)}</span></div>
                 <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                  <a href={resolveListHref(a.data.useDocUrl, a.data.docUrl, getLocalePath(lang, `/events/${a.data.slug}`))}>{a.data.title}</a>
+                  <a href={resolveListHref(a.data.useDocUrl, a.data.docUrl, getLocalePath(lang, `/events/${a.data.slug}`))} {...(a.data.useDocUrl && a.data.docUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{a.data.title}</a>
                 </h3>
               </div>
             </div>
@@ -173,7 +113,7 @@ const switchHref = getLocalePath(otherLang, '/');
             <article class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group">
               <div class="relative">
                 {post.data.coverUrl ? (
-                  <a href={resolveListHref(post.data.useDocUrl, post.data.docUrl, getLocalePath(lang, `/tutorials/${post.data.slug}`))}>
+                  <a href={resolveListHref(post.data.useDocUrl, post.data.docUrl, getLocalePath(lang, `/tutorials/${post.data.slug}`))} {...(post.data.useDocUrl && post.data.docUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                     <img src={post.data.coverUrl} alt={post.data.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </a>
                 ) : (
@@ -190,7 +130,7 @@ const switchHref = getLocalePath(otherLang, '/');
                   <span class="ml-auto text-gray-500 text-sm">{post.data.publishedAt?.slice(0,10)}</span>
                 </div>
                 <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors">
-                  <a href={resolveListHref(post.data.useDocUrl, post.data.docUrl, getLocalePath(lang, `/tutorials/${post.data.slug}`))}>{post.data.title}</a>
+                  <a href={resolveListHref(post.data.useDocUrl, post.data.docUrl, getLocalePath(lang, `/tutorials/${post.data.slug}`))} {...(post.data.useDocUrl && post.data.docUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{post.data.title}</a>
                 </h3>
                 {post.data.summary && <p class="text-gray-600 mb-4 line-clamp-3">{post.data.summary}</p>}
               </div>
@@ -226,82 +166,6 @@ const switchHref = getLocalePath(otherLang, '/');
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-dark text-white pt-16 pb-8">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-        <div>
-          <a href={getLocalePath(lang, '/')} class="flex items-center space-x-2 mb-6">
-            <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
-              <img src="https://float.intplusplus.cn/code2art/favicon.jpg" alt={t(lang, 'footer.brand') as string} class="w-10 h-10 rounded-lg" />
-            </div>
-            <span class="text-xl font-bold">{t(lang, 'footer.brand')}</span>
-          </a>
-          <p class="text-gray-400 mb-6">{t(lang, 'footer.slogan')}</p>
-        </div>
-
-        <div>
-          <ul class="space-y-3">
-            <li><a href="https://mp.weixin.qq.com/s/LIi41bbEyDAqXZmGm_dGrw"
-               class="text-gray-400 hover:text-white transition-colors">公众号</a></li>
-            <li><a href="https://www.xiaohongshu.com/user/profile/5ea438e00000000001009548"
-               class="text-gray-400 hover:text-white transition-colors">小红书</a></li>
-            <li><a href="https://space.bilibili.com/309452713"
-               class="text-gray-400 hover:text-white transition-colors">B站</a></li>
-            <li><a href="https://www.douyin.com/user/MS4wLjABAAAA1zXSsULbkb020lMmhP-kt4toB7wgXv18hpcJA2g96gK6aZb0LNYY4VvH-xezjW9j"
-               class="text-gray-400 hover:text-white transition-colors">抖音</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <ul class="space-y-3">
-            <li><a href="https://appn6hiNebL8858.h5.xiaoeknow.com"
-              class="text-gray-400 hover:text-white transition-colors">小鹅通课程</a></li>
-            <li><a href="https://github.com/code-2-art"
-               class="text-gray-400 hover:text-white transition-colors">Github</a></li>
-            <li><a href="https://avantcontra.gumroad.com/"
-               class="text-gray-400 hover:text-white transition-colors">Gumroad</a></li>
-            <li><a href="https://youtube.com/avantcontra"
-               class="text-gray-400 hover:text-white transition-colors">YouTube</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-        <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2016-{new Date().getFullYear()} {t(lang, 'footer.copyright')}</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Back to top -->
-  <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-11 h-11 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all z-50" aria-label={t(lang, 'footer.backToTop') as string}>
-    <i class="fa fa-arrow-up"></i>
-  </button>
-
-  <script is:client>
-    const backToTop = document.getElementById('back-to-top');
-    function onScrollFooter(){
-      if (window.scrollY > 300) {
-        backToTop?.classList.remove('opacity-0','invisible');
-        backToTop?.classList.add('opacity-100','visible');
-      } else {
-        backToTop?.classList.add('opacity-0','invisible');
-        backToTop?.classList.remove('opacity-100','visible');
-      }
-    }
-    window.addEventListener('scroll', onScrollFooter);
-    onScrollFooter();
-
-    backToTop?.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    const form = document.querySelector('footer form');
-    form?.addEventListener('submit', () => {
-      const input = form.querySelector('input[type="email"]');
-      if (input && input.value) alert('已记录订阅邮箱：' + input.value);
-    });
-  </script>
 
   <style>
     .text-gradient { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }

@@ -1,8 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const SRC_ROOT = '/home/ubuntu/prjs/code2art_raw_docs/site/avantcontra.github.io';
-const DST_ROOT = '/home/ubuntu/prjs/code2art_website/src/content';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const PROJECT_ROOT = path.resolve(__dirname, '..');
+
+const SRC_ROOT = process.argv[2]
+  ? path.resolve(process.argv[2])
+  : (() => { throw new Error('Usage: node scripts/import-archive-classify.mjs <path-to-avantcontra-site>'); })();
+const DST_ROOT = path.join(PROJECT_ROOT, 'src', 'content');
 
 const INCLUDE_DIRS = ['comfyui', 'coding-druid', 'natureofcode-remix', 'interactive-media'];
 
