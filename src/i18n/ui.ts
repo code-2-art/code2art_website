@@ -37,8 +37,8 @@ export const ui = {
 
     // Contact
     'contact.heading': '加入社群',
-    'contact.description': '点击下方按钮，我们会邀请您加入社群。',
-    'contact.cta': '添加企业微信',
+    'contact.description': '扫码添加微信，我们会邀请您加入社群。',
+    'contact.cta': '添加微信',
     'contact.infoHeading': '联系我们',
     'contact.infoText': '公众号/B站/抖音: 实验编程',
 
@@ -104,7 +104,7 @@ export const ui = {
 
     // Contact
     'contact.heading': 'Join Community',
-    'contact.description': 'Click the button below and we will invite you to join the community.',
+    'contact.description': 'Scan the Wetchat QR code below and we will invite you to join the community.',
     'contact.cta': 'Add WeChat',
     'contact.infoHeading': 'Contact Us',
     'contact.infoText': 'WeChat / Bilibili / Douyin: 实验编程',
