@@ -1,0 +1,77 @@
+---
+import { t, getLocalePath } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const otherLang = lang === 'zh' ? 'en' : 'zh';
+const switchLabel = lang === 'zh' ? 'EN' : '中文';
+
+const pathname = Astro.url.pathname || '/';
+// Simple strategy for switchHref: replace '/zh' with '/en' or vice-versa
+// Make sure to match the directory boundary to prevent accidentally matching words
+const switchHref = pathname.replace(`/${lang}`, `/${otherLang}`);
+
+const isHome = pathname === `/${lang}/` || pathname === `/${lang}`;
+const getNavUrl = (hash: string) => isHome ? hash : getLocalePath(lang, '/' + hash);
+---
+
+<header id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center bg-transparent">
+    <a href={getNavUrl('#home')} class="flex items-center space-x-2">
+      <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+        <img src="https://float.intplusplus.cn/code2art/favicon.jpg" alt={t(lang, 'nav.brand') as string} class="w-10 h-10 rounded-lg" />
+      </div>
+      <span class="text-xl font-bold">{t(lang, 'nav.brand')}</span>
+    </a>
+    <div class="hidden md:flex items-center space-x-8">
+      <a href={getNavUrl('#home')} class="font-medium hover:text-primary transition-colors">{t(lang, 'nav.about')}</a>
+      <a href={getNavUrl('#events')} class="font-medium hover:text-primary transition-colors">{t(lang, 'nav.activities')}</a>
+      <a href={getNavUrl('#tutorials')} class="font-medium hover:text-primary transition-colors">{t(lang, 'nav.blog')}</a>
+      <a href={getNavUrl('#contact')} class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-2 rounded-full font-medium hover:shadow-lg hover:shadow-primary/20 transition-all">{t(lang, 'nav.contact')}</a>
+      <a href={switchHref} data-lang-switch={otherLang} class="font-medium hover:text-primary transition-colors border border-gray-300 px-3 py-1 rounded-full text-sm">{switchLabel}</a>
+    </div>
+    <button id="menu-toggle" class="md:hidden text-2xl" aria-label={t(lang, 'nav.menuLabel') as string}>☰</button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t">
+    <div class="container mx-auto px-4 py-4 flex flex-col">
+      <a href={getNavUrl('#home')} class="py-3 font-medium hover:text-primary">{t(lang, 'nav.about')}</a>
+      <a href={getNavUrl('#events')} class="py-3 font-medium hover:text-primary">{t(lang, 'nav.activities')}</a>
+      <a href={getNavUrl('#tutorials')} class="py-3 font-medium hover:text-primary">{t(lang, 'nav.blog')}</a>
+      <a href={getNavUrl('#contact')} class="mt-2 bg-gradient-to-r from-primary to-secondary text-white px-5 py-3 rounded-full font-medium text-center hover:shadow-lg hover:shadow-primary/20">{t(lang, 'nav.contact')}</a>
+      <a href={switchHref} data-lang-switch={otherLang} class="mt-2 py-3 font-medium hover:text-primary text-center border border-gray-300 rounded-full text-sm">{switchLabel}</a>
+    </div>
+  </div>
+
+  <script is:inline>
+    const navbar = document.getElementById('navbar');
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    function onScroll(){
+      if (window.scrollY > 10) {
+        navbar?.classList.add('bg-white/90','backdrop-blur-md','shadow-sm');
+      } else {
+        navbar?.classList.remove('bg-white/90','backdrop-blur-md','shadow-sm');
+      }
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+    document.querySelectorAll('#mobile-menu a').forEach(a=>{
+      a.addEventListener('click', ()=> menu?.classList.add('hidden'));
+    });
+    const langLinks = document.querySelectorAll('a[data-lang-switch]');
+    langLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        const target = link.getAttribute('data-lang-switch');
+        if (!target) return;
+        document.cookie = `site_lang=${target}; Path=/; Max-Age=15552000; SameSite=Lax`;
+      });
+    });
+  </script>
+</header>
