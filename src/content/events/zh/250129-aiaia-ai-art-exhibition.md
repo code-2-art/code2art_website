@@ -1,14 +1,54 @@
 ---
-title: "Workshop：TouchDesigner 实时视觉创作"
-slug: "workshop-touchdesigner-2026"
-summary: "面向零基础学员的 TouchDesigner 实时视觉工作坊，从节点逻辑到现场演出，两天掌握核心工作流。"
-coverUrl: "https://float.intplusplus.cn/code2art/assets/fluid2.jpg"
+id: "event-250129-aiaia-ai-art-exhibition-zh"
+concept_id: "event-250129-aiaia-ai-art-exhibition"
+type: "event"
+slug: "event-250129-aiaia-ai-art-exhibition"
+title: "AI艺术作品展"
+lang: "zh"
+
+domains:
+  - "interactive-media"
+  - "real-time-visuals"
+
+series:
+  id: "touchdesigner-workshops"
+  order: 1
+
+related_terms:
+  - "touchdesigner"
+  - "vj"
+  - "real-time-visuals"
+
 tags:
-  - "Workshop"
-  - "TouchDesigner"
-  - "实时视觉"
+  - "touchdesigner"
+  - "workshop"
+  - "live-visuals"
+
+status: "canonical"
+created: "2026-03-15"
+updated: "2026-03-15"
+version: 1
+
+aliases:
+  - "Workshop：TouchDesigner 实时视觉创作"
+
+summary: "面向零基础学员的 TouchDesigner 实时视觉工作坊，从节点逻辑到现场演出，两天掌握核心工作流。"
+difficulty: "beginner"
+
+tools:
+  - "touchdesigner"
+  - "glsl"
+  - "ndi"
+
+coverUrl: "https://float.intplusplus.cn/code2art/assets/list/Snipaste_2025-09-23_18-21-00.jpg"
 author: "实验编程"
-date: "2026-03-15"
+publishedAt: "2025-01-29"
+event_date: "2025-01-29"
+end_date: "2025-02-28"
+location: "三亚"
+format: "offline"
+docUrl: "https://mp.weixin.qq.com/s/fDnxg7hhGnj5baJ7tXbQ3Q"
+useDocUrl: true
 ---
 
 ## 活动概述

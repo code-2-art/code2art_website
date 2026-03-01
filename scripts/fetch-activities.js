@@ -1,6 +1,6 @@
 // Node 18+ (原生 fetch)
 // 用法：node scripts/fetch-activities.js
-// 从"活动独立表"抓取数据 → 生成 src/content/projects/zh/{slug}.md
+// 从"活动独立表"抓取数据 → 生成 src/content/events/zh/{slug}.md
 import 'dotenv/config';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -11,7 +11,7 @@ import {
 } from './feishu-common.js';
 import { htmlToMarkdown, buildMarkdownFile } from './markdown-util.js';
 
-const OUT_DIR = 'src/content/projects/zh';
+const OUT_DIR = 'src/content/events/zh';
 const ASSET_DIR = 'public/uploads';
 const DOWNLOAD_ASSETS = process.env.DOWNLOAD_ASSETS === '1';
 
@@ -21,7 +21,7 @@ function mapRecord(rec, contentHtmlResolved) {
   return {
     ...base,
     docUrl: toLinkMaybe(f[FIELD.docUrl]) ?? undefined,
-    date: f[FIELD.publishedAt] ?? undefined, // 可替换为独立的"活动时间"列
+    event_date: f[FIELD.publishedAt] ?? undefined, // 可替换为独立的"活动时间"列
   };
 }
 
@@ -39,7 +39,7 @@ async function main() {
     acts.push(mapRecord(it, html));
   }
 
-  acts.sort((a, b) => new Date(b.date ?? 0) - new Date(a.date ?? 0));
+  acts.sort((a, b) => new Date(b.event_date ?? 0) - new Date(a.event_date ?? 0));
 
   if (DOWNLOAD_ASSETS) {
     for (const a of acts) {
@@ -65,7 +65,7 @@ async function main() {
       tags: a.tags,
       author: a.author,
       authorAvatarUrl: a.authorAvatarUrl,
-      date: a.date,
+      event_date: a.event_date,
       docUrl: a.docUrl,
     };
     const body = htmlToMarkdown(a.contentHtml || '');

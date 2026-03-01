@@ -8,8 +8,8 @@ import type { Lang } from '../../../i18n/ui';
 const lang: Lang = 'en';
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const all = await getCollection('projects', ({ filePath }) => filePath.includes('/en/'));
-  all.sort((a, b) => new Date(b.data.date ?? 0).getTime() - new Date(a.data.date ?? 0).getTime());
+  const all = await getCollection('events', ({ filePath }) => filePath.includes('/en/'));
+  all.sort((a, b) => new Date(b.data.event_date ?? 0).getTime() - new Date(a.data.event_date ?? 0).getTime());
   return paginate(all, { pageSize: 9 });
 }) satisfies GetStaticPaths;
 
@@ -18,16 +18,19 @@ const items = page.data;
 const total = page.total;
 const totalPages = page.lastPage;
 const current = page.currentPage;
+const formatEventDate = (value?: string | Date) => {
+  if (!value) return '';
+  const date = value instanceof Date ? value : new Date(value);
+  return Number.isNaN(date.getTime()) ? '' : date.toISOString().slice(0, 10);
+};
 
 const countFn = t(lang, 'activitiesList.count') as (n: number) => string;
-const makePageHref = (p: number) => (p <= 1 ? getLocalePath(lang, '/projects') : getLocalePath(lang, `/projects/${p}`));
+const makePageHref = (p: number) => (p <= 1 ? getLocalePath(lang, '/events') : getLocalePath(lang, `/events/${p}`));
 const itemHref = (a: (typeof items)[number]) =>
-  a.data.useDocUrl && a.data.docUrl ? a.data.docUrl : getLocalePath(lang, `/projects/${a.data.slug}`);
-const externalAttrs = (a: (typeof items)[number]) =>
-  a.data.useDocUrl && a.data.docUrl ? { target: '_blank' as const, rel: 'noopener noreferrer' } : {};
+  a.data.useDocUrl && a.data.docUrl ? a.data.docUrl : getLocalePath(lang, `/events/${a.data.slug}`);
 ---
 
-<BaseLayout title={`${t(lang, 'activitiesList.title')}${current > 1 ? ` - ${current}` : ''} - TechArt`} description="TechArt community activities" lang={lang} altPath={`projects${current > 1 ? `/${current}` : ''}`}>
+<BaseLayout title={`${t(lang, 'activitiesList.title')}${current > 1 ? ` - ${current}` : ''} - TechArt`} description="TechArt community events" lang={lang} altPath={`events${current > 1 ? `/${current}` : ''}`}>
   <section class="py-20 md:py-24">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <header class="max-w-3xl mx-auto text-center mb-12">
@@ -41,7 +44,7 @@ const externalAttrs = (a: (typeof items)[number]) =>
             <article class="rounded-2xl overflow-hidden shadow hover:shadow-lg transition-all duration-300">
               <div class="relative">
                 {a.data.coverUrl ? (
-                  <a href={itemHref(a)} {...externalAttrs(a)}>
+                  <a href={itemHref(a)} {...(a.data.useDocUrl && a.data.docUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                     <img src={a.data.coverUrl} alt={a.data.title} class="w-full h-56 object-cover" loading="lazy" />
                   </a>
                 ) : (
@@ -51,11 +54,11 @@ const externalAttrs = (a: (typeof items)[number]) =>
               </div>
               <div class="p-6">
                 <div class="flex items-center text-gray-500 text-sm mb-2">
-                  {a.data.date && <span>📅 {a.data.date.slice(0,10)}</span>}
+                  {a.data.event_date && <span>📅 {formatEventDate(a.data.event_date)}</span>}
                   {a.data.author && <span class="ml-auto">{a.data.author}</span>}
                 </div>
                 <h2 class="text-lg font-bold mb-2">
-                  <a href={itemHref(a)} class="hover:text-primary transition-colors" {...externalAttrs(a)}>{a.data.title}</a>
+                  <a href={itemHref(a)} class="hover:text-primary transition-colors" {...(a.data.useDocUrl && a.data.docUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{a.data.title}</a>
                 </h2>
                 {a.data.summary && <p class="text-gray-600 line-clamp-3">{a.data.summary}</p>}
               </div>

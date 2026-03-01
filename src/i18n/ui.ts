@@ -8,7 +8,7 @@ export const ui = {
     'nav.brand': '实验编程',
     'nav.about': '关于社群',
     'nav.activities': '活动',
-    'nav.blog': '博客',
+    'nav.blog': '教程',
     'nav.contact': '联系我们',
     'nav.menuLabel': '打开菜单',
 
@@ -17,7 +17,6 @@ export const ui = {
     'hero.title.highlight': '算法的叛徒',
     'hero.description': '实验编程（2016-2026）是一个围绕科技与艺术的先锋社群与知识平台，连接全球跨界实验者，起源于2010年代国内最活跃的交互媒体艺术论坛HUDOIT。',
     'hero.description2': '作为前沿创作范式策源地，实验编程长期受邀为多所高校输出教学方案与技术支持（包括央美、同济、清华等），聚焦人工智能、交互媒体与生成艺术的实践探索与知识传播。',
-    'hero.description.en': 'Experimental Programming (2016-2026) is a pioneering community and knowledge platform centered around AI, interactive media, and generative art, connecting cross-disciplinary experimenters worldwide. As a source of cutting-edge creative paradigms, it has long been invited to provide teaching solutions and technical support to many universities (including the CAFA, Tongji, Tsinghua, etc.).',
     'hero.joinCta': '加入社群',
     'hero.learnMore': '了解更多',
     'hero.imgAlt': '科技艺术融合',
@@ -75,8 +74,8 @@ export const ui = {
     // Navbar
     'nav.brand': 'Experimental Programming',
     'nav.about': 'About',
-    'nav.activities': 'Activities',
-    'nav.blog': 'Blog',
+    'nav.activities': 'Events',
+    'nav.blog': 'Tutorials',
     'nav.contact': 'Contact',
     'nav.menuLabel': 'Open menu',
 
@@ -85,7 +84,6 @@ export const ui = {
     'hero.title.highlight': "Rebel of Algorithms",
     'hero.description': 'Experimental Programming (2016-2026) is a pioneering community and knowledge platform centered around AI, interactive media, and generative art, connecting cross-disciplinary experimenters worldwide.',
     'hero.description2': 'As a source of cutting-edge creative paradigms, it has long been invited to provide teaching solutions and technical support to many universities (including the CAFA, Tongji, Tsinghua, etc.), focusing on the practical exploration and knowledge dissemination of AI, interactive media, and generative art.',
-    'hero.description.en': '',
     'hero.joinCta': 'Join Community',
     'hero.learnMore': 'Learn More',
     'hero.imgAlt': 'Technology meets art',
@@ -118,14 +116,14 @@ export const ui = {
     'footer.backToTop': 'Back to top',
 
     // Blog list page
-    'blogList.title': 'Blog',
+    'blogList.title': 'Tutorials',
     'blogList.count': (n: number) => `${n} article${n !== 1 ? 's' : ''} in total`,
     'blogList.empty': '(No blog posts yet)',
     'blogList.prev': '← Previous',
     'blogList.next': 'Next →',
 
     // Activities list page
-    'activitiesList.title': 'All Activities',
+    'activitiesList.title': 'All Events',
     'activitiesList.count': (n: number) => `${n} activit${n !== 1 ? 'ies' : 'y'} in total`,
     'activitiesList.empty': '(No activities yet)',
     'activitiesList.prev': '← Previous',
