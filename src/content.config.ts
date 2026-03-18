@@ -44,8 +44,15 @@ const baseSchema = z.object({
   useDocUrl: z.boolean().optional(),
 });
 
+/** Include locale directory in entry ID to prevent collisions between zh/en files sharing the same slug */
+const localeGenerateId = ({ entry, data }: { entry: string; data: { slug?: string } }) => {
+  const lang = entry.split('/')[0]; // 'en' or 'zh'
+  const slug = data.slug || entry.replace(/\.md$/, '');
+  return `${lang}/${slug}`;
+};
+
 const tutorials = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/tutorials' }),
+  loader: glob({ pattern: '**/*.md', base: './src/content/tutorials', generateId: localeGenerateId }),
   schema: baseSchema,
 });
 
@@ -57,7 +64,7 @@ const projects = defineCollection({
 });
 
 const events = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/events' }),
+  loader: glob({ pattern: '**/*.md', base: './src/content/events', generateId: localeGenerateId }),
   schema: baseSchema.extend({
     event_date: z.union([z.string(), z.date()]).optional(),
     end_date: z.union([z.string(), z.date()]).optional(),
