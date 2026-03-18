@@ -3,26 +3,25 @@ id: "event-250129-aiaia-ai-art-exhibition-zh"
 concept_id: "event-250129-aiaia-ai-art-exhibition"
 type: "event"
 slug: "event-250129-aiaia-ai-art-exhibition"
-title: "AI艺术作品展"
+title: "首届红树林AI艺术万人展"
 lang: "zh"
 
 domains:
-  - "interactive-media"
-  - "real-time-visuals"
+  - "ai"
+  - "art"
 
 series:
-  id: "touchdesigner-workshops"
+  id: ""
   order: 1
 
 related_terms:
-  - "touchdesigner"
-  - "vj"
-  - "real-time-visuals"
+  - "ai"
+  - "art"
 
 tags:
-  - "touchdesigner"
-  - "workshop"
-  - "live-visuals"
+  - "ai"
+  - "art"
+  - "exhibition"
 
 status: "canonical"
 created: "2026-03-15"
@@ -30,15 +29,13 @@ updated: "2026-03-15"
 version: 1
 
 aliases:
-  - "Workshop：TouchDesigner 实时视觉创作"
+  - "首届红树林AI艺术万人展"
 
-summary: "面向零基础学员的 TouchDesigner 实时视觉工作坊，从节点逻辑到现场演出，两天掌握核心工作流。"
+summary: "首届红树林AI艺术万人展暨今日未来馆AI艺术特展，实验编程联合发起。"
 difficulty: "beginner"
 
 tools:
-  - "touchdesigner"
-  - "glsl"
-  - "ndi"
+  - "ai"
 
 coverUrl: "https://float.intplusplus.cn/code2art/assets/list/Snipaste_2025-09-23_18-21-00.jpg"
 author: "实验编程"
@@ -51,7 +48,7 @@ docUrl: "https://mp.weixin.qq.com/s/fDnxg7hhGnj5baJ7tXbQ3Q"
 useDocUrl: true
 ---
 
-## 活动概述
+<!-- ## 活动概述
 
 TouchDesigner 是实时视觉创作领域最主流的工具之一，广泛应用于新媒体演出、沉浸式展览和交互装置。本次工作坊将在两天内带领学员从零搭建一套完整的实时视觉系统。
 
@@ -89,4 +86,4 @@ TouchDesigner 是实时视觉创作领域最主流的工具之一，广泛应用
 
 ## 报名方式
 
-扫描社群二维码或添加企业微信联系我们，备注「TD 工作坊」即可报名。名额有限，先到先得。
+扫描社群二维码或添加企业微信联系我们，备注「TD 工作坊」即可报名。名额有限，先到先得。 -->
