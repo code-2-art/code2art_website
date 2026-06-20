@@ -1,6 +1,6 @@
 ---
 import type { Lang } from '../i18n/ui';
-import { t } from '../i18n/ui';
+import { t, withBase } from '../i18n/ui';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
@@ -10,6 +10,10 @@ interface Props {
   ogImage?: string;
   lang?: Lang;
   altPath?: string;
+  /** og:type — 'website' (default) or 'article' for detail pages */
+  ogType?: 'website' | 'article';
+  /** Page-specific JSON-LD (e.g. BlogPosting, Event); one object or several */
+  jsonLd?: Record<string, any> | Record<string, any>[];
 }
 
 const {
@@ -18,12 +22,46 @@ const {
   description = t(lang, 'site.description') as string,
   ogImage = '/og-cover.jpg',
   altPath = '',
+  ogType = 'website',
+  jsonLd,
 } = Astro.props;
 
 const htmlLang = lang === 'zh' ? 'zh-CN' : 'en';
+const ogLocale = lang === 'zh' ? 'zh_CN' : 'en_US';
 const site = Astro.site?.origin ?? 'https://code2art.com';
-const zhHref = `${site}/zh/${altPath}`;
-const enHref = `${site}/en/${altPath}`;
+const zhHref = `${site}${withBase(`/zh/${altPath}`)}`;
+const enHref = `${site}${withBase(`/en/${altPath}`)}`;
+// Canonical = current absolute URL (Astro.url.pathname already includes the base).
+const canonical = `${site}${Astro.url.pathname}`;
+// og:image should be an absolute URL. Pass-through external cover URLs;
+// resolve root-relative defaults against site + base.
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${site}${withBase(ogImage)}`;
+const rssHref = withBase(`/${lang}/rss.xml`);
+
+const siteName = '实验编程 code2art';
+const homeUrl = `${site}${withBase('/')}`;
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: siteName,
+  alternateName: 'code2art',
+  url: homeUrl,
+  description: t(lang, 'site.description') as string,
+  inLanguage: htmlLang,
+};
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: siteName,
+  alternateName: 'code2art',
+  url: homeUrl,
+  logo: `${site}${withBase('/favicon-512x512.png')}`,
+  sameAs: [
+    'https://github.com/code-2-art',
+    'https://space.bilibili.com/309452713',
+  ],
+};
+const pageSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 
 <html lang={htmlLang} class="scroll-smooth">
@@ -32,16 +70,42 @@ const enHref = `${site}/en/${altPath}`;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <link rel="icon" href="/favicon.jpg" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={ogLocale} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <link rel="icon" type="image/x-icon" href={withBase('/favicon.ico')} sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href={withBase('/favicon-32x32.png')} />
+    <link rel="icon" type="image/png" sizes="16x16" href={withBase('/favicon-16x16.png')} />
+    <link rel="apple-touch-icon" sizes="180x180" href={withBase('/apple-touch-icon.png')} />
     <link rel="alternate" hreflang="zh" href={zhHref} />
     <link rel="alternate" hreflang="en" href={enHref} />
     <link rel="alternate" hreflang="x-default" href={zhHref} />
+    <link rel="alternate" type="application/rss+xml" title={`${siteName} RSS`} href={rssHref} />
     <!-- 使用本地托管的Inter字体，提升中国大陆访问速度 -->
-    <link href="/fonts/inter.css" rel="stylesheet" />
+    <link href={withBase('/fonts/inter.css')} rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <!-- JSON-LD: WebSite + Organization (all pages) -->
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+    <!-- JSON-LD: page-specific (BlogPosting, Event, ...) -->
+    {pageSchemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
   </head>
   <body class="font-inter bg-light text-dark antialiased flex flex-col min-h-screen">
     <Navbar lang={lang} />

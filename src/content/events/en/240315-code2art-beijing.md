@@ -3,7 +3,7 @@ id: "event-240315-code2art-beijing-en"
 concept_id: "event-240315-code2art-beijing"
 type: "event"
 slug: "event-240315-code2art-beijing"
-title: "Code2Art Offline Meetup — Beijing"
+title: "code2art Offline Meetup — Beijing"
 lang: "en"
 
 domains:
@@ -30,9 +30,9 @@ updated: "2024-03-15"
 version: 1
 
 aliases:
-  - "Code2Art Offline Meetup — Beijing"
+  - "code2art Offline Meetup — Beijing"
 
-summary: "Code2Art offline meetup in Beijing, co-hosted by Code2Art and Lanjing · Future Media Academy Award."
+summary: "code2art offline meetup in Beijing, co-hosted by code2art and Lanjing · Future Media Academy Award."
 difficulty: "beginner"
 
 tools:
@@ -52,8 +52,8 @@ useDocUrl: true
 
 ## Event Overview
 
-🚀 Code2Art offline meetup — Beijing edition.
-🍻 Co-hosted by Code2Art and Lanjing · Future Media Academy Award.
+🚀 code2art offline meetup — Beijing edition.
+🍻 Co-hosted by code2art and Lanjing · Future Media Academy Award.
 
 ## Date & Venue
 

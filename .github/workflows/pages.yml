@@ -1,0 +1,60 @@
+name: Deploy to GitHub Pages
+
+# Builds the site from source and publishes the GitHub Pages test page
+# (https://code-2-art.github.io/code2art_website/). Separate from the
+# production pipeline in deploy.yml (push to `product` → rsync to code2art.com).
+
+on:
+  push:
+    branches: [dev]
+    # Doc-only changes don't affect the built site — skip the rebuild.
+    # (Content lives in src/content/**/*.md, which is NOT ignored.)
+    paths-ignore:
+      - 'CLAUDE.md'
+      - 'README.md'
+      - 'doc/**'
+      - 'LICENSE'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent Pages deployment; don't cancel an in-progress run.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (GitHub Pages sub-directory)
+        run: npm run build
+        env:
+          GH_PAGES_BUILD: 'true'
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,4 +1,4 @@
-# Project Analysis: 实验编程 (Experimental Programming) 官方网站
+# Project Analysis: 实验编程 (code2art) 官方网站
 
 基于 2026-02-23 对最新代码库的逐文件分析，整理的详细技术架构与内容结构报告。
 
@@ -8,7 +8,7 @@
 
 | 项目名称 | `techart-site` (package.json) |
 |---------|-------------------------------|
-| 品牌名 | 实验编程 / Experimental Programming |
+| 品牌名 | 实验编程 / code2art |
 | 线上地址 | [code2art.com](https://code2art.com) |
 | 作者 | [Contra (avantcontra)](https://github.com/avantcontra) |
 | 许可证 | MIT |

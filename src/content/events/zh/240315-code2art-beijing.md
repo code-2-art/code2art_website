@@ -3,7 +3,7 @@ id: "event-240315-code2art-beijing-zh"
 concept_id: "event-240315-code2art-beijing"
 type: "event"
 slug: "event-240315-code2art-beijing"
-title: "实验编程Code2Art线下交流会北京站"
+title: "实验编程code2art线下交流会北京站"
 lang: "zh"
 
 domains:
@@ -30,9 +30,9 @@ updated: "2024-03-15"
 version: 1
 
 aliases:
-  - "实验编程Code2Art线下交流会北京站"
+  - "实验编程code2art线下交流会北京站"
 
-summary: "实验编程Code2Art线下交流会北京站，本期由实验编程与澜景·未来媒体学院奖联合主办。"
+summary: "实验编程code2art线下交流会北京站，本期由实验编程与澜景·未来媒体学院奖联合主办。"
 difficulty: "beginner"
 
 tools:
@@ -52,7 +52,7 @@ useDocUrl: true
 
 ## 活动概述
 
-🚀实验编程Code2Art线下交流会北京站。
+🚀实验编程code2art线下交流会北京站。
 🍻本期由实验编程与澜景·未来媒体学院奖联合主办。
 
 ## 时间与地点

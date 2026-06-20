@@ -68,11 +68,11 @@ export const ui = {
   },
   en: {
     // Site meta
-    'site.title': 'Experimental Programming | Art is the Rebel of Algorithms',
+    'site.title': 'code2art | Art is the Rebel of Algorithms',
     'site.description': 'Exploring the intersection of technology and art',
 
     // Navbar
-    'nav.brand': 'Experimental Programming',
+    'nav.brand': 'code2art',
     'nav.about': 'About',
     'nav.activities': 'Events',
     'nav.blog': 'Tutorials',
@@ -82,7 +82,7 @@ export const ui = {
     // Hero
     'hero.title.prefix': 'Art is the',
     'hero.title.highlight': "Rebel of Algorithms",
-    'hero.description': 'Experimental Programming (2016-2026) is a pioneering community and knowledge platform centered around AI, interactive media, and generative art, connecting cross-disciplinary experimenters worldwide.',
+    'hero.description': 'code2art (2016-2026) is a pioneering community and knowledge platform centered around AI, interactive media, and generative art, connecting cross-disciplinary experimenters worldwide.',
     'hero.description2': 'As a source of cutting-edge creative paradigms, it has long been invited to provide teaching solutions and technical support to many universities (including the CAFA, Tongji, Tsinghua, etc.), focusing on the practical exploration and knowledge dissemination of AI, interactive media, and generative art.',
     'hero.joinCta': 'Join Community',
     'hero.learnMore': 'Learn More',
@@ -110,9 +110,9 @@ export const ui = {
     'contact.infoText': 'WeChat / Bilibili / Douyin: 实验编程',
 
     // Footer
-    'footer.brand': 'Experimental Programming',
+    'footer.brand': 'code2art',
     'footer.slogan': "Don't panic. True youth never panics.",
-    'footer.copyright': 'Experimental Programming',
+    'footer.copyright': 'code2art',
     'footer.backToTop': 'Back to top',
 
     // Blog list page
@@ -147,10 +147,26 @@ export function t(lang: Lang, key: UiKeys): string | ((...args: any[]) => string
 }
 
 /**
- * Build a locale-prefixed path.
- * e.g. getLocalePath('en', '/tutorials') => '/en/tutorials'
+ * Prefix a root-absolute path with the configured base path
+ * (import.meta.env.BASE_URL). Lets the same code serve both the
+ * production root (base '/') and the GitHub Pages sub-directory
+ * (base '/code2art_website/') without hardcoding either.
+ * e.g. base '/'            => withBase('/favicon.jpg') => '/favicon.jpg'
+ *      base '/code2art_website/' => '/code2art_website/favicon.jpg'
+ */
+export function withBase(path: string): string {
+  const base = import.meta.env.BASE_URL || '/';
+  const b = base.endsWith('/') ? base.slice(0, -1) : base;
+  const clean = path.startsWith('/') ? path : `/${path}`;
+  return `${b}${clean}`;
+}
+
+/**
+ * Build a locale-prefixed, base-aware path.
+ * e.g. getLocalePath('en', '/tutorials') => '/en/tutorials' (base '/')
+ *                                        => '/code2art_website/en/tutorials' (sub-dir base)
  */
 export function getLocalePath(lang: Lang, path: string): string {
   const clean = path.startsWith('/') ? path : `/${path}`;
-  return `/${lang}${clean}`;
+  return withBase(`/${lang}${clean}`);
 }

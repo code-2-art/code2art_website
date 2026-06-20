@@ -13,6 +13,8 @@
     "assets:projects": "node scripts/feishu-assets.js src/content/projects/zh"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
     "astro": "^5.13.10",
     "dotenv": "^17.2.2",
     "turndown": "^7.2.2"
