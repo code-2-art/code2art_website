@@ -1,4 +1,4 @@
-# Project Analysis: 实验编程 (Experimental Programming) 官方网站 (Gemini 补充版)
+# Project Analysis: 实验编程 (code2art) 官方网站 (Gemini 补充版)
 
 通过通读和分析现有代码库，在原有 `doc/project_readme.md` 基础上进一步修正和补充，整理出了这份更加完整、精准的技术架构与内容结构分析报告。
 
