@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../i18n/ui';
 ---
 
 <BaseLayout
@@ -14,14 +15,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="text-gray-600 mb-8">请选择访问语言</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <a
-          href="/en/"
+          href={withBase('/en/')}
           data-lang-switch="en"
           class="inline-flex items-center justify-center rounded-full border border-gray-300 px-5 py-3 font-medium hover:border-primary hover:text-primary transition-colors"
         >
           English
         </a>
         <a
-          href="/zh/"
+          href={withBase('/zh/')}
           data-lang-switch="zh"
           class="inline-flex items-center justify-center rounded-full border border-gray-300 px-5 py-3 font-medium hover:border-primary hover:text-primary transition-colors"
         >

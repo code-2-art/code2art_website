@@ -13,9 +13,13 @@ const switchLabel = lang === 'zh' ? 'EN' : '中文';
 const pathname = Astro.url.pathname || '/';
 // Simple strategy for switchHref: replace '/zh' with '/en' or vice-versa
 // Make sure to match the directory boundary to prevent accidentally matching words
+// (pathname already includes the base prefix, which contains neither /zh nor /en)
 const switchHref = pathname.replace(`/${lang}`, `/${otherLang}`);
 
-const isHome = pathname === `/${lang}/` || pathname === `/${lang}`;
+// Base-aware home detection: getLocalePath(lang, '/') already includes the base
+// (e.g. '/zh/' in prod, '/code2art_website/zh/' on GitHub Pages)
+const homeHref = getLocalePath(lang, '/');
+const isHome = pathname === homeHref || pathname === homeHref.replace(/\/$/, '');
 const getNavUrl = (hash: string) => isHome ? hash : getLocalePath(lang, '/' + hash);
 ---
 

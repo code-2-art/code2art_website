@@ -147,10 +147,26 @@ export function t(lang: Lang, key: UiKeys): string | ((...args: any[]) => string
 }
 
 /**
- * Build a locale-prefixed path.
- * e.g. getLocalePath('en', '/tutorials') => '/en/tutorials'
+ * Prefix a root-absolute path with the configured base path
+ * (import.meta.env.BASE_URL). Lets the same code serve both the
+ * production root (base '/') and the GitHub Pages sub-directory
+ * (base '/code2art_website/') without hardcoding either.
+ * e.g. base '/'            => withBase('/favicon.jpg') => '/favicon.jpg'
+ *      base '/code2art_website/' => '/code2art_website/favicon.jpg'
+ */
+export function withBase(path: string): string {
+  const base = import.meta.env.BASE_URL || '/';
+  const b = base.endsWith('/') ? base.slice(0, -1) : base;
+  const clean = path.startsWith('/') ? path : `/${path}`;
+  return `${b}${clean}`;
+}
+
+/**
+ * Build a locale-prefixed, base-aware path.
+ * e.g. getLocalePath('en', '/tutorials') => '/en/tutorials' (base '/')
+ *                                        => '/code2art_website/en/tutorials' (sub-dir base)
  */
 export function getLocalePath(lang: Lang, path: string): string {
   const clean = path.startsWith('/') ? path : `/${path}`;
-  return `/${lang}${clean}`;
+  return withBase(`/${lang}${clean}`);
 }

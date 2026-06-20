@@ -1,6 +1,6 @@
 ---
 import type { Lang } from '../i18n/ui';
-import { t } from '../i18n/ui';
+import { t, withBase } from '../i18n/ui';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
@@ -22,8 +22,11 @@ const {
 
 const htmlLang = lang === 'zh' ? 'zh-CN' : 'en';
 const site = Astro.site?.origin ?? 'https://code2art.com';
-const zhHref = `${site}/zh/${altPath}`;
-const enHref = `${site}/en/${altPath}`;
+const zhHref = `${site}${withBase(`/zh/${altPath}`)}`;
+const enHref = `${site}${withBase(`/en/${altPath}`)}`;
+// og:image should be an absolute URL. Pass-through external cover URLs;
+// resolve root-relative defaults against site + base.
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${site}${withBase(ogImage)}`;
 ---
 
 <html lang={htmlLang} class="scroll-smooth">
@@ -34,13 +37,13 @@ const enHref = `${site}/en/${altPath}`;
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <link rel="icon" href="/favicon.jpg" />
+    <meta property="og:image" content={ogImageUrl} />
+    <link rel="icon" href={withBase('/favicon.jpg')} />
     <link rel="alternate" hreflang="zh" href={zhHref} />
     <link rel="alternate" hreflang="en" href={enHref} />
     <link rel="alternate" hreflang="x-default" href={zhHref} />
     <!-- 使用本地托管的Inter字体，提升中国大陆访问速度 -->
-    <link href="/fonts/inter.css" rel="stylesheet" />
+    <link href={withBase('/fonts/inter.css')} rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
   </head>
   <body class="font-inter bg-light text-dark antialiased flex flex-col min-h-screen">
