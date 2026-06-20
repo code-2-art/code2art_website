@@ -1,5 +1,5 @@
 ---
-import { t, getLocalePath } from '../i18n/ui';
+import { t, getLocalePath, withBase } from '../i18n/ui';
 import type { Lang } from '../i18n/ui';
 
 interface Props {
@@ -25,11 +25,8 @@ const getNavUrl = (hash: string) => isHome ? hash : getLocalePath(lang, '/' + ha
 
 <header id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center bg-transparent">
-    <a href={getNavUrl('#home')} class="flex items-center space-x-2">
-      <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
-        <img src="https://float.intplusplus.cn/code2art/favicon.jpg" alt={t(lang, 'nav.brand') as string} class="w-10 h-10 rounded-lg" />
-      </div>
-      <span class="text-xl font-bold">{t(lang, 'nav.brand')}</span>
+    <a href={getNavUrl('#home')} class="flex items-center">
+      <img src={withBase('/assets/logo-dark.png')} alt={t(lang, 'nav.brand') as string} class="h-10 w-auto" />
     </a>
     <div class="hidden md:flex items-center space-x-8">
       <a href={getNavUrl('#home')} class="font-medium hover:text-primary transition-colors">{t(lang, 'nav.about')}</a>

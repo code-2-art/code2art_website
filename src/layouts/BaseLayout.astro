@@ -55,7 +55,7 @@ const orgSchema = {
   name: siteName,
   alternateName: 'code2art',
   url: homeUrl,
-  logo: `${site}${withBase('/favicon.jpg')}`,
+  logo: `${site}${withBase('/favicon-512x512.png')}`,
   sameAs: [
     'https://github.com/code-2-art',
     'https://space.bilibili.com/309452713',
@@ -87,7 +87,10 @@ const pageSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
 
-    <link rel="icon" href={withBase('/favicon.jpg')} />
+    <link rel="icon" type="image/x-icon" href={withBase('/favicon.ico')} sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href={withBase('/favicon-32x32.png')} />
+    <link rel="icon" type="image/png" sizes="16x16" href={withBase('/favicon-16x16.png')} />
+    <link rel="apple-touch-icon" sizes="180x180" href={withBase('/apple-touch-icon.png')} />
     <link rel="alternate" hreflang="zh" href={zhHref} />
     <link rel="alternate" hreflang="en" href={enHref} />
     <link rel="alternate" hreflang="x-default" href={zhHref} />
