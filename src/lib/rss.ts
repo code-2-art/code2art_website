@@ -20,7 +20,7 @@ export async function buildRss(lang: Lang, site: URL | undefined) {
 
   const isZh = lang === 'zh';
   return rss({
-    title: isZh ? '实验编程 Experimental Programming' : 'Experimental Programming',
+    title: isZh ? '实验编程 code2art' : 'code2art',
     description: isZh
       ? '探索科技 × 艺术的边界'
       : 'Exploring the intersection of technology and art',

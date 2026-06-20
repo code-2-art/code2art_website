@@ -32,7 +32,7 @@ version: 1
 aliases:
   - "The first-ever Mangrove AI Art Exhibition"
 
-summary: "The first-ever Mangrove AI Art Exhibition and Today & Future Museum AI Art Exhibition, jointly presented by Experimental Programming and aimed at 10,000 people."
+summary: "The first-ever Mangrove AI Art Exhibition and Today & Future Museum AI Art Exhibition, jointly presented by code2art and aimed at 10,000 people."
 difficulty: "beginner"
 
 tools:

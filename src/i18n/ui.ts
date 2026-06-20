@@ -68,11 +68,11 @@ export const ui = {
   },
   en: {
     // Site meta
-    'site.title': 'Experimental Programming | Art is the Rebel of Algorithms',
+    'site.title': 'code2art | Art is the Rebel of Algorithms',
     'site.description': 'Exploring the intersection of technology and art',
 
     // Navbar
-    'nav.brand': 'Experimental Programming',
+    'nav.brand': 'code2art',
     'nav.about': 'About',
     'nav.activities': 'Events',
     'nav.blog': 'Tutorials',
@@ -82,7 +82,7 @@ export const ui = {
     // Hero
     'hero.title.prefix': 'Art is the',
     'hero.title.highlight': "Rebel of Algorithms",
-    'hero.description': 'Experimental Programming (2016-2026) is a pioneering community and knowledge platform centered around AI, interactive media, and generative art, connecting cross-disciplinary experimenters worldwide.',
+    'hero.description': 'code2art (2016-2026) is a pioneering community and knowledge platform centered around AI, interactive media, and generative art, connecting cross-disciplinary experimenters worldwide.',
     'hero.description2': 'As a source of cutting-edge creative paradigms, it has long been invited to provide teaching solutions and technical support to many universities (including the CAFA, Tongji, Tsinghua, etc.), focusing on the practical exploration and knowledge dissemination of AI, interactive media, and generative art.',
     'hero.joinCta': 'Join Community',
     'hero.learnMore': 'Learn More',
@@ -110,9 +110,9 @@ export const ui = {
     'contact.infoText': 'WeChat / Bilibili / Douyin: 实验编程',
 
     // Footer
-    'footer.brand': 'Experimental Programming',
+    'footer.brand': 'code2art',
     'footer.slogan': "Don't panic. True youth never panics.",
-    'footer.copyright': 'Experimental Programming',
+    'footer.copyright': 'code2art',
     'footer.backToTop': 'Back to top',
 
     // Blog list page
