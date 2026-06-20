@@ -19,9 +19,25 @@ const formatEventDate = (value?: string | Date) => {
   const date = value instanceof Date ? value : new Date(value);
   return Number.isNaN(date.getTime()) ? '' : date.toISOString().slice(0, 10);
 };
+const toIso = (value?: string | Date) => {
+  if (!value) return undefined;
+  const date = value instanceof Date ? value : new Date(value);
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
+};
+const eventJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: event.data.title,
+  description: event.data.summary ?? '',
+  ...(event.data.coverUrl ? { image: [event.data.coverUrl] } : {}),
+  ...(toIso(event.data.event_date) ? { startDate: toIso(event.data.event_date) } : {}),
+  ...(toIso(event.data.end_date) ? { endDate: toIso(event.data.end_date) } : {}),
+  ...(event.data.location ? { location: { '@type': 'Place', name: event.data.location } } : {}),
+  inLanguage: 'en',
+};
 ---
 
-<BaseLayout title={title} description={event.data.summary ?? ''} ogImage={event.data.coverUrl ?? '/og-cover.jpg'} lang={lang} altPath={`events/${event.data.slug}`}>
+<BaseLayout title={title} description={event.data.summary ?? ''} ogImage={event.data.coverUrl ?? '/og-cover.jpg'} lang={lang} altPath={`events/${event.data.slug}`} ogType="article" jsonLd={eventJsonLd}>
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <header class="mb-8">
       <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{event.data.title}</h1>

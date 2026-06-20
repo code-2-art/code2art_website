@@ -14,8 +14,19 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const title = `${post.data.title} | TechArt`;
+const blogJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.summary ?? '',
+  ...(post.data.coverUrl ? { image: [post.data.coverUrl] } : {}),
+  ...(post.data.publishedAt ? { datePublished: post.data.publishedAt } : {}),
+  ...(post.data.author ? { author: { '@type': 'Person', name: post.data.author } } : {}),
+  inLanguage: 'en',
+  mainEntityOfPage: `${Astro.site?.origin ?? ''}${Astro.url.pathname}`,
+};
 ---
-<BaseLayout title={title} description={post.data.summary ?? ''} ogImage={post.data.coverUrl ?? '/og-cover.jpg'} lang={lang} altPath={`tutorials/${post.data.slug}`}>
+<BaseLayout title={title} description={post.data.summary ?? ''} ogImage={post.data.coverUrl ?? '/og-cover.jpg'} lang={lang} altPath={`tutorials/${post.data.slug}`} ogType="article" jsonLd={blogJsonLd}>
   <article class="pt-28 pb-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
       <header class="mb-8">
