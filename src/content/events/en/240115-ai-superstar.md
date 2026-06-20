@@ -32,7 +32,7 @@ version: 1
 aliases:
   - "Super Star AI Art Exhibition"
 
-summary: "Super Star AI Art Exhibition — Code2Art served as co-curator and co-founded the community."
+summary: "Super Star AI Art Exhibition — code2art served as co-curator and co-founded the community."
 difficulty: "beginner"
 
 tools:

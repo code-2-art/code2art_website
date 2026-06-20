@@ -1,9 +1,16 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
+
+// GitHub Pages serves this project site at https://code-2-art.github.io/code2art_website/.
+// The Pages CI sets GH_PAGES_BUILD=true so the build targets that sub-directory.
+// Production (push to `product` → rsync to code2art.com root) leaves it unset.
+const isGhPages = process.env.GH_PAGES_BUILD === 'true';
 
 export default defineConfig({
-  site: 'https://code2art.com', // 部署后可改
-  integrations: [tailwind({ applyBaseStyles: true })],
+  site: isGhPages ? 'https://code-2-art.github.io' : 'https://code2art.com',
+  base: isGhPages ? '/code2art_website/' : '/',
+  integrations: [tailwind({ applyBaseStyles: true }), sitemap()],
   output: 'static',
   i18n: {
     defaultLocale: 'zh',
