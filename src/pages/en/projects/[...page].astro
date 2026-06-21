@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { t, getLocalePath } from '../../../i18n/ui';
+import { t, getLocalePath, assetUrl } from '../../../i18n/ui';
 import type { Lang } from '../../../i18n/ui';
 
 const lang: Lang = 'en';
@@ -42,7 +42,7 @@ const externalAttrs = (a: (typeof items)[number]) =>
               <div class="relative">
                 {a.data.coverUrl ? (
                   <a href={itemHref(a)} {...externalAttrs(a)}>
-                    <img src={a.data.coverUrl} alt={a.data.title} class="w-full h-56 object-cover" loading="lazy" />
+                    <img src={assetUrl(a.data.coverUrl)} alt={a.data.title} class="w-full h-56 object-cover" loading="lazy" />
                   </a>
                 ) : (
                   <div class="w-full h-56 bg-gradient-to-br from-primary/10 to-secondary/10" />

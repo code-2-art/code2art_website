@@ -162,6 +162,17 @@ export function withBase(path: string): string {
 }
 
 /**
+ * Base-aware asset URL that passes external URLs (http/https/data) through
+ * unchanged. Use for coverUrl / image src values that may be either a local
+ * root-absolute path (/uploads/...) or an external URL.
+ */
+export function assetUrl(path?: string | null): string {
+  if (!path) return '';
+  if (/^(https?:)?\/\//i.test(path) || path.startsWith('data:')) return path;
+  return withBase(path);
+}
+
+/**
  * Build a locale-prefixed, base-aware path.
  * e.g. getLocalePath('en', '/tutorials') => '/en/tutorials' (base '/')
  *                                        => '/code2art_website/en/tutorials' (sub-dir base)

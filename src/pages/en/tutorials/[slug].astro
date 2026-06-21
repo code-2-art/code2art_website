@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
-import { t, getLocalePath } from '../../../i18n/ui';
+import { t, getLocalePath, assetUrl } from '../../../i18n/ui';
 import type { Lang } from '../../../i18n/ui';
 
 const lang: Lang = 'en';
@@ -38,7 +38,7 @@ const blogJsonLd = {
             <div class="text-sm">{post.data.publishedAt?.slice(0,10)}</div>
           </div>
         </div>
-        {post.data.coverUrl && <img src={post.data.coverUrl} alt={post.data.title} class="mt-6 rounded-xl" />}
+        {post.data.coverUrl && <img src={assetUrl(post.data.coverUrl)} alt={post.data.title} class="mt-6 rounded-xl" />}
       </header>
 
       <div class="prose prose-slate max-w-none">

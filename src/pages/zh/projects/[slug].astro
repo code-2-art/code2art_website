@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
-import { t, getLocalePath } from '../../../i18n/ui';
+import { t, getLocalePath, assetUrl } from '../../../i18n/ui';
 import type { Lang } from '../../../i18n/ui';
 
 const lang: Lang = 'zh';
@@ -36,7 +36,7 @@ const title = `${activity.data.title} | TechArt`;
     </header>
 
     {activity.data.coverUrl && (
-      <img src={activity.data.coverUrl} alt={activity.data.title} class="w-full rounded-xl shadow mb-8" />
+      <img src={assetUrl(activity.data.coverUrl)} alt={activity.data.title} class="w-full rounded-xl shadow mb-8" />
     )}
 
     <div class="prose prose-lg max-w-none">

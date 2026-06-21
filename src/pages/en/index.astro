@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { t, getLocalePath, withBase } from '../../i18n/ui';
+import { t, getLocalePath, withBase, assetUrl } from '../../i18n/ui';
 import type { Lang } from '../../i18n/ui';
 
 const lang: Lang = 'en';
@@ -76,7 +76,7 @@ const switchHref = getLocalePath(otherLang, '/');
               <div class="relative">
                 {a.data.coverUrl ? (
                   <a href={resolveListHref(a.data.useDocUrl, a.data.docUrl, getLocalePath(lang, `/events/${a.data.slug}`))} {...(a.data.useDocUrl && a.data.docUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
-                    <img src={a.data.coverUrl} alt={a.data.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                    <img src={assetUrl(a.data.coverUrl)} alt={a.data.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </a>
                 ) : (
                   <div class="w-full h-60 bg-gradient-to-br from-primary/10 to-secondary/10" />
@@ -114,7 +114,7 @@ const switchHref = getLocalePath(otherLang, '/');
               <div class="relative">
                 {post.data.coverUrl ? (
                   <a href={resolveListHref(post.data.useDocUrl, post.data.docUrl, getLocalePath(lang, `/tutorials/${post.data.slug}`))} {...(post.data.useDocUrl && post.data.docUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
-                    <img src={post.data.coverUrl} alt={post.data.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                    <img src={assetUrl(post.data.coverUrl)} alt={post.data.title} class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </a>
                 ) : (
                   <div class="w-full h-60 bg-gradient-to-br from-primary/10 to-secondary/10" />

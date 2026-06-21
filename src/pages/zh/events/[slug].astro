@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
-import { t, getLocalePath } from '../../../i18n/ui';
+import { t, getLocalePath, assetUrl } from '../../../i18n/ui';
 import type { Lang } from '../../../i18n/ui';
 
 const lang: Lang = 'zh';
@@ -57,7 +57,7 @@ const eventJsonLd = {
     </header>
 
     {event.data.coverUrl && (
-      <img src={event.data.coverUrl} alt={event.data.title} class="w-full rounded-xl shadow mb-8" />
+      <img src={assetUrl(event.data.coverUrl)} alt={event.data.title} class="w-full rounded-xl shadow mb-8" />
     )}
 
     <div class="prose prose-lg max-w-none">
