@@ -1,0 +1,169 @@
+---
+id: "event-ai-10-artiverse-220524-zh"
+concept_id: "ai-10-artiverse-220524"
+type: "event"
+slug: "ai-10-artiverse-220524"
+title: "「人工合成废托邦」AI艺术社群作品分享10 & Artiverse公开课预告"
+lang: "zh"
+tags:
+  - "ai"
+  - "artiverse"
+status: "canonical"
+created: "2022-05-24"
+updated: "2022-05-24"
+version: 1
+summary: "「Synthetic Dystopia 人工合成废托邦」"
+coverUrl: "/uploads/ai-10-artiverse-220524/img_001.webp"
+author: "Contra的后院"
+publishedAt: "2022-05-24"
+event_date: "2022-05-24"
+format: "online"
+docUrl: "http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486796&idx=1&sn=db0702138608fbe6308e6c8baa95b00a&chksm=e9f53fddde82b6cb65354e338a77f82f72ef7504911cf6f3f39219a7cd714464a90f2416844d"
+useDocUrl: false
+---
+
+<img src="/uploads/ai-10-artiverse-220524/img_001.webp" alt="" loading="lazy" />
+
+**「Synthetic Dystopia 人工合成废托邦」**
+
+**Damon Chen, 2022**
+
+Damon来自纽约大学交互式媒体设计专业，参加了AI艺术训练营1期。
+
+他的个人作品「Synthetic Dystopia 人工合成废托邦」，给我留下深刻的印象。
+
+这套作品同样覆盖了AI艺术创作多套工序，集合各家之长：
+
+* StyleGAN生成
+* MUNIT指定风格迁移
+* Disco Diffusion艺术风格生成
+* Pytti影像风格化
+
+*Damon作品分享公开课时间见后文。*
+
+<img src="/uploads/ai-10-artiverse-220524/img_002.webp" alt="" loading="lazy" />
+
+<img src="/uploads/ai-10-artiverse-220524/img_003.webp" alt="" loading="lazy" />
+
+「Synthetic Dystopia」StyleGAN生成 + CLIP风格化
+
+<img src="/uploads/ai-10-artiverse-220524/img_004.webp" alt="" loading="lazy" />
+
+<img src="/uploads/ai-10-artiverse-220524/img_005.webp" alt="" loading="lazy" />
+
+「Synthetic Dystopia」MUNIT风格迁移（亮点自寻）
+
+<img src="/uploads/ai-10-artiverse-220524/img_006.webp" alt="" loading="lazy" />
+
+<img src="/uploads/ai-10-artiverse-220524/img_007.webp" alt="" loading="lazy" />
+
+「Synthetic Dystopia」Disco Diffusion艺术风格生成
+
+视频请至作者vimeo观看：
+
+https://vimeo.com/damonchen
+
+<img src="/uploads/ai-10-artiverse-220524/img_008.webp" alt="" loading="lazy" />
+
+**更多内容，欢迎来本期Artiverse公开课听Damon本人的分享吧！**
+
+Artiverse大学公开课预告📣
+
+**主题：**Synthetic Dystopia 人工合成废托邦
+
+**主讲：**Damon 纽约大学，交互式媒体设计
+
+**主持：**Contra 实验编程创始人
+
+**时间：**2022.5.26周四20:00（北京时间）
+
+**简介：**Damon分享作品创作过程，如何使用AI为作品附魔。
+
+**直播地址：**
+
+* **视频号**：实验编程
+* **B站**：Contra实验编程   
+  https://live.bilibili.com/22169737
+* **小鹅通**：
+
+<img src="/uploads/ai-10-artiverse-220524/img_009.webp" alt="" loading="lazy" />
+
+**Artiverse**：Art，Artist，Artificial
+
+Artiverse是数字艺术、交互媒体、生成艺术等数字内容从业者社区。
+
+https://discord.gg/jfdqegCHeQ
+
+更多介绍：[**Artiverse宇宙偷偷推进**](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486704&idx=1&sn=23dcdc135df247db5339a192acb172e2&chksm=e9f53e61de82b777a54eb21e95ebda41a543741209b271a7ef76f02debd8bc91ebb5da313913&scene=21#wechat_redirect)
+
+---
+
+更多实验编程AI艺术社群及教学相关内容：
+
+* [AI艺术训练营【第2期】启动报名](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486762&idx=1&sn=7059c2a4ef64acf5004202a0ddbd77f6&chksm=e9f53fbbde82b6adb55752fba0ad74ca9df3debcf3939afc736bee6029f19f663ee6a28a931e&scene=21#wechat_redirect)
+* [「“壮锦”非遗AI艺术设计」AI艺术训练营社群作品分享9](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486776&idx=1&sn=ff39f5c9a143d7a54098f3f7f4f3a1e3&chksm=e9f53fa9de82b6bf90f849e6b34b2ec06a730aa18736fde54452057cf671a13ede205fdcb17e&scene=21#wechat_redirect)
+* [课上讲的是猫猫狗狗，他却搞出了生化妖怪！](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486764&idx=1&sn=151620c801d73865dc8363fa8d4392a9&chksm=e9f53fbdde82b6ab545cd324f3a78eb11251faa63f524280c64640dd6dd125f162819fc5f645&scene=21#wechat_redirect)
+* [打开黑箱：让 AI 生成理想的原画 | AI艺术训练营社群作品分享7](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486645&idx=1&sn=0d47df457d32b3d6547e5db0f3e17056&chksm=e9f53e24de82b73247e5fe664dafa0798c44f5321c67b12df3573cd1173013258e9bd9321a9d&scene=21#wechat_redirect)
+* [炎虎八门 | AI艺术训练营社群作品分享6](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486643&idx=1&sn=a608d5b7a0c5d780316fae3bb24893fd&chksm=e9f53e22de82b73401eabb4bf1f4b2496fa543efd8da740e4126c521de42e26e42dcd00c256a&scene=21#wechat_redirect)
+* [创作笔记 | 我用 AI 将故事做成动画](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486629&idx=1&sn=013c10e24718f46dead971dd88b07e91&chksm=e9f53e34de82b7222409f0fc042da5f5f37c1363aa89467244f39d80c4172713d9f9788d0379&scene=21#wechat_redirect)
+* [AI作画工具横向对比 | AI训练营作业分享4](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486627&idx=1&sn=5a9dbc9c1d57b4f3d81ac6bd011474a7&chksm=e9f53e32de82b72411110d2fd77306441d17cb50d95eea48b79820cff9288a817441725f1467&scene=21#wechat_redirect)
+* [“我感觉我的模型已经训偏了” | AI训练营作业分享3](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486627&idx=2&sn=1732bd5817027a0d6a89a6b905d11106&chksm=e9f53e32de82b724fba7fee66f413ec86091400c306221e0e9b32a327b407eb7ed35a99d3314&scene=21#wechat_redirect)
+* [AI艺术训练营作业第二波](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486579&idx=1&sn=be43a450fb17ddd6402c7b2ae424eb27&chksm=e9f53ee2de82b7f41c7e8ffd033474f3e650ab86f6c5dfa2175d554fd16a1e8706309bc4a43a&scene=21#wechat_redirect)
+* [AI艺术训练营作业第一波](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486560&idx=1&sn=2749a036037208c8efbb8257faccf8ac&chksm=e9f53ef1de82b7e7986abb1ddaa3274fb8963e7e1685a2b61e06c6e925291f8ae3b9d419437a&scene=21#wechat_redirect)
+
+---
+
+**关于实验编程**
+
+* [关于实验编程 - 2022.2](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486363&idx=2&sn=26e1aac541f567f8365bc4a22845bab4&chksm=e9f5390ade82b01c8af55bb726971270926e5ef1675940228b70b764d01d7aa38a02b0003074&scene=21#wechat_redirect)
+* [教学指引 - 2022.3](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486444&idx=4&sn=9aeba971a993d5d21646c7f41d66ad63&chksm=e9f5397dde82b06b9937d0192fb2b2a3877c3e0e46e39a1ae368d31a3345ec0817c3d2542e61&scene=21#wechat_redirect)
+
+**教学资源汇总：****yuque.com/code2art**
+
+<img src="/uploads/ai-10-artiverse-220524/img_010.webp" alt="" loading="lazy" />
+
+**教学内容**
+
+* **开放教程** - 公众号文章、视频教程
+* **源代码源文件** - 文章教程配套代码
+* **大帅课** - 干硬货讲座
+* **专题课** - 深入某个主题精讲
+* **答疑辅导** - 1对1定制
+
+**教学模式**
+
+* **专题课程** - 专项主题，付费课程
+* **年度学员** - **1对1长期辅导**
+* **情报中心会员** - 源代码、课件资源、内部群答疑，适合自学型
+* **单次付费咨询** - 1对1咨询，1小时视频会议
+
+#### **1对1辅导内容**
+
+面向人群
+
+* 数字媒体艺术、交互媒体、计算编程等领域的学习者。
+* 需要不定期获取支持和建议的个人设计师、开发者、独立艺术家。
+* 「不面向」企业，企业咨询请单独联系。
+
+热门主题
+
+* 论文选题建议
+* 作品方案与技术选型
+* 技术问题拆解，解决方案建议
+* 交互媒体、技术美术入门指引
+* 个人学习情况评估，编程工具推荐，学习路线规划
+* 专业职业发展建议，职场经验答疑
+* 商业项目注意事项
+
+**课程咨询及微信群：****floatbug**
+
+<img src="/uploads/ai-10-artiverse-220524/img_011.webp" alt="" loading="lazy" />
+
+加微信烦请注明：来源（公B抖知）、学校单位、专业行业等，高效交流。
+
+您的**鼓励，在看，点赞，收藏，转发**，是我乱码的动力。
+
+英文版全网ID：@avantcontra
+
+微信公众号/视频号/知乎专栏/抖音/B站：  
+**实验编程**

@@ -1,0 +1,102 @@
+---
+id: "project-project-220803-zh"
+concept_id: "project-220803"
+type: "project"
+slug: "project-220803"
+title: "「一树一人家」东京参展｜AI生成实验短片"
+lang: "zh"
+tags:
+  - "ai"
+status: "canonical"
+created: "2022-08-03"
+updated: "2022-08-03"
+version: 1
+summary: "一树一人家（One Tree, One Home）by Contra"
+coverUrl: "/uploads/project-220803/img_001.webp"
+author: "Contra的后院"
+publishedAt: "2022-08-03"
+docUrl: "http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247487134&idx=1&sn=cad8f3246717c532b781bf677f4d8ad3&chksm=e9f53c0fde82b5194e96bde446da53745bc79ba7ec9e87a1aa118887430652580b271edf2569"
+useDocUrl: false
+---
+
+<img src="/uploads/project-220803/img_001.webp" alt="" loading="lazy" />
+
+**一树一人家（One Tree, One Home）by Contra**
+
+这其实是我去年做的AI短片：
+
+[【庸宇宙 · 一树一人家】AI意识下的赛博朋克世界](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247485989&idx=1&sn=6302ac756f07acd335214531c4670da4&chksm=e9f538b4de82b1a207f7e4db9adb34bf9325d25aa824c566bdcd90a9b737fc6f4c42fad414a8&scene=21#wechat_redirect)
+
+最近在老版基础上做了补帧，以及重新配了bgm（仍是周大师灵魂实验电子）。
+
+制作要点：
+
+使用 Pytti 生成。
+
+用video source模式，浅显的把现实世界与赛博朋克做个对比。
+
+感谢Jumbo Tsui，第二回合作，片子得以在东京 SOMSOC GALLERY 露面。
+
+与展览主题「木・海・人間」很搭。
+
+这不是我播放量最大的AI影像，相对偏小众，但反而更乐于见到其中的一些trick能被看见😃
+
+<img src="/uploads/project-220803/img_002.webp" alt="" loading="lazy" />
+
+**[SOMSOC展讯｜Jumbo Tsui 策展《 木 · 海 · 人间 》即将开幕](http://mp.weixin.qq.com/s?__biz=MzkzNTM3NjkwNA==&mid=2247483808&idx=1&sn=4cedf0b1b0553921e92d2fd2b1edb9ff&chksm=c2afa0c7f5d829d1bb5b5b403b0c63c0a44b1fe28d066451d431b3dfa718f7a1e8471feb684e&scene=21#wechat_redirect)**
+
+---
+
+**关于实验编程**
+
+* [关于实验编程 - 2022.6](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486912&idx=1&sn=48e563ca348988268d123cf52049b96e&chksm=e9f53f51de82b647b90e0855b0934abb65d1452b546d2d1da3e43a23232fa01150eef75f1978&scene=21#wechat_redirect)
+* [教学指引 - 2022.6](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486908&idx=1&sn=a7175b28d3d20fc1cc43504fb5036f05&chksm=e9f53f2dde82b63b189d6e0fe435e886d2f451575f36d20c7e0a1ab8a0221c74d40e9654701d&scene=21#wechat_redirect)
+
+**部分AI艺术作品：**
+
+* [Floating Punk 浮世朋克 | AI生成图像作品](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247487101&idx=1&sn=bd1a81f3f14dfc8e8f4574841ce3f05e&chksm=e9f53cecde82b5fa2f5224631de8a499e3f6c2a4ccea2e129e220b427255f19a7add00bef6b8&scene=21#wechat_redirect)
+* [海滩 | AI生成图像作品](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247487065&idx=1&sn=dff03827d434d5f15a0e1b8babbf4e74&chksm=e9f53cc8de82b5de7935b3a88e050048ca02d49eb493d3517f79d59a6dc420a54d125af914fc&scene=21#wechat_redirect)
+* [“CyberFish Portrait Bot” | AI生成图像作品](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247487125&idx=1&sn=e1590906325946508493c752bec5bd96&chksm=e9f53c04de82b512e012c9e77eee887a8f794c157b5f85707fc72ad69f80460bf21f71353876&scene=21#wechat_redirect)
+* [CyberFish 如何刚正面？Midjourney + StyleGAN工作流](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247487033&idx=1&sn=4a7ac6b7f832b16bffc091f7281dc8d5&chksm=e9f53ca8de82b5be6c8ad14b7084c9ce23d6df7003ce013afd7ba006dd2509260649a758eef6&scene=21#wechat_redirect)
+* [Cyber Fish | AI艺术藏品](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486009&idx=1&sn=f92b4a1cd3c4a0f7476cf03cce1964c8&chksm=e9f538a8de82b1be7db40f6d7beef75b42f1da59df81b092ce9388bde7963b08852b6c10ad06&scene=21#wechat_redirect)
+* [Ukiyo-e Portrait Diffusion，自训练一套Diffusion模型](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247487039&idx=1&sn=ff27260432e2286707fc13330b65232b&chksm=e9f53caede82b5b8e981cc6d562903e3ca1062698f7740d7cd754aa37ea5f2395fed72a4c260&scene=21#wechat_redirect)
+* [不可名状·克苏鲁 | AI艺术藏品](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486074&idx=1&sn=bebd3c14cab5c566b618552c013fac0e&chksm=e9f538ebde82b1fdcbc0fc26fd59d05acd6ca994522eb6ffa266fd30ef9c4405eef46fce1200&scene=21#wechat_redirect)
+
+**部分AI艺术教学相关内容：**
+
+* [AI艺术训练营第2期已开始，继续接受报名。](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247487039&idx=2&sn=164944280b26cb4a908c95d0587cfe86&chksm=e9f53caede82b5b888696d2e9e8cbe2205e5438fec79a4ac5e45cefcb244f449d707d477f2e3&scene=21#wechat_redirect)
+* [「人工合成废托邦」AI艺术社群作品分享10 & Artiverse公开课预告](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486796&idx=1&sn=db0702138608fbe6308e6c8baa95b00a&chksm=e9f53fddde82b6cb65354e338a77f82f72ef7504911cf6f3f39219a7cd714464a90f2416844d&scene=21#wechat_redirect)
+* [「“壮锦”非遗AI艺术设计」AI艺术训练营社群作品分享9](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486776&idx=1&sn=ff39f5c9a143d7a54098f3f7f4f3a1e3&chksm=e9f53fa9de82b6bf90f849e6b34b2ec06a730aa18736fde54452057cf671a13ede205fdcb17e&scene=21#wechat_redirect)
+* [AI艺术训练营作业第二波](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486579&idx=1&sn=be43a450fb17ddd6402c7b2ae424eb27&chksm=e9f53ee2de82b7f41c7e8ffd033474f3e650ab86f6c5dfa2175d554fd16a1e8706309bc4a43a&scene=21#wechat_redirect)
+* [AI艺术训练营作业第一波](http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247486560&idx=1&sn=2749a036037208c8efbb8257faccf8ac&chksm=e9f53ef1de82b7e7986abb1ddaa3274fb8963e7e1685a2b61e06c6e925291f8ae3b9d419437a&scene=21#wechat_redirect)
+
+**教学资源汇总：****yuque.com/code2art**
+
+**教学内容**
+
+* 开放教程 - 公众号文章、视频教程
+* 源代码源文件 - 文章教程配套代码
+* 大帅课 - 多主题干硬货讲座
+* 专题课 - 深入主题精讲，AI艺术系统课与训练营
+* 答疑辅导 - 1对1定制
+
+**教学模式**
+
+* 专题课程 - 专项主题，付费课程
+* 年度学员 - 1对1长期辅导
+* 情报中心会员 - 源代码、课件资源、内部群答疑，适合自学型
+* 单次付费咨询 - 1对1咨询，1小时视频会议
+
+**课程咨询及微信群：******floatbug****
+
+群将满，加微信烦请注明：  
+来源（公B抖知）、学校单位、专业行业、作品集/tw/ins等，高效交流。
+
+<img src="/uploads/project-220803/img_003.webp" alt="" loading="lazy" />
+
+您的**鼓励，在看，点赞，收藏，转发**，是我乱码的动力。
+
+英文版全网ID：@avantcontra
+
+微信公众号/视频号/知乎专栏/抖音/B站：  
+**实验编程**

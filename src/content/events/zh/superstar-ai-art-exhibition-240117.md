@@ -27,8 +27,6 @@ docUrl: "http://mp.weixin.qq.com/s?__biz=MzI1MTM0MDc5OA==&mid=2247490917&idx=1&s
 useDocUrl: false
 ---
 
-_（图片消息 · 共 2 张图片）_
-
 1.19开幕，厦门秋地艺术中心，详情：
 <a localeditorid="8aeclw1fzhvbq7g5q80" href="https://mp.weixin.qq.com/s?__biz=MzkzODM1Mzc2Mg==&amp;mid=2247484852&amp;idx=1&amp;sn=7b27615dce7a17838ad42c209529f942&amp;scene=142#wechat_redirect" textvalue="新展预告 | AI圈内的“超级明星”们共同打造全国最大规模AI艺术展" target="_blank" data-linktype="2">新展预告 | AI圈内的“超级明星”们共同打造全国最大规模AI艺术展</a>
 实验编程有幸作为共同发起社群之一，有一个独立展区，来自实验编程社群的近30组艺术家，近百件平面、影像、艺术书、卡牌等作品展出🔥
