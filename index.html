@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>code2art | Language</title><meta name="description" content="Choose your language"><link rel="canonical" href="https://code2art.com/"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:url" content="https://code2art.com/"><meta property="og:title" content="code2art | Language"><meta property="og:description" content="Choose your language"><meta property="og:image" content="https://code2art.com/og-cover.jpg"><meta property="og:site_name" content="实验编程 code2art"><meta property="og:locale" content="en_US"><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="code2art | Language"><meta name="twitter:description" content="Choose your language"><meta name="twitter:image" content="https://code2art.com/og-cover.jpg"><link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="alternate" hreflang="zh" href="https://code2art.com/zh/"><link rel="alternate" hreflang="en" href="https://code2art.com/en/"><link rel="alternate" hreflang="x-default" href="https://code2art.com/zh/"><link rel="alternate" type="application/rss+xml" title="实验编程 code2art RSS" href="/en/rss.xml"><!-- 使用本地托管的Inter字体，提升中国大陆访问速度 --><link href="/fonts/inter.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet"><!-- JSON-LD: WebSite + Organization (all pages) --><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"实验编程 code2art","alternateName":"code2art","url":"https://code2art.com/","description":"Exploring the intersection of technology and art","inLanguage":"en"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"实验编程 code2art","alternateName":"code2art","url":"https://code2art.com/","logo":"https://code2art.com/favicon-512x512.png","sameAs":["https://github.com/code-2-art","https://space.bilibili.com/309452713"]}</script><!-- JSON-LD: page-specific (BlogPosting, Event, ...) --><link rel="stylesheet" href="/_astro/_page_.BJz1pvg2.css"></head> <body class="font-inter bg-light text-dark antialiased flex flex-col min-h-screen"> <header id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300"> <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center bg-transparent"> <a href="/en/#home" class="flex items-center"> <img src="/assets/logo-dark.png" alt="code2art" class="h-10 w-auto"> </a> <div class="hidden md:flex items-center space-x-8"> <a href="/en/#home" class="font-medium hover:text-primary transition-colors">About</a> <a href="/en/#events" class="font-medium hover:text-primary transition-colors">Events</a> <a href="/en/#tutorials" class="font-medium hover:text-primary transition-colors">Tutorials</a> <a href="/en/#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-2 rounded-full font-medium hover:shadow-lg hover:shadow-primary/20 transition-all">Contact</a> <a href="/" data-lang-switch="zh" class="font-medium hover:text-primary transition-colors border border-gray-300 px-3 py-1 rounded-full text-sm">中文</a> </div> <button id="menu-toggle" class="md:hidden text-2xl" aria-label="Open menu">☰</button> </nav> <!-- Mobile menu --> <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t"> <div class="container mx-auto px-4 py-4 flex flex-col"> <a href="/en/#home" class="py-3 font-medium hover:text-primary">About</a> <a href="/en/#events" class="py-3 font-medium hover:text-primary">Events</a> <a href="/en/#tutorials" class="py-3 font-medium hover:text-primary">Tutorials</a> <a href="/en/#contact" class="mt-2 bg-gradient-to-r from-primary to-secondary text-white px-5 py-3 rounded-full font-medium text-center hover:shadow-lg hover:shadow-primary/20">Contact</a> <a href="/" data-lang-switch="zh" class="mt-2 py-3 font-medium hover:text-primary text-center border border-gray-300 rounded-full text-sm">中文</a> </div> </div> <script>
+    const navbar = document.getElementById('navbar');
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    function onScroll(){
+      if (window.scrollY > 10) {
+        navbar?.classList.add('bg-white/90','backdrop-blur-md','shadow-sm');
+      } else {
+        navbar?.classList.remove('bg-white/90','backdrop-blur-md','shadow-sm');
+      }
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+    document.querySelectorAll('#mobile-menu a').forEach(a=>{
+      a.addEventListener('click', ()=> menu?.classList.add('hidden'));
+    });
+    const langLinks = document.querySelectorAll('a[data-lang-switch]');
+    langLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        const target = link.getAttribute('data-lang-switch');
+        if (!target) return;
+        document.cookie = `site_lang=${target}; Path=/; Max-Age=15552000; SameSite=Lax`;
+      });
+    });
+  </script> </header> <main class="flex-grow">  <main class="min-h-screen flex items-center justify-center bg-light px-6"> <section class="w-full max-w-lg rounded-2xl bg-white shadow p-8 text-center"> <h1 class="text-2xl font-bold mb-3">Choose Language</h1> <p class="text-gray-600 mb-8">请选择访问语言</p> <div class="grid grid-cols-1 sm:grid-cols-2 gap-4"> <a href="/en/" data-lang-switch="en" class="inline-flex items-center justify-center rounded-full border border-gray-300 px-5 py-3 font-medium hover:border-primary hover:text-primary transition-colors">
+English
+</a> <a href="/zh/" data-lang-switch="zh" class="inline-flex items-center justify-center rounded-full border border-gray-300 px-5 py-3 font-medium hover:border-primary hover:text-primary transition-colors">
+中文
+</a> </div> </section> </main> <script is:client>
+    document.querySelectorAll('a[data-lang-switch]').forEach((link) => {
+      link.addEventListener('click', () => {
+        const target = link.getAttribute('data-lang-switch');
+        if (!target) return;
+        document.cookie = `site_lang=${target}; Path=/; Max-Age=15552000; SameSite=Lax`;
+      });
+    });
+  </script>  </main> <footer class="bg-dark text-white pt-16 pb-8"> <div class="container mx-auto px-4 sm:px-6 lg:px-8"> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12"> <div> <a href="/en/" class="flex items-center mb-6"> <img src="/assets/logo-light.png" alt="code2art" class="h-10 w-auto"> </a> <p class="text-gray-400 mb-6">Don&#39;t panic. True youth never panics.</p> </div> <div> <ul class="space-y-3"> <li><a href="https://mp.weixin.qq.com/s/LIi41bbEyDAqXZmGm_dGrw" class="text-gray-400 hover:text-white transition-colors">WeChat</a></li> <li><a href="https://www.xiaohongshu.com/user/profile/5ea438e00000000001009548" class="text-gray-400 hover:text-white transition-colors">Xiaohongshu</a></li> <li><a href="https://space.bilibili.com/309452713" class="text-gray-400 hover:text-white transition-colors">Bilibili</a></li> <li><a href="https://www.douyin.com/user/MS4wLjABAAAA1zXSsULbkb020lMmhP-kt4toB7wgXv18hpcJA2g96gK6aZb0LNYY4VvH-xezjW9j" class="text-gray-400 hover:text-white transition-colors">Douyin</a></li> </ul> </div> <div> <ul class="space-y-3"> <li><a href="https://appn6hiNebL8858.h5.xiaoeknow.com" class="text-gray-400 hover:text-white transition-colors">Courses</a></li> <li><a href="https://github.com/code-2-art" class="text-gray-400 hover:text-white transition-colors">Github</a></li> <li><a href="https://avantcontra.gumroad.com/" class="text-gray-400 hover:text-white transition-colors">Gumroad</a></li> <li><a href="https://youtube.com/avantcontra" class="text-gray-400 hover:text-white transition-colors">YouTube</a></li> </ul> </div> </div> <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center"> <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2016-2026 code2art</p> </div> </div> </footer> <!-- Back to top --> <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-11 h-11 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all z-50" aria-label="Back to top"> <i class="fa fa-arrow-up"></i> </button> <script>
+  const backToTop = document.getElementById('back-to-top');
+  function onScrollFooter(){
+    if (window.scrollY > 300) {
+      backToTop?.classList.remove('opacity-0','invisible');
+      backToTop?.classList.add('opacity-100','visible');
+    } else {
+      backToTop?.classList.add('opacity-0','invisible');
+      backToTop?.classList.remove('opacity-100','visible');
+    }
+  }
+  window.addEventListener('scroll', onScrollFooter);
+  setTimeout(onScrollFooter, 100);
+
+  backToTop?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script> </body></html>

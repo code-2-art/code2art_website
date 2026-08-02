@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="zh-CN" class="scroll-smooth"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>生成艺术入门：当算法遇见美学 | TechArt</title><meta name="description" content="从零开始了解生成艺术的核心概念、常用工具与创作思路，适合对编程和艺术交叉领域感兴趣的初学者。"><link rel="canonical" href="https://code2art.com/zh/tutorials/generative-art-intro/"><!-- Open Graph --><meta property="og:type" content="article"><meta property="og:url" content="https://code2art.com/zh/tutorials/generative-art-intro/"><meta property="og:title" content="生成艺术入门：当算法遇见美学 | TechArt"><meta property="og:description" content="从零开始了解生成艺术的核心概念、常用工具与创作思路，适合对编程和艺术交叉领域感兴趣的初学者。"><meta property="og:image" content="https://float.intplusplus.cn/code2art/assets/fluid.jpg"><meta property="og:site_name" content="实验编程 code2art"><meta property="og:locale" content="zh_CN"><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="生成艺术入门：当算法遇见美学 | TechArt"><meta name="twitter:description" content="从零开始了解生成艺术的核心概念、常用工具与创作思路，适合对编程和艺术交叉领域感兴趣的初学者。"><meta name="twitter:image" content="https://float.intplusplus.cn/code2art/assets/fluid.jpg"><link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="alternate" hreflang="zh" href="https://code2art.com/zh/tutorials/generative-art-intro"><link rel="alternate" hreflang="en" href="https://code2art.com/en/tutorials/generative-art-intro"><link rel="alternate" hreflang="x-default" href="https://code2art.com/zh/tutorials/generative-art-intro"><link rel="alternate" type="application/rss+xml" title="实验编程 code2art RSS" href="/zh/rss.xml"><!-- 使用本地托管的Inter字体，提升中国大陆访问速度 --><link href="/fonts/inter.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet"><!-- JSON-LD: WebSite + Organization (all pages) --><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"实验编程 code2art","alternateName":"code2art","url":"https://code2art.com/","description":"探索科技 × 艺术的边界","inLanguage":"zh-CN"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"实验编程 code2art","alternateName":"code2art","url":"https://code2art.com/","logo":"https://code2art.com/favicon-512x512.png","sameAs":["https://github.com/code-2-art","https://space.bilibili.com/309452713"]}</script><!-- JSON-LD: page-specific (BlogPosting, Event, ...) --><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"生成艺术入门：当算法遇见美学","description":"从零开始了解生成艺术的核心概念、常用工具与创作思路，适合对编程和艺术交叉领域感兴趣的初学者。","image":["https://float.intplusplus.cn/code2art/assets/fluid.jpg"],"datePublished":"2026-02-20","author":{"@type":"Person","name":"实验编程"},"inLanguage":"zh-CN","mainEntityOfPage":"https://code2art.com/zh/tutorials/generative-art-intro/"}</script><link rel="stylesheet" href="/_astro/_page_.BJz1pvg2.css"></head> <body class="font-inter bg-light text-dark antialiased flex flex-col min-h-screen"> <header id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300"> <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center bg-transparent"> <a href="/zh/#home" class="flex items-center"> <img src="/assets/logo-dark.png" alt="实验编程" class="h-10 w-auto"> </a> <div class="hidden md:flex items-center space-x-8"> <a href="/zh/#home" class="font-medium hover:text-primary transition-colors">关于社群</a> <a href="/zh/#events" class="font-medium hover:text-primary transition-colors">活动</a> <a href="/zh/#tutorials" class="font-medium hover:text-primary transition-colors">教程</a> <a href="/zh/#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-2 rounded-full font-medium hover:shadow-lg hover:shadow-primary/20 transition-all">联系我们</a> <a href="/en/tutorials/generative-art-intro/" data-lang-switch="en" class="font-medium hover:text-primary transition-colors border border-gray-300 px-3 py-1 rounded-full text-sm">EN</a> </div> <button id="menu-toggle" class="md:hidden text-2xl" aria-label="打开菜单">☰</button> </nav> <!-- Mobile menu --> <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t"> <div class="container mx-auto px-4 py-4 flex flex-col"> <a href="/zh/#home" class="py-3 font-medium hover:text-primary">关于社群</a> <a href="/zh/#events" class="py-3 font-medium hover:text-primary">活动</a> <a href="/zh/#tutorials" class="py-3 font-medium hover:text-primary">教程</a> <a href="/zh/#contact" class="mt-2 bg-gradient-to-r from-primary to-secondary text-white px-5 py-3 rounded-full font-medium text-center hover:shadow-lg hover:shadow-primary/20">联系我们</a> <a href="/en/tutorials/generative-art-intro/" data-lang-switch="en" class="mt-2 py-3 font-medium hover:text-primary text-center border border-gray-300 rounded-full text-sm">EN</a> </div> </div> <script>
+    const navbar = document.getElementById('navbar');
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    function onScroll(){
+      if (window.scrollY > 10) {
+        navbar?.classList.add('bg-white/90','backdrop-blur-md','shadow-sm');
+      } else {
+        navbar?.classList.remove('bg-white/90','backdrop-blur-md','shadow-sm');
+      }
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+    document.querySelectorAll('#mobile-menu a').forEach(a=>{
+      a.addEventListener('click', ()=> menu?.classList.add('hidden'));
+    });
+    const langLinks = document.querySelectorAll('a[data-lang-switch]');
+    langLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        const target = link.getAttribute('data-lang-switch');
+        if (!target) return;
+        document.cookie = `site_lang=${target}; Path=/; Max-Age=15552000; SameSite=Lax`;
+      });
+    });
+  </script> </header> <main class="flex-grow">  <article class="pt-28 pb-16"> <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl"> <header class="mb-8"> <h1 class="text-3xl md:text-4xl font-extrabold">生成艺术入门：当算法遇见美学</h1> <div class="mt-4 flex items-center gap-4 text-slate-600">  <div> <div class="font-medium">实验编程</div> <div class="text-sm">2026-02-20</div> </div> </div> <img src="https://float.intplusplus.cn/code2art/assets/fluid.jpg" alt="生成艺术入门：当算法遇见美学" class="mt-6 rounded-xl"> </header> <div class="prose prose-slate max-w-none"> <h2 id="什么是生成艺术">什么是生成艺术？</h2>
+<p>生成艺术（Generative Art）是指艺术家通过设计<strong>规则、算法或系统</strong>，让计算机参与创作过程，最终产出视觉、声音或交互作品。创作者的角色从”直接画出每一笔”转变为”设计产生作品的规则”。</p>
+<blockquote>
+<p>“The artist creates the process, the process creates the work.”
+— Philip Galanter</p>
+</blockquote>
+<h2 id="核心要素">核心要素</h2>
+<ol>
+<li><strong>随机性与确定性的平衡</strong> — 纯随机产生噪声，纯确定产生机械感。好的生成作品在两者之间找到张力。</li>
+<li><strong>迭代与涌现</strong> — 简单规则经过大量重复可以涌现出复杂结构，例如分形、元胞自动机。</li>
+<li><strong>参数空间探索</strong> — 调整参数就像在无限的可能性空间中旅行，每组参数对应一件独特的作品。</li>
+</ol>
+<h2 id="常用工具">常用工具</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>工具</th><th>语言</th><th>特点</th></tr></thead><tbody><tr><td>Processing</td><td>Java</td><td>生成艺术经典入门工具</td></tr><tr><td>p5.js</td><td>JavaScript</td><td>Processing 的 Web 版本，社区活跃</td></tr><tr><td>TouchDesigner</td><td>可视化节点</td><td>实时交互与演出首选</td></tr><tr><td>Shader (GLSL)</td><td>C-like</td><td>GPU 并行计算，极致性能</td></tr></tbody></table>
+<h2 id="一个最小示例">一个最小示例</h2>
+<p>用 p5.js 画一片”呼吸的圆”：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> setup</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">  createCanvas</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">600</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">600</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  noStroke</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> draw</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">  background</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">20</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">let</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 50</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">=</span><span style="color:#B392F0"> random</span><span style="color:#E1E4E8">(width);</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> y </span><span style="color:#F97583">=</span><span style="color:#B392F0"> random</span><span style="color:#E1E4E8">(height);</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> r </span><span style="color:#F97583">=</span><span style="color:#B392F0"> sin</span><span style="color:#E1E4E8">(frameCount </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 0.02</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> i) </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 20</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> 25</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">    fill</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">100</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">180</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">255</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">80</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">    ellipse</span><span style="color:#E1E4E8">(x, y, r);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>每一帧都不同，却始终保持统一的视觉节奏——这就是生成艺术的魅力。</p>
+<h2 id="下一步">下一步</h2>
+<ul>
+<li>在 <a href="https://openprocessing.org">OpenProcessing</a> 上浏览社区作品，fork 感兴趣的 sketch</li>
+<li>阅读 Daniel Shiffman 的 <em>The Nature of Code</em></li>
+<li>加入实验编程社群，和我们一起探索算法与美学的边界</li>
+</ul> </div> <footer class="mt-12 text-slate-500 border-t pt-6"> <p>发布于 2026-02-20</p> </footer> </div> </article>  </main> <footer class="bg-dark text-white pt-16 pb-8"> <div class="container mx-auto px-4 sm:px-6 lg:px-8"> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12"> <div> <a href="/zh/" class="flex items-center mb-6"> <img src="/assets/logo-light.png" alt="实验编程" class="h-10 w-auto"> </a> <p class="text-gray-400 mb-6">不要慌，真青年是不会慌的。</p> </div> <div> <ul class="space-y-3"> <li><a href="https://mp.weixin.qq.com/s/LIi41bbEyDAqXZmGm_dGrw" class="text-gray-400 hover:text-white transition-colors">公众号</a></li> <li><a href="https://www.xiaohongshu.com/user/profile/5ea438e00000000001009548" class="text-gray-400 hover:text-white transition-colors">小红书</a></li> <li><a href="https://space.bilibili.com/309452713" class="text-gray-400 hover:text-white transition-colors">B站</a></li> <li><a href="https://www.douyin.com/user/MS4wLjABAAAA1zXSsULbkb020lMmhP-kt4toB7wgXv18hpcJA2g96gK6aZb0LNYY4VvH-xezjW9j" class="text-gray-400 hover:text-white transition-colors">抖音</a></li> </ul> </div> <div> <ul class="space-y-3"> <li><a href="https://appn6hiNebL8858.h5.xiaoeknow.com" class="text-gray-400 hover:text-white transition-colors">小鹅通课程</a></li> <li><a href="https://github.com/code-2-art" class="text-gray-400 hover:text-white transition-colors">Github</a></li> <li><a href="https://avantcontra.gumroad.com/" class="text-gray-400 hover:text-white transition-colors">Gumroad</a></li> <li><a href="https://youtube.com/avantcontra" class="text-gray-400 hover:text-white transition-colors">YouTube</a></li> </ul> </div> </div> <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center"> <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2016-2026 实验编程</p> </div> </div> </footer> <!-- Back to top --> <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-11 h-11 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all z-50" aria-label="返回顶部"> <i class="fa fa-arrow-up"></i> </button> <script>
+  const backToTop = document.getElementById('back-to-top');
+  function onScrollFooter(){
+    if (window.scrollY > 300) {
+      backToTop?.classList.remove('opacity-0','invisible');
+      backToTop?.classList.add('opacity-100','visible');
+    } else {
+      backToTop?.classList.add('opacity-0','invisible');
+      backToTop?.classList.remove('opacity-100','visible');
+    }
+  }
+  window.addEventListener('scroll', onScrollFooter);
+  setTimeout(onScrollFooter, 100);
+
+  backToTop?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script> </body></html>
